@@ -1,4 +1,4 @@
-module github.com/netbirdio/netbird
+module github.com/Bee-Bros-Software/r-vpn
 
 go 1.23.0
 
