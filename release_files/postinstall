@@ -28,7 +28,7 @@ mkdir -p /usr/local/bin/
     fi
 
     $AGENT service install || true
-    $AGENT service start || true
+    $AGENT service start > /dev/null 2>&1 &
 
     open $APP
 
