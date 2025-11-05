@@ -1,0 +1,137 @@
+name: Build macOS Client
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.21'
+
+    - name: Install dependencies
+      run: |
+        brew install create-dmg
+
+    - name: Build CLI client
+      run: |
+        cd client
+        go build -o ../build/rvpn \
+          -ldflags="-X github.com/Bee-Bros-Software/r-vpn/version.version=${{ github.ref_name }}" \
+          .
+
+    - name: Build UI client
+      run: |
+        cd client/ui
+        go build -o ../../build/R-VPN.app/Contents/MacOS/R-VPN \
+          -ldflags="-X github.com/Bee-Bros-Software/r-vpn/version.version=${{ github.ref_name }}" \
+          .
+
+    - name: Create app bundle structure
+      run: |
+        mkdir -p build/R-VPN.app/Contents/{MacOS,Resources}
+
+        # Copy icon
+        cp client/ui/rvpn.icns build/R-VPN.app/Contents/Resources/
+
+        # Create Info.plist
+        cat > build/R-VPN.app/Contents/Info.plist << 'EOF'
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+          <key>CFBundleExecutable</key>
+          <string>R-VPN</string>
+          <key>CFBundleIconFile</key>
+          <string>rvpn.icns</string>
+          <key>CFBundleIdentifier</key>
+          <string>net.rsoftware.rvpn</string>
+          <key>CFBundleName</key>
+          <string>R-VPN</string>
+          <key>CFBundlePackageType</key>
+          <string>APPL</string>
+          <key>CFBundleShortVersionString</key>
+          <string>${{ github.ref_name }}</string>
+          <key>CFBundleVersion</key>
+          <string>${{ github.run_number }}</string>
+          <key>LSMinimumSystemVersion</key>
+          <string>10.15</string>
+          <key>NSHighResolutionCapable</key>
+          <true/>
+          <key>LSUIElement</key>
+          <true/>
+        </dict>
+        </plist>
+        EOF
+
+    - name: Create DMG
+      run: |
+        create-dmg \
+          --volname "R-VPN Installer" \
+          --volicon "client/ui/rvpn.icns" \
+          --window-pos 200 120 \
+          --window-size 600 400 \
+          --icon-size 100 \
+          --icon "R-VPN.app" 175 120 \
+          --hide-extension "R-VPN.app" \
+          --app-drop-link 425 120 \
+          "build/R-VPN-${{ github.ref_name }}.dmg" \
+          "build/R-VPN.app" || true
+
+        # Fallback if create-dmg fails
+        if [ ! -f "build/R-VPN-${{ github.ref_name }}.dmg" ]; then
+          hdiutil create -volname "R-VPN" -srcfolder build/R-VPN.app -ov -format UDZO "build/R-VPN-${{ github.ref_name }}.dmg"
+        fi
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: macos-builds
+        path: |
+          build/rvpn
+          build/*.dmg
+
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          build/rvpn
+          build/*.dmg
+        body: |
+          ## R-VPN ${{ github.ref_name }}
+
+          ### macOS Installation
+          1. Download `R-VPN-${{ github.ref_name }}.dmg`
+          2. Open the DMG and drag R-VPN to Applications
+          3. Launch R-VPN from Applications
+          4. Authenticate via Authentik when prompted
+
+          ### CLI Installation
+          ```bash
+          # Download CLI binary
+          curl -L -o rvpn https://github.com/Bee-Bros-Software/r-vpn/releases/download/${{ github.ref_name }}/rvpn
+          chmod +x rvpn
+          sudo mv rvpn /usr/local/bin/
+          ```
+
+          ### What's New
+          See commit history for changes.
+
+          ---
+          Built with ❤️ by R-Software
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
