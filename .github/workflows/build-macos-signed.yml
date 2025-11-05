@@ -229,6 +229,22 @@ jobs:
         # Verify PKG signature
         pkgutil --check-signature "build/R-VPN-${{ github.ref_name }}.pkg"
 
+    - name: Notarize PKG
+      env:
+        APPLE_ID: ${{ secrets.APPLE_ID }}
+        APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      run: |
+        # Submit PKG for notarization
+        xcrun notarytool submit "build/R-VPN-${{ github.ref_name }}.pkg" \
+          --apple-id "$APPLE_ID" \
+          --password "$APPLE_APP_PASSWORD" \
+          --team-id "$APPLE_TEAM_ID" \
+          --wait
+
+        # Staple the notarization ticket to the PKG
+        xcrun stapler staple "build/R-VPN-${{ github.ref_name }}.pkg"
+
     - name: Create DMG
       run: |
         create-dmg \
