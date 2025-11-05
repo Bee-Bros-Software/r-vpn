@@ -161,14 +161,13 @@ jobs:
         cp release_files/preinstall build/scripts/
         cp release_files/postinstall build/scripts/
 
-        # Build the component package
+        # Build the component package (unsigned - will be signed in productbuild)
         pkgbuild \
           --root build/pkg_root \
           --scripts build/scripts \
           --identifier net.rsoftware.rvpn \
           --version "${{ github.ref_name }}" \
           --install-location / \
-          --sign "$CERTIFICATE_NAME" \
           build/R-VPN-component.pkg
 
         # Create distribution XML
@@ -215,16 +214,13 @@ jobs:
         This software is provided for use by R-Software employees and authorized users only.
         EOF
 
-        # Build the product archive (final PKG)
+        # Build the product archive (final PKG) - unsigned for now
+        # TODO: Need Developer ID Installer certificate to sign PKG files
         productbuild \
           --distribution build/distribution.xml \
           --resources build \
           --package-path build \
-          --sign "$CERTIFICATE_NAME" \
           "build/R-VPN-${{ github.ref_name }}.pkg"
-
-        # Verify signature
-        pkgutil --check-signature "build/R-VPN-${{ github.ref_name }}.pkg"
 
     - name: Create DMG
       run: |
@@ -254,20 +250,6 @@ jobs:
           "build/R-VPN-${{ github.ref_name }}.dmg"
 
         codesign --verify --verbose=2 "build/R-VPN-${{ github.ref_name }}.dmg"
-
-    - name: Notarize PKG
-      env:
-        APPLE_ID: ${{ secrets.APPLE_ID }}
-        APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
-        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-      run: |
-        xcrun notarytool submit "build/R-VPN-${{ github.ref_name }}.pkg" \
-          --apple-id "$APPLE_ID" \
-          --password "$APPLE_APP_PASSWORD" \
-          --team-id "$APPLE_TEAM_ID" \
-          --wait
-
-        xcrun stapler staple "build/R-VPN-${{ github.ref_name }}.pkg"
 
     - name: Notarize DMG
       env:
