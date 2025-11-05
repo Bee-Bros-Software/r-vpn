@@ -27,10 +27,10 @@ jobs:
         brew install create-dmg
 
     - name: Import Code Signing Certificate
-      if: ${{ secrets.MACOS_CERTIFICATE != '' }}
+      if: secrets.MACOS_CERTIFICATE != ''
       env:
-        CERTIFICATE_BASE64: ${{ secrets.MACOS_CERTIFICATE }}
-        CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
+        CERTIFICATE_BASE64: ${{ secrets.MACOS_CERTIFICATE
+        CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PWD
       run: |
         # Create temporary keychain
         KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
@@ -102,9 +102,9 @@ jobs:
         EOF
 
     - name: Sign App Bundle
-      if: ${{ secrets.MACOS_CERTIFICATE != '' }}
+      if: secrets.MACOS_CERTIFICATE != ''
       env:
-        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME }}
+        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME
       run: |
         # Sign the app
         /usr/bin/codesign --force --deep --sign "$CERTIFICATE_NAME" \
@@ -117,11 +117,11 @@ jobs:
         codesign --verify --deep --strict --verbose=2 build/R-VPN.app
 
     - name: Notarize App
-      if: ${{ secrets.MACOS_CERTIFICATE != '' && secrets.APPLE_ID != '' }}
+      if: secrets.MACOS_CERTIFICATE != '' && secrets.APPLE_ID != ''
       env:
-        APPLE_ID: ${{ secrets.APPLE_ID }}
-        APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
-        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        APPLE_ID: ${{ secrets.APPLE_ID
+        APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD
+        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID
       run: |
         # Create a zip for notarization
         ditto -c -k --keepParent build/R-VPN.app build/R-VPN.zip
@@ -137,9 +137,9 @@ jobs:
         xcrun stapler staple build/R-VPN.app
 
     - name: Sign CLI Binary
-      if: ${{ secrets.MACOS_CERTIFICATE != '' }}
+      if: secrets.MACOS_CERTIFICATE != ''
       env:
-        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME }}
+        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME
       run: |
         /usr/bin/codesign --force --sign "$CERTIFICATE_NAME" \
           --options runtime \
@@ -168,9 +168,9 @@ jobs:
         fi
 
     - name: Sign DMG
-      if: ${{ secrets.MACOS_CERTIFICATE != '' }}
+      if: secrets.MACOS_CERTIFICATE != ''
       env:
-        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME }}
+        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME
       run: |
         /usr/bin/codesign --force --sign "$CERTIFICATE_NAME" \
           --timestamp \
@@ -179,11 +179,11 @@ jobs:
         codesign --verify --verbose=2 "build/R-VPN-${{ github.ref_name }}.dmg"
 
     - name: Notarize DMG
-      if: ${{ secrets.MACOS_CERTIFICATE != '' && secrets.APPLE_ID != '' }}
+      if: secrets.MACOS_CERTIFICATE != '' && secrets.APPLE_ID != ''
       env:
-        APPLE_ID: ${{ secrets.APPLE_ID }}
-        APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
-        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        APPLE_ID: ${{ secrets.APPLE_ID
+        APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD
+        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID
       run: |
         xcrun notarytool submit "build/R-VPN-${{ github.ref_name }}.dmg" \
           --apple-id "$APPLE_ID" \
@@ -229,7 +229,7 @@ jobs:
           ---
           Built with ❤️ by R-Software
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN
 
     - name: Cleanup keychain
       if: always()
