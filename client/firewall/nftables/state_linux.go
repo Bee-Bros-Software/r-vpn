@@ -3,8 +3,8 @@ package nftables
 import (
 	"fmt"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
 )
 
 type InterfaceState struct {

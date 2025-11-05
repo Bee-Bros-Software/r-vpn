@@ -13,7 +13,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
-	"github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 type GeoNames struct {

@@ -8,7 +8,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/netbirdio/netbird/shared/management/http/util"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/util"
 )
 
 // Client Management service HTTP REST API Client
@@ -17,56 +17,56 @@ type Client struct {
 	authHeader    string
 	httpClient    HttpClient
 
-	// Accounts NetBird account APIs
-	// see more: https://docs.netbird.io/api/resources/accounts
+	// Accounts R-VPN account APIs
+	// see more: https://docs.rsoftware.net/api/resources/accounts
 	Accounts *AccountsAPI
 
-	// Users NetBird users APIs
-	// see more: https://docs.netbird.io/api/resources/users
+	// Users R-VPN users APIs
+	// see more: https://docs.rsoftware.net/api/resources/users
 	Users *UsersAPI
 
-	// Tokens NetBird tokens APIs
-	// see more: https://docs.netbird.io/api/resources/tokens
+	// Tokens R-VPN tokens APIs
+	// see more: https://docs.rsoftware.net/api/resources/tokens
 	Tokens *TokensAPI
 
-	// Peers NetBird peers APIs
-	// see more: https://docs.netbird.io/api/resources/peers
+	// Peers R-VPN peers APIs
+	// see more: https://docs.rsoftware.net/api/resources/peers
 	Peers *PeersAPI
 
-	// SetupKeys NetBird setup keys APIs
-	// see more: https://docs.netbird.io/api/resources/setup-keys
+	// SetupKeys R-VPN setup keys APIs
+	// see more: https://docs.rsoftware.net/api/resources/setup-keys
 	SetupKeys *SetupKeysAPI
 
-	// Groups NetBird groups APIs
-	// see more: https://docs.netbird.io/api/resources/groups
+	// Groups R-VPN groups APIs
+	// see more: https://docs.rsoftware.net/api/resources/groups
 	Groups *GroupsAPI
 
-	// Policies NetBird policies APIs
-	// see more: https://docs.netbird.io/api/resources/policies
+	// Policies R-VPN policies APIs
+	// see more: https://docs.rsoftware.net/api/resources/policies
 	Policies *PoliciesAPI
 
-	// PostureChecks NetBird posture checks APIs
-	// see more: https://docs.netbird.io/api/resources/posture-checks
+	// PostureChecks R-VPN posture checks APIs
+	// see more: https://docs.rsoftware.net/api/resources/posture-checks
 	PostureChecks *PostureChecksAPI
 
-	// Networks NetBird networks APIs
-	// see more: https://docs.netbird.io/api/resources/networks
+	// Networks R-VPN networks APIs
+	// see more: https://docs.rsoftware.net/api/resources/networks
 	Networks *NetworksAPI
 
-	// Routes NetBird routes APIs
-	// see more: https://docs.netbird.io/api/resources/routes
+	// Routes R-VPN routes APIs
+	// see more: https://docs.rsoftware.net/api/resources/routes
 	Routes *RoutesAPI
 
-	// DNS NetBird DNS APIs
-	// see more: https://docs.netbird.io/api/resources/routes
+	// DNS R-VPN DNS APIs
+	// see more: https://docs.rsoftware.net/api/resources/routes
 	DNS *DNSAPI
 
-	// GeoLocation NetBird Geo Location APIs
-	// see more: https://docs.netbird.io/api/resources/geo-locations
+	// GeoLocation R-VPN Geo Location APIs
+	// see more: https://docs.rsoftware.net/api/resources/geo-locations
 	GeoLocation *GeoLocationAPI
 
-	// Events NetBird Events APIs
-	// see more: https://docs.netbird.io/api/resources/events
+	// Events R-VPN Events APIs
+	// see more: https://docs.rsoftware.net/api/resources/events
 	Events *EventsAPI
 }
 

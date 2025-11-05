@@ -14,8 +14,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/client/ui/desktop"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/ui/desktop"
 )
 
 type Handler func(*proto.SystemEvent)

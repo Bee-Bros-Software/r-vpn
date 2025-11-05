@@ -10,12 +10,12 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/management/server/auth"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/http/middleware/bypass"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/shared/management/http/util"
-	"github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/auth"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/http/middleware/bypass"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/util"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 type EnsureAccountFunc func(ctx context.Context, userAuth nbcontext.UserAuth) (string, string, error)

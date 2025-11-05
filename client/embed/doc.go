@@ -1,5 +1,5 @@
-// Package embed provides a way to embed the NetBird client directly
-// into Go programs without requiring a separate NetBird client installation.
+// Package embed provides a way to embed the R-VPN client directly
+// into Go programs without requiring a separate R-VPN client installation.
 package embed
 
 // Basic Usage:
@@ -33,12 +33,12 @@ package embed
 //	    "syscall"
 //	    "time"
 //
-//	    netbird "github.com/netbirdio/netbird/client/embed"
+//	    rvpn "github.com/Bee-Bros-Software/r-vpn/client/embed"
 //	)
 //
 //	func main() {
 //	    // Create client with setup key and device name
-//	    client, err := netbird.New(netbird.Options{
+//	    client, err := rvpn.New(rvpn.Options{
 //	        DeviceName:    "http-server",
 //	        SetupKey:      os.Getenv("NB_SETUP_KEY"),
 //	        ManagementURL: os.Getenv("NB_MANAGEMENT_URL"),
@@ -59,10 +59,10 @@ package embed
 //	    mux := http.NewServeMux()
 //	    mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 //	        fmt.Printf("Request from %s: %s %s\n", r.RemoteAddr, r.Method, r.URL.Path)
-//	        fmt.Fprintf(w, "Hello from netbird!")
+//	        fmt.Fprintf(w, "Hello from rvpn!")
 //	    })
 //
-//	    // Listen on netbird network
+//	    // Listen on rvpn network
 //	    l, err := client.ListenTCP(":8080")
 //	    if err != nil {
 //	        log.Fatal(err)
@@ -75,7 +75,7 @@ package embed
 //	        }
 //	    }()
 //
-//	    log.Printf("HTTP server listening on netbird network port 8080")
+//	    log.Printf("HTTP server listening on rvpn network port 8080")
 //
 //	    // Handle shutdown
 //	    stop := make(chan os.Signal, 1)
@@ -105,12 +105,12 @@ package embed
 //	    "os"
 //	    "time"
 //
-//	    netbird "github.com/netbirdio/netbird/client/embed"
+//	    rvpn "github.com/Bee-Bros-Software/r-vpn/client/embed"
 //	)
 //
 //	func main() {
 //	    // Create client with setup key and device name
-//	    client, err := netbird.New(netbird.Options{
+//	    client, err := rvpn.New(rvpn.Options{
 //	        DeviceName:    "http-client",
 //	        SetupKey:      os.Getenv("NB_SETUP_KEY"),
 //	        ManagementURL: os.Getenv("NB_MANAGEMENT_URL"),
@@ -128,11 +128,11 @@ package embed
 //	        log.Fatal(err)
 //	    }
 //
-//	    // Create HTTP client that uses netbird network
+//	    // Create HTTP client that uses rvpn network
 //	    httpClient := client.NewHTTPClient()
 //	    httpClient.Timeout = 10 * time.Second
 //
-//	    // Make request to server in netbird network
+//	    // Make request to server in rvpn network
 //	    target := os.Getenv("NB_TARGET")
 //	    resp, err := httpClient.Get(target)
 //	    if err != nil {

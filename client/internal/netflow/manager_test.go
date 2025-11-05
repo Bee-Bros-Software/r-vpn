@@ -8,9 +8,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/internal/netflow/types"
-	"github.com/netbirdio/netbird/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
 )
 
 type mockIFaceMapper struct {

@@ -22,7 +22,7 @@ import (
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sys/unix"
 
-	nbnet "github.com/netbirdio/netbird/client/net"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 // ErrSharedSockStopped indicates that shared socket has been stopped

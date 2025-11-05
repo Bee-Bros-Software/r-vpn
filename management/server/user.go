@@ -10,18 +10,18 @@ import (
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/management/server/activity"
-	nbContext "github.com/netbirdio/netbird/management/server/context"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/idp"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/permissions/modules"
-	"github.com/netbirdio/netbird/management/server/permissions/operations"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/management/server/users"
-	"github.com/netbirdio/netbird/management/server/util"
-	"github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	nbContext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/idp"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/modules"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/operations"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/users"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 // createServiceUser creates a new service user under the given account.
@@ -156,7 +156,7 @@ func (am *DefaultAccountManager) createNewIdpUser(ctx context.Context, accountID
 	}
 
 	if user != nil {
-		return nil, status.Errorf(status.UserAlreadyExists, "can't invite a user with an existing NetBird account")
+		return nil, status.Errorf(status.UserAlreadyExists, "can't invite a user with an existing R-VPN account")
 	}
 
 	users, err := am.idpManager.GetUserByEmail(ctx, invite.Email)
@@ -165,7 +165,7 @@ func (am *DefaultAccountManager) createNewIdpUser(ctx context.Context, accountID
 	}
 
 	if len(users) > 0 {
-		return nil, status.Errorf(status.UserAlreadyExists, "can't invite a user with an existing NetBird account")
+		return nil, status.Errorf(status.UserAlreadyExists, "can't invite a user with an existing R-VPN account")
 	}
 
 	return am.idpManager.CreateUser(ctx, invite.Email, invite.Name, accountID, inviterUser.Email)
@@ -301,7 +301,7 @@ func (am *DefaultAccountManager) InviteUser(ctx context.Context, accountID strin
 	// check if user account is already invited and account is not activated
 	pendingInvite := user.AppMetadata.WTPendingInvite
 	if pendingInvite == nil || !*pendingInvite {
-		return status.Errorf(status.PreconditionFailed, "can't invite a user with an activated NetBird account")
+		return status.Errorf(status.PreconditionFailed, "can't invite a user with an activated R-VPN account")
 	}
 
 	err = am.idpManager.InviteUserByID(ctx, user.ID)

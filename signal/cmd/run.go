@@ -18,15 +18,15 @@ import (
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
 
-	"github.com/netbirdio/netbird/signal/metrics"
+	"github.com/Bee-Bros-Software/r-vpn/signal/metrics"
 
-	"github.com/netbirdio/netbird/encryption"
-	"github.com/netbirdio/netbird/shared/signal/proto"
-	"github.com/netbirdio/netbird/signal/server"
-	"github.com/netbirdio/netbird/util"
-	"github.com/netbirdio/netbird/util/wsproxy"
-	wsproxyserver "github.com/netbirdio/netbird/util/wsproxy/server"
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/encryption"
+	"github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	"github.com/Bee-Bros-Software/r-vpn/signal/server"
+	"github.com/Bee-Bros-Software/r-vpn/util"
+	"github.com/Bee-Bros-Software/r-vpn/util/wsproxy"
+	wsproxyserver "github.com/Bee-Bros-Software/r-vpn/util/wsproxy/server"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -60,7 +60,7 @@ var (
 
 	runCmd = &cobra.Command{
 		Use:          "run",
-		Short:        "start NetBird Signal Server daemon",
+		Short:        "start R-VPN Signal Server daemon",
 		SilenceUsage: true,
 		PreRunE: func(cmd *cobra.Command, args []string) error {
 			err := util.InitLog(logLevel, logFile)

@@ -7,8 +7,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/sharedsock"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/sharedsock"
 )
 
 func main() {

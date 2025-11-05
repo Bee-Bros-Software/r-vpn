@@ -1,7 +1,7 @@
-package NetBirdSDK
+package R-VPNSDK
 
 import (
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
 )
 
 // Preferences export a subset of the internal config for gomobile

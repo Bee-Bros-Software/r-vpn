@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/netbirdio/netbird/client/iface/netstack"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/netstack"
 	"github.com/pion/transport/v3"
 	"github.com/pion/transport/v3/stdnet"
 )
@@ -35,7 +35,7 @@ func NewNetWithDiscover(iFaceDiscover ExternalIFaceDiscover, disallowList []stri
 	n := &Net{
 		interfaceFilter: InterfaceFilter(disallowList),
 	}
-	// current ExternalIFaceDiscover implement in android-client https://github.dev/netbirdio/android-client
+	// current ExternalIFaceDiscover implement in android-client https://github.dev/rvpnio/android-client
 	// so in android cli use pionDiscover
 	if netstack.IsEnabled() {
 		n.iFaceDiscover = pionDiscover{}

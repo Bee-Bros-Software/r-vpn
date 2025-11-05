@@ -11,7 +11,7 @@ builds:
     goarch:
       - wasm
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
     mod_timestamp: "{{ .CommitTimestamp }}"
 
   - id: netbird
@@ -33,7 +33,7 @@ builds:
       - goos: windows
         goarch: 386
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
     mod_timestamp: "{{ .CommitTimestamp }}"
     tags:
       - load_wgnt_from_rsrc
@@ -53,7 +53,7 @@ builds:
       - hardfloat
       - softfloat
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
     mod_timestamp: "{{ .CommitTimestamp }}"
     tags:
       - load_wgnt_from_rsrc
@@ -75,7 +75,7 @@ builds:
       - arm64
       - arm
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
     mod_timestamp: "{{ .CommitTimestamp }}"
 
   - id: netbird-signal
@@ -89,7 +89,7 @@ builds:
       - arm64
       - arm
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
     mod_timestamp: "{{ .CommitTimestamp }}"
 
   - id: netbird-relay
@@ -103,7 +103,7 @@ builds:
       - arm64
       - arm
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
     mod_timestamp: "{{ .CommitTimestamp }}"
 
   - id: netbird-upload
@@ -117,7 +117,7 @@ builds:
       - arm64
       - arm
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
     mod_timestamp: "{{ .CommitTimestamp }}"
 
 universal_binaries:
@@ -134,9 +134,9 @@ archives:
     format: binary
 
 nfpms:
-  - maintainer: Netbird <dev@netbird.io>
+  - maintainer: Netbird <dev@rsoftware.net>
     description: Netbird client.
-    homepage: https://netbird.io/
+    homepage: https://rsoftware.net/
     id: netbird-deb
     bindir: /usr/bin
     builds:
@@ -148,9 +148,9 @@ nfpms:
       postinstall: "release_files/post_install.sh"
       preremove: "release_files/pre_remove.sh"
 
-  - maintainer: Netbird <dev@netbird.io>
+  - maintainer: Netbird <dev@rsoftware.net>
     description: Netbird client.
-    homepage: https://netbird.io/
+    homepage: https://rsoftware.net/
     id: netbird-rpm
     bindir: /usr/bin
     builds:
@@ -163,8 +163,8 @@ nfpms:
       preremove: "release_files/pre_remove.sh"
 dockers:
   - image_templates:
-      - netbirdio/netbird:{{ .Version }}-amd64
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-amd64
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-amd64
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-amd64
     ids:
       - netbird
     goarch: amd64
@@ -179,10 +179,10 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
-      - netbirdio/netbird:{{ .Version }}-arm64v8
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-arm64v8
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-arm64v8
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-arm64v8
     ids:
       - netbird
     goarch: arm64
@@ -197,10 +197,10 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
-      - netbirdio/netbird:{{ .Version }}-arm
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-arm
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-arm
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-arm
     ids:
       - netbird
     goarch: arm
@@ -216,11 +216,11 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
 
   - image_templates:
-      - netbirdio/netbird:{{ .Version }}-rootless-amd64
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-rootless-amd64
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-amd64
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-amd64
     ids:
       - netbird
     goarch: amd64
@@ -235,10 +235,10 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
-      - netbirdio/netbird:{{ .Version }}-rootless-arm64v8
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-rootless-arm64v8
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm64v8
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm64v8
     ids:
       - netbird
     goarch: arm64
@@ -253,10 +253,10 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
-      - netbirdio/netbird:{{ .Version }}-rootless-arm
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-rootless-arm
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm
     ids:
       - netbird
     goarch: arm
@@ -272,7 +272,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
 
   - image_templates:
       - netbirdio/relay:{{ .Version }}-amd64
@@ -289,7 +289,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/relay:{{ .Version }}-arm64v8
       - ghcr.io/netbirdio/relay:{{ .Version }}-arm64v8
@@ -305,7 +305,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/relay:{{ .Version }}-arm
       - ghcr.io/netbirdio/relay:{{ .Version }}-arm
@@ -322,7 +322,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/signal:{{ .Version }}-amd64
       - ghcr.io/netbirdio/signal:{{ .Version }}-amd64
@@ -338,7 +338,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/signal:{{ .Version }}-arm64v8
       - ghcr.io/netbirdio/signal:{{ .Version }}-arm64v8
@@ -354,7 +354,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/signal:{{ .Version }}-arm
       - ghcr.io/netbirdio/signal:{{ .Version }}-arm
@@ -371,7 +371,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/management:{{ .Version }}-amd64
       - ghcr.io/netbirdio/management:{{ .Version }}-amd64
@@ -387,7 +387,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/management:{{ .Version }}-arm64v8
       - ghcr.io/netbirdio/management:{{ .Version }}-arm64v8
@@ -403,7 +403,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/management:{{ .Version }}-arm
       - ghcr.io/netbirdio/management:{{ .Version }}-arm
@@ -420,7 +420,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/management:{{ .Version }}-debug-amd64
       - ghcr.io/netbirdio/management:{{ .Version }}-debug-amd64
@@ -436,7 +436,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/management:{{ .Version }}-debug-arm64v8
       - ghcr.io/netbirdio/management:{{ .Version }}-debug-arm64v8
@@ -452,7 +452,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
 
   - image_templates:
       - netbirdio/management:{{ .Version }}-debug-arm
@@ -470,7 +470,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/upload:{{ .Version }}-amd64
       - ghcr.io/netbirdio/upload:{{ .Version }}-amd64
@@ -486,7 +486,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/upload:{{ .Version }}-arm64v8
       - ghcr.io/netbirdio/upload:{{ .Version }}-arm64v8
@@ -502,7 +502,7 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
   - image_templates:
       - netbirdio/upload:{{ .Version }}-arm
       - ghcr.io/netbirdio/upload:{{ .Version }}-arm
@@ -519,31 +519,31 @@ dockers:
       - "--label=org.opencontainers.image.version={{.Version}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.source=https://github.com/netbirdio/{{.ProjectName}}"
-      - "--label=maintainer=dev@netbird.io"
+      - "--label=maintainer=dev@rsoftware.net"
 docker_manifests:
-  - name_template: netbirdio/netbird:{{ .Version }}
+  - name_template: Bee-Bros-Software/r-vpn:{{ .Version }}
     image_templates:
-      - netbirdio/netbird:{{ .Version }}-arm64v8
-      - netbirdio/netbird:{{ .Version }}-arm
-      - netbirdio/netbird:{{ .Version }}-amd64
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-arm64v8
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-arm
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-amd64
 
-  - name_template: netbirdio/netbird:latest
+  - name_template: Bee-Bros-Software/r-vpn:latest
     image_templates:
-      - netbirdio/netbird:{{ .Version }}-arm64v8
-      - netbirdio/netbird:{{ .Version }}-arm
-      - netbirdio/netbird:{{ .Version }}-amd64
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-arm64v8
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-arm
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-amd64
 
-  - name_template: netbirdio/netbird:{{ .Version }}-rootless
+  - name_template: Bee-Bros-Software/r-vpn:{{ .Version }}-rootless
     image_templates:
-      - netbirdio/netbird:{{ .Version }}-rootless-arm64v8
-      - netbirdio/netbird:{{ .Version }}-rootless-arm
-      - netbirdio/netbird:{{ .Version }}-rootless-amd64
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm64v8
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-amd64
 
-  - name_template: netbirdio/netbird:rootless-latest
+  - name_template: Bee-Bros-Software/r-vpn:rootless-latest
     image_templates:
-      - netbirdio/netbird:{{ .Version }}-rootless-arm64v8
-      - netbirdio/netbird:{{ .Version }}-rootless-arm
-      - netbirdio/netbird:{{ .Version }}-rootless-amd64
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm64v8
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm
+      - Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-amd64
 
   - name_template: netbirdio/relay:{{ .Version }}
     image_templates:
@@ -598,29 +598,29 @@ docker_manifests:
       - netbirdio/upload:{{ .Version }}-arm
       - netbirdio/upload:{{ .Version }}-amd64
 
-  - name_template: ghcr.io/netbirdio/netbird:{{ .Version }}
+  - name_template: ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}
     image_templates:
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-arm64v8
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-arm
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-amd64
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-arm64v8
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-arm
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-amd64
 
-  - name_template: ghcr.io/netbirdio/netbird:latest
+  - name_template: ghcr.io/Bee-Bros-Software/r-vpn:latest
     image_templates:
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-arm64v8
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-arm
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-amd64
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-arm64v8
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-arm
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-amd64
 
-  - name_template: ghcr.io/netbirdio/netbird:{{ .Version }}-rootless
+  - name_template: ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless
     image_templates:
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-rootless-arm64v8
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-rootless-arm
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-rootless-amd64
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm64v8
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-amd64
 
-  - name_template: ghcr.io/netbirdio/netbird:rootless-latest
+  - name_template: ghcr.io/Bee-Bros-Software/r-vpn:rootless-latest
     image_templates:
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-rootless-arm64v8
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-rootless-arm
-      - ghcr.io/netbirdio/netbird:{{ .Version }}-rootless-amd64
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm64v8
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-arm
+      - ghcr.io/Bee-Bros-Software/r-vpn:{{ .Version }}-rootless-amd64
 
   - name_template: ghcr.io/netbirdio/relay:{{ .Version }}
     image_templates:
@@ -684,10 +684,10 @@ brews:
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     commit_author:
       name: Netbird
-      email: dev@netbird.io
+      email: dev@rsoftware.net
     description: Netbird project.
     download_strategy: CurlDownloadStrategy
-    homepage: https://netbird.io/
+    homepage: https://rsoftware.net/
     license: "BSD3"
     test: |
       system "#{bin}/{{ .ProjectName	}} version"

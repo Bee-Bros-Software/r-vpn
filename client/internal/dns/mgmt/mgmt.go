@@ -12,13 +12,13 @@ import (
 	"github.com/miekg/dns"
 	log "github.com/sirupsen/logrus"
 
-	dnsconfig "github.com/netbirdio/netbird/client/internal/dns/config"
-	"github.com/netbirdio/netbird/shared/management/domain"
+	dnsconfig "github.com/Bee-Bros-Software/r-vpn/client/internal/dns/config"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 )
 
 const dnsTimeout = 5 * time.Second
 
-// Resolver caches critical NetBird infrastructure domains
+// Resolver caches critical R-VPN infrastructure domains
 type Resolver struct {
 	records       map[dns.Question][]dns.RR
 	mgmtDomain    *domain.Domain
@@ -77,7 +77,7 @@ func (m *Resolver) ServeDNS(w dns.ResponseWriter, r *dns.Msg) {
 }
 
 // MatchSubdomains returns false since this resolver only handles exact domain matches
-// for NetBird infrastructure domains (signal, relay, flow, etc.), not their subdomains.
+// for R-VPN infrastructure domains (signal, relay, flow, etc.), not their subdomains.
 func (m *Resolver) MatchSubdomains() bool {
 	return false
 }

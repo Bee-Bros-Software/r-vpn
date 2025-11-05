@@ -9,8 +9,8 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	extra_settings "github.com/netbirdio/netbird/management/server/integrations/extra_settings"
-	types "github.com/netbirdio/netbird/management/server/types"
+	extra_settings "github.com/Bee-Bros-Software/r-vpn/management/server/integrations/extra_settings"
+	types "github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 // MockManager is a mock of Manager interface.

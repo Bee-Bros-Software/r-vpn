@@ -3,7 +3,7 @@
 package internal
 
 import (
-	icemaker "github.com/netbirdio/netbird/client/internal/peer/ice"
+	icemaker "github.com/Bee-Bros-Software/r-vpn/client/internal/peer/ice"
 )
 
 // createICEConfig creates ICE configuration for WASM environment.

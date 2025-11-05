@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/netbirdio/netbird/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peer"
 
 	"github.com/stretchr/testify/assert"
 )

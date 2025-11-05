@@ -8,7 +8,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 type ShutdownState struct {

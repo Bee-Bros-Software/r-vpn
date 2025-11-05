@@ -8,7 +8,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/formatter/hook"
+	"github.com/Bee-Bros-Software/r-vpn/formatter/hook"
 )
 
 func (f *TextFormatter) Format(entry *logrus.Entry) ([]byte, error) {

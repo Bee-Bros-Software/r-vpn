@@ -12,8 +12,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 
-	"github.com/netbirdio/netbird/shared/signal/proto"
-	"github.com/netbirdio/netbird/signal/metrics"
+	"github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	"github.com/Bee-Bros-Software/r-vpn/signal/metrics"
 )
 
 func TestRegistry_ShouldNotDeregisterWhenHasNewerStreamRegistered(t *testing.T) {

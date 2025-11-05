@@ -15,14 +15,14 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/mock_server"
-	"github.com/netbirdio/netbird/management/server/permissions/modules"
-	"github.com/netbirdio/netbird/management/server/permissions/roles"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/management/server/users"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/shared/management/status"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/mock_server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/modules"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/roles"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/users"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 const (

@@ -13,8 +13,8 @@ import (
 	nfct "github.com/ti-mo/conntrack"
 	"github.com/ti-mo/netfilter"
 
-	nftypes "github.com/netbirdio/netbird/client/internal/netflow/types"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	nftypes "github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 const defaultChannelSize = 100
@@ -299,10 +299,10 @@ func (c *ConnTrack) inferDirection(mark uint32, srcIP, dstIP netip.Addr) nftypes
 	case wgaddr == dstIP:
 		return nftypes.Ingress
 	case wgnetwork.Contains(srcIP):
-		// netbird network -> resource network
+		// rvpn network -> resource network
 		return nftypes.Ingress
 	case wgnetwork.Contains(dstIP):
-		// resource network -> netbird network
+		// resource network -> rvpn network
 		return nftypes.Egress
 	}
 

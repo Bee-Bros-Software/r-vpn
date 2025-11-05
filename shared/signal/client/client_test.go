@@ -16,8 +16,8 @@ import (
 	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/metadata"
 
-	sigProto "github.com/netbirdio/netbird/shared/signal/proto"
-	"github.com/netbirdio/netbird/signal/server"
+	sigProto "github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	"github.com/Bee-Bros-Software/r-vpn/signal/server"
 )
 
 var _ = Describe("GrpcClient", func() {

@@ -6,12 +6,12 @@ import (
 
 	"github.com/gorilla/mux"
 
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/groups"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/shared/management/http/util"
-	"github.com/netbirdio/netbird/management/server/networks/resources"
-	"github.com/netbirdio/netbird/management/server/networks/resources/types"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/groups"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/util"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources/types"
 )
 
 type resourceHandler struct {

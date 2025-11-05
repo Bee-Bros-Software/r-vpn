@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 func TestDarwinDNSUncleanShutdownCleanup(t *testing.T) {
@@ -49,9 +49,9 @@ func TestDarwinDNSUncleanShutdownCleanup(t *testing.T) {
 
 	require.NoError(t, sm.PersistState(context.Background()))
 
-	searchKey := getKeyWithInput(netbirdDNSStateKeyFormat, searchSuffix)
-	matchKey := getKeyWithInput(netbirdDNSStateKeyFormat, matchSuffix)
-	localKey := getKeyWithInput(netbirdDNSStateKeyFormat, localSuffix)
+	searchKey := getKeyWithInput(rvpnDNSStateKeyFormat, searchSuffix)
+	matchKey := getKeyWithInput(rvpnDNSStateKeyFormat, matchSuffix)
+	localKey := getKeyWithInput(rvpnDNSStateKeyFormat, localSuffix)
 
 	defer func() {
 		for _, key := range []string{searchKey, matchKey, localKey} {

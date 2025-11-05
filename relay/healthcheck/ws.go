@@ -6,7 +6,7 @@ import (
 
 	"github.com/coder/websocket"
 
-	"github.com/netbirdio/netbird/shared/relay"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay"
 )
 
 func dialWS(ctx context.Context, address string) error {

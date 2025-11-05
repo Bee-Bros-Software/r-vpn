@@ -9,10 +9,10 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/shared/relay/healthcheck"
-	"github.com/netbirdio/netbird/shared/relay/messages"
-	"github.com/netbirdio/netbird/relay/metrics"
-	"github.com/netbirdio/netbird/relay/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/healthcheck"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/messages"
+	"github.com/Bee-Bros-Software/r-vpn/relay/metrics"
+	"github.com/Bee-Bros-Software/r-vpn/relay/server/store"
 )
 
 const (

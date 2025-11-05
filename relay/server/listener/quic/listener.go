@@ -10,7 +10,7 @@ import (
 	"github.com/quic-go/quic-go"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/relay/protocol"
+	"github.com/Bee-Bros-Software/r-vpn/relay/protocol"
 )
 
 const Proto protocol.Protocol = "quic"

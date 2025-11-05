@@ -11,9 +11,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/internal/lazyconn"
-	peerid "github.com/netbirdio/netbird/client/internal/peer/id"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/lazyconn"
+	peerid "github.com/Bee-Bros-Software/r-vpn/client/internal/peer/id"
 )
 
 // listener defines the contract for activity detection listeners.

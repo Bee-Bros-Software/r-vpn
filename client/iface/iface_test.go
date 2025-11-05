@@ -15,7 +15,7 @@ import (
 	"golang.zx2c4.com/wireguard/wgctrl"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	"github.com/netbirdio/netbird/client/iface/device"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
 )
 
 // keep darwin compatibility

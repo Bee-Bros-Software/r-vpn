@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/netbirdio/netbird/monotime"
+	"github.com/Bee-Bros-Software/r-vpn/monotime"
 )
 
 func TestActivityRecorder_GetLastActivities(t *testing.T) {

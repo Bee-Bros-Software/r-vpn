@@ -10,7 +10,7 @@ import (
 	"gvisor.dev/gvisor/pkg/tcpip/header"
 	"gvisor.dev/gvisor/pkg/tcpip/stack"
 
-	nftypes "github.com/netbirdio/netbird/client/internal/netflow/types"
+	nftypes "github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
 )
 
 // handleICMP handles ICMP packets from the network stack

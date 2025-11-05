@@ -9,11 +9,11 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	account "github.com/netbirdio/netbird/management/server/account"
-	modules "github.com/netbirdio/netbird/management/server/permissions/modules"
-	operations "github.com/netbirdio/netbird/management/server/permissions/operations"
-	roles "github.com/netbirdio/netbird/management/server/permissions/roles"
-	types "github.com/netbirdio/netbird/management/server/types"
+	account "github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	modules "github.com/Bee-Bros-Software/r-vpn/management/server/permissions/modules"
+	operations "github.com/Bee-Bros-Software/r-vpn/management/server/permissions/operations"
+	roles "github.com/Bee-Bros-Software/r-vpn/management/server/permissions/roles"
+	types "github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 // MockManager is a mock of Manager interface.

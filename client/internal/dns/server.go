@@ -15,16 +15,16 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/exp/maps"
 
-	"github.com/netbirdio/netbird/client/iface/netstack"
-	dnsconfig "github.com/netbirdio/netbird/client/internal/dns/config"
-	"github.com/netbirdio/netbird/client/internal/dns/local"
-	"github.com/netbirdio/netbird/client/internal/dns/mgmt"
-	"github.com/netbirdio/netbird/client/internal/dns/types"
-	"github.com/netbirdio/netbird/client/internal/listener"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/netstack"
+	dnsconfig "github.com/Bee-Bros-Software/r-vpn/client/internal/dns/config"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns/local"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns/mgmt"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/listener"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 )
 
 // ReadyListener is a notification mechanism what indicate the server is ready to handle host dns address changes
@@ -503,7 +503,7 @@ func (s *DefaultServer) applyConfiguration(update nbdns.Config) error {
 
 	if s.service.RuntimePort() != DefaultPort && !s.hostManager.supportCustomPort() {
 		log.Warnf("the DNS manager of this peer doesn't support custom port. Disabling primary DNS setup. " +
-			"Learn more at: https://docs.netbird.io/how-to/manage-dns-in-your-network#local-resolver")
+			"Learn more at: https://docs.rsoftware.net/how-to/manage-dns-in-your-network#local-resolver")
 		s.currentConfig.RouteAll = false
 	}
 

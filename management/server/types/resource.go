@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/netbirdio/netbird/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
 )
 
 type ResourceType string

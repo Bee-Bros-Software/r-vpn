@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 type Manager interface {

@@ -10,10 +10,10 @@ import (
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/internal/netflow/store"
-	"github.com/netbirdio/netbird/client/internal/netflow/types"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/dns"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/store"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/dns"
 )
 
 type rcvChan chan *types.EventFields

@@ -8,10 +8,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/internal/routemanager/notifier"
-	"github.com/netbirdio/netbird/client/internal/routemanager/refcounter"
-	"github.com/netbirdio/netbird/client/internal/routemanager/vars"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/notifier"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/refcounter"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/vars"
 )
 
 type Nexthop struct {

@@ -17,14 +17,14 @@ import (
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/exp/maps"
 
-	"github.com/netbirdio/netbird/management/server"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/shared/management/http/util"
-	"github.com/netbirdio/netbird/management/server/mock_server"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/shared/management/status"
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/util"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/mock_server"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 var TestPeers = map[string]*nbpeer.Peer{

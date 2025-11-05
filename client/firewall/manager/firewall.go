@@ -8,14 +8,14 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 const (
-	ForwardingFormatPrefix = "netbird-fwd-"
-	ForwardingFormat       = "netbird-fwd-%s-%t"
-	PreroutingFormat       = "netbird-prerouting-%s-%t"
-	NatFormat              = "netbird-nat-%s-%t"
+	ForwardingFormatPrefix = "rvpn-fwd-"
+	ForwardingFormat       = "rvpn-fwd-%s-%t"
+	PreroutingFormat       = "rvpn-prerouting-%s-%t"
+	NatFormat              = "rvpn-nat-%s-%t"
 )
 
 // Rule abstraction should be implemented by each firewall manager
@@ -93,7 +93,7 @@ func (d Network) IsPrefix() bool {
 type Manager interface {
 	Init(stateManager *statemanager.Manager) error
 
-	// AllowNetbird allows netbird interface traffic
+	// AllowNetbird allows rvpn interface traffic
 	AllowNetbird() error
 
 	// AddPeerFiltering adds a rule to the firewall
@@ -154,7 +154,7 @@ type Manager interface {
 
 	DisableRouting() error
 
-	// AddDNATRule adds outbound DNAT rule for forwarding external traffic to the NetBird network.
+	// AddDNATRule adds outbound DNAT rule for forwarding external traffic to the R-VPN network.
 	AddDNATRule(ForwardRule) (Rule, error)
 
 	// DeleteDNATRule deletes the outbound DNAT rule.
@@ -163,7 +163,7 @@ type Manager interface {
 	// UpdateSet updates the set with the given prefixes
 	UpdateSet(hash Set, prefixes []netip.Prefix) error
 
-	// AddInboundDNAT adds an inbound DNAT rule redirecting traffic from NetBird peers to local services
+	// AddInboundDNAT adds an inbound DNAT rule redirecting traffic from R-VPN peers to local services
 	AddInboundDNAT(localAddr netip.Addr, protocol Protocol, sourcePort, targetPort uint16) error
 
 	// RemoveInboundDNAT removes inbound DNAT rule

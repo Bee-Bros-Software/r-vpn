@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 type ProfileState struct {

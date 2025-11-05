@@ -3,8 +3,8 @@
 package client
 
 import (
-	"github.com/netbirdio/netbird/shared/relay/client/dialer"
-	"github.com/netbirdio/netbird/shared/relay/client/dialer/ws"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/client/dialer"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/client/dialer/ws"
 )
 
 func (c *Client) getDialers() []dialer.DialeFn {

@@ -3,10 +3,10 @@ package config
 import (
 	"net/netip"
 
-	"github.com/netbirdio/netbird/management/server/idp"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/shared/management/client/common"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/idp"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/client/common"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 type (
@@ -115,7 +115,7 @@ type HttpServerConfig struct {
 // Host represents a Netbird host (e.g. STUN, TURN, Signal)
 type Host struct {
 	Proto Protocol
-	// URI e.g. turns://stun.netbird.io:4430 or signal.netbird.io:10000
+	// URI e.g. turns://stun.rsoftware.net:4430 or signal.rsoftware.net:10000
 	URI      string
 	Username string
 	Password string

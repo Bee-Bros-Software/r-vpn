@@ -16,11 +16,11 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	"github.com/netbirdio/netbird/management/server/migration"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/testutil"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/migration"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/testutil"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 func setupDatabase(t *testing.T) *gorm.DB {

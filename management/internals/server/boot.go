@@ -18,17 +18,17 @@ import (
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/keepalive"
 
-	"github.com/netbirdio/management-integrations/integrations"
-	"github.com/netbirdio/netbird/encryption"
-	"github.com/netbirdio/netbird/formatter/hook"
-	nbconfig "github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/management/server"
-	"github.com/netbirdio/netbird/management/server/activity"
-	nbContext "github.com/netbirdio/netbird/management/server/context"
-	nbhttp "github.com/netbirdio/netbird/management/server/http"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	mgmtProto "github.com/netbirdio/netbird/shared/management/proto"
+	"github.com/rvpnio/management-integrations/integrations"
+	"github.com/Bee-Bros-Software/r-vpn/encryption"
+	"github.com/Bee-Bros-Software/r-vpn/formatter/hook"
+	nbconfig "github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/management/server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	nbContext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	nbhttp "github.com/Bee-Bros-Software/r-vpn/management/server/http"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	mgmtProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
 )
 
 var (

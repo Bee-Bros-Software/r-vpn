@@ -7,9 +7,9 @@ import (
 
 	wgdevice "golang.zx2c4.com/wireguard/device"
 
-	"github.com/netbirdio/netbird/client/iface/device"
-	"github.com/netbirdio/netbird/client/iface/udpmux"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/udpmux"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
 )
 
 type WGTunDevice interface {

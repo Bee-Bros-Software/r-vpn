@@ -17,11 +17,11 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/skratchdot/open-golang/open"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/proto"
-	nbstatus "github.com/netbirdio/netbird/client/status"
-	uptypes "github.com/netbirdio/netbird/upload-server/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	nbstatus "github.com/Bee-Bros-Software/r-vpn/client/status"
+	uptypes "github.com/Bee-Bros-Software/r-vpn/upload-server/types"
 )
 
 // Initial state for the debug collection
@@ -50,7 +50,7 @@ type progressUI struct {
 }
 
 func (s *serviceClient) showDebugUI() {
-	w := s.app.NewWindow("NetBird Debug")
+	w := s.app.NewWindow("R-VPN Debug")
 	w.SetOnClosed(s.cancel)
 
 	w.Resize(fyne.NewSize(600, 500))
@@ -93,7 +93,7 @@ func (s *serviceClient) showDebugUI() {
 		return validateMinute(s, minutesLabel)
 	}
 
-	noteLabel := widget.NewLabel("Note: NetBird will be brought up and down during collection")
+	noteLabel := widget.NewLabel("Note: R-VPN will be brought up and down during collection")
 
 	runForDurationCheck.OnChanged = func(checked bool) {
 		if checked {
@@ -147,7 +147,7 @@ func (s *serviceClient) showDebugUI() {
 	)
 
 	content := container.NewVBox(
-		widget.NewLabel("Create a debug bundle to help troubleshoot issues with NetBird"),
+		widget.NewLabel("Create a debug bundle to help troubleshoot issues with R-VPN"),
 		widget.NewLabel(""),
 		anonymizeCheck,
 		systemInfoCheck,
@@ -443,7 +443,7 @@ func (s *serviceClient) collectDebugData(
 		overview := nbstatus.ConvertToStatusOutputOverview(postUpStatus, params.anonymize, "", nil, nil, nil, "", profName)
 		postUpStatusOutput = nbstatus.ParseToFullDetailSummary(overview)
 	}
-	headerPostUp := fmt.Sprintf("----- NetBird post-up - Timestamp: %s", time.Now().Format(time.RFC3339))
+	headerPostUp := fmt.Sprintf("----- R-VPN post-up - Timestamp: %s", time.Now().Format(time.RFC3339))
 	statusOutput := fmt.Sprintf("%s\n%s", headerPostUp, postUpStatusOutput)
 
 	wg.Wait()
@@ -460,7 +460,7 @@ func (s *serviceClient) collectDebugData(
 		overview := nbstatus.ConvertToStatusOutputOverview(preDownStatus, params.anonymize, "", nil, nil, nil, "", profName)
 		preDownStatusOutput = nbstatus.ParseToFullDetailSummary(overview)
 	}
-	headerPreDown := fmt.Sprintf("----- NetBird pre-down - Timestamp: %s - Duration: %s",
+	headerPreDown := fmt.Sprintf("----- R-VPN pre-down - Timestamp: %s - Duration: %s",
 		time.Now().Format(time.RFC3339), params.duration)
 	statusOutput = fmt.Sprintf("%s\n%s\n%s", statusOutput, headerPreDown, preDownStatusOutput)
 

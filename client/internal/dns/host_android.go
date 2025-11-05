@@ -1,7 +1,7 @@
 package dns
 
 import (
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 type androidHostManager struct {

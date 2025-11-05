@@ -5,13 +5,13 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/management-integrations/integrations"
-	"github.com/netbirdio/netbird/management/server"
-	"github.com/netbirdio/netbird/management/server/auth"
-	"github.com/netbirdio/netbird/management/server/integrations/integrated_validator"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	"github.com/netbirdio/netbird/management/server/peers/ephemeral"
-	"github.com/netbirdio/netbird/management/server/peers/ephemeral/manager"
+	"github.com/rvpnio/management-integrations/integrations"
+	"github.com/Bee-Bros-Software/r-vpn/management/server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/auth"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/integrated_validator"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers/ephemeral"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers/ephemeral/manager"
 )
 
 func (s *BaseServer) PeersUpdateManager() *server.PeersUpdateManager {

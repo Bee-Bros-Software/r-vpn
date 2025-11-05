@@ -17,12 +17,12 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/connectivity"
 
-	nbgrpc "github.com/netbirdio/netbird/client/grpc"
-	"github.com/netbirdio/netbird/client/system"
-	"github.com/netbirdio/netbird/encryption"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/shared/management/proto"
-	"github.com/netbirdio/netbird/util/wsproxy"
+	nbgrpc "github.com/Bee-Bros-Software/r-vpn/client/grpc"
+	"github.com/Bee-Bros-Software/r-vpn/client/system"
+	"github.com/Bee-Bros-Software/r-vpn/encryption"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/util/wsproxy"
 )
 
 const ConnectTimeout = 10 * time.Second

@@ -3,8 +3,8 @@ package port_forwarding
 import (
 	"context"
 
-	"github.com/netbirdio/netbird/management/server/peer"
-	nbtypes "github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	nbtypes "github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 type Controller interface {

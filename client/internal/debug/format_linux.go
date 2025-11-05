@@ -7,8 +7,8 @@ import (
 	"net/netip"
 	"sort"
 
-	"github.com/netbirdio/netbird/client/anonymize"
-	"github.com/netbirdio/netbird/client/internal/routemanager/systemops"
+	"github.com/Bee-Bros-Software/r-vpn/client/anonymize"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/systemops"
 )
 
 func formatIPRulesTable(ipRules []systemops.IPRule, anonymize bool, anonymizer *anonymize.Anonymizer) string {

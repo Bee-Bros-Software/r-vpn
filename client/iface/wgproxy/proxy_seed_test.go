@@ -5,9 +5,9 @@ package wgproxy
 import (
 	"net"
 
-	"github.com/netbirdio/netbird/client/iface/bind"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	bindproxy "github.com/netbirdio/netbird/client/iface/wgproxy/bind"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bind"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	bindproxy "github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy/bind"
 )
 
 func seedProxies() ([]proxyInstance, error) {

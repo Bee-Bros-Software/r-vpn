@@ -1,8 +1,8 @@
 package types
 
 import (
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 // RouteFirewallRule a firewall rule applicable for a routed network.

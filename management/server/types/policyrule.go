@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/netbirdio/netbird/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
 )
 
 // PolicyUpdateOperationType operation type

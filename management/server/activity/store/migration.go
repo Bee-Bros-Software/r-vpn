@@ -8,8 +8,8 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/migration"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/migration"
 )
 
 func migrate(ctx context.Context, crypt *FieldEncrypt, db *gorm.DB) error {

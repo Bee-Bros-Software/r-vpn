@@ -16,23 +16,23 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/exp/maps"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/management/server/geolocation"
-	"github.com/netbirdio/netbird/management/server/idp"
-	routerTypes "github.com/netbirdio/netbird/management/server/networks/routers/types"
-	"github.com/netbirdio/netbird/management/server/permissions/modules"
-	"github.com/netbirdio/netbird/management/server/permissions/operations"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/util"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/geolocation"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/idp"
+	routerTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/modules"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/operations"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 
-	"github.com/netbirdio/netbird/management/server/posture"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/posture"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 
-	"github.com/netbirdio/netbird/management/server/activity"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/shared/management/proto"
-	"github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 // GetPeers returns a list of peers under the given account filtering out peers that do not belong to a user if
@@ -969,7 +969,7 @@ func processPeerPostureChecks(ctx context.Context, transaction store.Store, poli
 
 // checkIFPeerNeedsLoginWithoutLock checks if the peer needs login without acquiring the account lock. The check validate if the peer was not added via SSO
 // and if the peer login is expired.
-// The NetBird client doesn't have a way to check if the peer needs login besides sending a login request
+// The R-VPN client doesn't have a way to check if the peer needs login besides sending a login request
 // with no JWT token and usually no setup-key. As the client can send up to two login request to check if it is expired
 // and before starting the engine, we do the checks without an account lock to avoid piling up requests.
 func (am *DefaultAccountManager) checkIFPeerNeedsLoginWithoutLock(ctx context.Context, accountID string, login types.PeerLogin) error {

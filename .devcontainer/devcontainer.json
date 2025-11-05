@@ -1,5 +1,5 @@
 {
-	"name": "NetBird",
+	"name": "R-VPN",
 	"build": {
 		"context": "..",
 		"dockerfile": "Dockerfile"

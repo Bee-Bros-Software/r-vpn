@@ -18,14 +18,14 @@ import (
 	"github.com/google/uuid"
 	log "github.com/sirupsen/logrus"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/firewall/uspfilter/common"
-	"github.com/netbirdio/netbird/client/firewall/uspfilter/conntrack"
-	"github.com/netbirdio/netbird/client/firewall/uspfilter/forwarder"
-	nblog "github.com/netbirdio/netbird/client/firewall/uspfilter/log"
-	"github.com/netbirdio/netbird/client/iface/netstack"
-	nftypes "github.com/netbirdio/netbird/client/internal/netflow/types"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter/common"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter/conntrack"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter/forwarder"
+	nblog "github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter/log"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/netstack"
+	nftypes "github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 const (
@@ -48,7 +48,7 @@ const (
 	// EnvForceUserspaceRouter forces userspace routing even if native routing is available.
 	EnvForceUserspaceRouter = "NB_FORCE_USERSPACE_ROUTER"
 
-	// EnvEnableLocalForwarding enables forwarding of local traffic to the native stack for internal (non-NetBird) interfaces.
+	// EnvEnableLocalForwarding enables forwarding of local traffic to the native stack for internal (non-R-VPN) interfaces.
 	// Default off as it might be security risk because sockets listening on localhost only will become accessible.
 	EnvEnableLocalForwarding = "NB_ENABLE_LOCAL_FORWARDING"
 
@@ -1453,12 +1453,12 @@ func (m *Manager) shouldForward(d *decoder, dstIP netip.Addr) bool {
 		return !m.hasMatchingNetstackService(d)
 	}
 
-	// traffic to our other local interfaces (not NetBird IP) - always forward
+	// traffic to our other local interfaces (not R-VPN IP) - always forward
 	if dstIP != m.wgIface.Address().IP {
 		return true
 	}
 
-	// traffic to our NetBird IP, not netstack mode - send to netstack listeners
+	// traffic to our R-VPN IP, not netstack mode - send to netstack listeners
 	return false
 }
 

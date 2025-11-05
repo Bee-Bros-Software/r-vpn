@@ -10,9 +10,9 @@ import (
 	"github.com/coreos/go-iptables/iptables"
 	"github.com/stretchr/testify/require"
 
-	fw "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
+	fw "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
 )
 
 var ifaceMock = &iFaceMock{

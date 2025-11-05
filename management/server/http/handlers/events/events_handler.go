@@ -7,11 +7,11 @@ import (
 	"github.com/gorilla/mux"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/management/server/account"
-	"github.com/netbirdio/netbird/management/server/activity"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/shared/management/http/util"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/util"
 )
 
 // handler HTTP handler

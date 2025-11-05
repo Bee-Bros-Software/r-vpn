@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 func TestMain(m *testing.M) {

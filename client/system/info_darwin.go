@@ -16,7 +16,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 )
 
 func UpdateStaticInfoAsync() {

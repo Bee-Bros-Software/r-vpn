@@ -14,18 +14,18 @@ import (
 	"github.com/sirupsen/logrus"
 	wgnetstack "golang.zx2c4.com/wireguard/tun/netstack"
 
-	"github.com/netbirdio/netbird/client/iface/netstack"
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/system"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/netstack"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/system"
 )
 
 var ErrClientAlreadyStarted = errors.New("client already started")
 var ErrClientNotStarted = errors.New("client not started")
 var ErrConfigNotInitialized = errors.New("config not initialized")
 
-// Client manages a netbird embedded client instance.
+// Client manages a rvpn embedded client instance.
 type Client struct {
 	deviceName string
 	config     *profilemanager.Config
@@ -56,9 +56,9 @@ type Options struct {
 	LogLevel string
 	// NoUserspace disables the userspace networking mode. Needs admin/root privileges
 	NoUserspace bool
-	// ConfigPath is the path to the netbird config file. If empty, the config will be stored in memory and not persisted.
+	// ConfigPath is the path to the rvpn config file. If empty, the config will be stored in memory and not persisted.
 	ConfigPath string
-	// StatePath is the path to the netbird state file
+	// StatePath is the path to the rvpn state file
 	StatePath string
 	// DisableClientRoutes disables the client routes
 	DisableClientRoutes bool
@@ -87,7 +87,7 @@ func (opts *Options) validateCredentials() error {
 	return nil
 }
 
-// New creates a new netbird embedded client.
+// New creates a new rvpn embedded client.
 func New(opts Options) (*Client, error) {
 	if err := opts.validateCredentials(); err != nil {
 		return nil, err
@@ -235,7 +235,7 @@ func (c *Client) GetConfig() (profilemanager.Config, error) {
 	return *c.config, nil
 }
 
-// Dial dials a network address in the netbird network.
+// Dial dials a network address in the rvpn network.
 // Not applicable if the userspace networking mode is disabled.
 func (c *Client) Dial(ctx context.Context, network, address string) (net.Conn, error) {
 	c.mu.Lock()
@@ -259,7 +259,7 @@ func (c *Client) Dial(ctx context.Context, network, address string) (net.Conn, e
 	return nsnet.DialContext(ctx, network, address)
 }
 
-// ListenTCP listens on the given address in the netbird network.
+// ListenTCP listens on the given address in the rvpn network.
 // Not applicable if the userspace networking mode is disabled.
 func (c *Client) ListenTCP(address string) (net.Listener, error) {
 	nsnet, addr, err := c.getNet()
@@ -280,7 +280,7 @@ func (c *Client) ListenTCP(address string) (net.Listener, error) {
 	return nsnet.ListenTCP(tcpAddr)
 }
 
-// ListenUDP listens on the given address in the netbird network.
+// ListenUDP listens on the given address in the rvpn network.
 // Not applicable if the userspace networking mode is disabled.
 func (c *Client) ListenUDP(address string) (net.PacketConn, error) {
 	nsnet, addr, err := c.getNet()
@@ -302,7 +302,7 @@ func (c *Client) ListenUDP(address string) (net.PacketConn, error) {
 	return nsnet.ListenUDP(udpAddr)
 }
 
-// NewHTTPClient returns a configured http.Client that uses the netbird network for requests.
+// NewHTTPClient returns a configured http.Client that uses the rvpn network for requests.
 // Not applicable if the userspace networking mode is disabled.
 func (c *Client) NewHTTPClient() *http.Client {
 	transport := &http.Transport{

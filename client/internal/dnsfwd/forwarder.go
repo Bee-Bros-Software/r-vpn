@@ -16,10 +16,10 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.zx2c4.com/wireguard/tun/netstack"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/route"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 const errResolveFailed = "failed to resolve query for domain=%s: %v"

@@ -12,14 +12,14 @@ import (
 	"github.com/hashicorp/go-multierror"
 	log "github.com/sirupsen/logrus"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/routemanager/common"
-	"github.com/netbirdio/netbird/client/internal/routemanager/iface"
-	"github.com/netbirdio/netbird/client/internal/routemanager/refcounter"
-	"github.com/netbirdio/netbird/client/internal/routemanager/util"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/route"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/common"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/refcounter"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/util"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 const (

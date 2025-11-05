@@ -8,7 +8,7 @@ import (
 
 	"github.com/quic-go/quic-go"
 
-	tlsnb "github.com/netbirdio/netbird/shared/relay/tls"
+	tlsnb "github.com/Bee-Bros-Software/r-vpn/shared/relay/tls"
 )
 
 func dialQUIC(ctx context.Context, address string) error {

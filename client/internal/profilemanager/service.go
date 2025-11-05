@@ -13,7 +13,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 var (
@@ -31,8 +31,8 @@ var (
 
 func init() {
 
-	DefaultConfigPathDir = "/var/lib/netbird/"
-	oldDefaultConfigPathDir = "/etc/netbird/"
+	DefaultConfigPathDir = "/var/lib/rvpn/"
+	oldDefaultConfigPathDir = "/etc/rvpn/"
 
 	if stateDir := os.Getenv("NB_STATE_DIR"); stateDir != "" {
 		DefaultConfigPathDir = stateDir
@@ -43,7 +43,7 @@ func init() {
 			DefaultConfigPathDir = oldDefaultConfigPathDir
 
 		case "freebsd":
-			oldDefaultConfigPathDir = "/var/db/netbird/"
+			oldDefaultConfigPathDir = "/var/db/rvpn/"
 			DefaultConfigPathDir = oldDefaultConfigPathDir
 		}
 	}

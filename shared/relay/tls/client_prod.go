@@ -8,7 +8,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/util/embeddedroots"
+	"github.com/Bee-Bros-Software/r-vpn/util/embeddedroots"
 )
 
 func ClientQUICTLSConfig() *tls.Config {

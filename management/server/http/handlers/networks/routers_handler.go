@@ -6,11 +6,11 @@ import (
 
 	"github.com/gorilla/mux"
 
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/shared/management/http/util"
-	"github.com/netbirdio/netbird/management/server/networks/routers"
-	"github.com/netbirdio/netbird/management/server/networks/routers/types"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/util"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers/types"
 )
 
 type routersHandler struct {

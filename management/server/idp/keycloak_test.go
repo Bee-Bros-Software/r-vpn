@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
 )
 
 func TestNewKeycloakManager(t *testing.T) {

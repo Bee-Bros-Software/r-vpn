@@ -5,8 +5,8 @@ package notifier
 import (
 	"net/netip"
 
-	"github.com/netbirdio/netbird/client/internal/listener"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/listener"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 type Notifier struct{}

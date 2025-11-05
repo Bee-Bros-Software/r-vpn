@@ -15,8 +15,8 @@ func TestExtractValidDomain(t *testing.T) {
 	}{
 		{
 			name:     "HTTPS URL with port",
-			url:      "https://api.netbird.io:443",
-			expected: "api.netbird.io",
+			url:      "https://api.rsoftware.net:443",
+			expected: "api.rsoftware.net",
 		},
 		{
 			name:     "HTTP URL without port",
@@ -25,23 +25,23 @@ func TestExtractValidDomain(t *testing.T) {
 		},
 		{
 			name:     "Host with port (no scheme)",
-			url:      "signal.netbird.io:443",
-			expected: "signal.netbird.io",
+			url:      "signal.rsoftware.net:443",
+			expected: "signal.rsoftware.net",
 		},
 		{
 			name:     "STUN URL",
-			url:      "stun:stun.netbird.io:443",
-			expected: "stun.netbird.io",
+			url:      "stun:stun.rsoftware.net:443",
+			expected: "stun.rsoftware.net",
 		},
 		{
 			name:     "STUN URL with different port",
-			url:      "stun:stun.netbird.io:5555",
-			expected: "stun.netbird.io",
+			url:      "stun:stun.rsoftware.net:5555",
+			expected: "stun.rsoftware.net",
 		},
 		{
 			name:     "TURNS URL with query params",
-			url:      "turns:turn.netbird.io:443?transport=tcp",
-			expected: "turn.netbird.io",
+			url:      "turns:turn.rsoftware.net:443?transport=tcp",
+			expected: "turn.rsoftware.net",
 		},
 		{
 			name:     "TURN URL",
@@ -55,8 +55,8 @@ func TestExtractValidDomain(t *testing.T) {
 		},
 		{
 			name:     "RELS URL",
-			url:      "rels://relay.netbird.io:443",
-			expected: "relay.netbird.io",
+			url:      "rels://relay.rsoftware.net:443",
+			expected: "relay.rsoftware.net",
 		},
 		{
 			name:     "Raw hostname",

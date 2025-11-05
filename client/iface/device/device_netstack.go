@@ -9,12 +9,12 @@ import (
 	"golang.zx2c4.com/wireguard/device"
 	"golang.zx2c4.com/wireguard/tun/netstack"
 
-	"github.com/netbirdio/netbird/client/iface/bind"
-	"github.com/netbirdio/netbird/client/iface/configurer"
-	nbnetstack "github.com/netbirdio/netbird/client/iface/netstack"
-	"github.com/netbirdio/netbird/client/iface/udpmux"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bind"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
+	nbnetstack "github.com/Bee-Bros-Software/r-vpn/client/iface/netstack"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/udpmux"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 type Bind interface {
@@ -76,7 +76,7 @@ func (t *TunNetstackDevice) create() (WGConfigurer, error) {
 	t.device = device.NewDevice(
 		t.filteredDevice,
 		t.bind,
-		device.NewLogger(wgLogLevel(), "[netbird] "),
+		device.NewLogger(wgLogLevel(), "[rvpn] "),
 	)
 
 	t.configurer = configurer.NewUSPConfigurer(t.device, t.name, t.bind.ActivityRecorder())

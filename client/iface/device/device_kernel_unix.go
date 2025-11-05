@@ -12,11 +12,11 @@ import (
 	"golang.zx2c4.com/wireguard/device"
 	"golang.zx2c4.com/wireguard/tun/netstack"
 
-	"github.com/netbirdio/netbird/client/iface/configurer"
-	"github.com/netbirdio/netbird/client/iface/udpmux"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	nbnet "github.com/netbirdio/netbird/client/net"
-	"github.com/netbirdio/netbird/sharedsock"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/udpmux"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
+	"github.com/Bee-Bros-Software/r-vpn/sharedsock"
 )
 
 type TunKernelDevice struct {

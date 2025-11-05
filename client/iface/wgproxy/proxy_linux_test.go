@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/netbirdio/netbird/client/iface/bind"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	bindproxy "github.com/netbirdio/netbird/client/iface/wgproxy/bind"
-	"github.com/netbirdio/netbird/client/iface/wgproxy/ebpf"
-	"github.com/netbirdio/netbird/client/iface/wgproxy/udp"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bind"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	bindproxy "github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy/bind"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy/ebpf"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy/udp"
 )
 
 func seedProxies() ([]proxyInstance, error) {

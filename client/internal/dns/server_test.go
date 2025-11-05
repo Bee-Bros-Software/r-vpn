@@ -17,22 +17,22 @@ import (
 	"github.com/stretchr/testify/mock"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	"github.com/netbirdio/netbird/client/firewall/uspfilter"
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/iface/configurer"
-	"github.com/netbirdio/netbird/client/iface/device"
-	pfmock "github.com/netbirdio/netbird/client/iface/mocks"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/internal/dns/local"
-	"github.com/netbirdio/netbird/client/internal/dns/test"
-	"github.com/netbirdio/netbird/client/internal/dns/types"
-	"github.com/netbirdio/netbird/client/internal/netflow"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
-	"github.com/netbirdio/netbird/client/internal/stdnet"
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/formatter"
-	"github.com/netbirdio/netbird/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
+	pfmock "github.com/Bee-Bros-Software/r-vpn/client/iface/mocks"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns/local"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns/test"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/netflow"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/stdnet"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/formatter"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 )
 
 var flowLogger = netflow.NewManager(nil, []byte{}, nil).GetLogger()
@@ -83,7 +83,7 @@ func (w *mocWGIface) GetStats(_ string) (configurer.WGStats, error) {
 
 var zoneRecords = []nbdns.SimpleRecord{
 	{
-		Name:  "peera.netbird.cloud",
+		Name:  "peera.rvpn.cloud",
 		Type:  1,
 		Class: nbdns.DefaultClass,
 		TTL:   300,
@@ -145,13 +145,13 @@ func TestUpdateDNSServer(t *testing.T) {
 				ServiceEnable: true,
 				CustomZones: []nbdns.CustomZone{
 					{
-						Domain:  "netbird.cloud",
+						Domain:  "rvpn.cloud",
 						Records: zoneRecords,
 					},
 				},
 				NameServerGroups: []*nbdns.NameServerGroup{
 					{
-						Domains:     []string{"netbird.io"},
+						Domains:     []string{"rsoftware.net"},
 						NameServers: nameServers,
 					},
 					{
@@ -161,13 +161,13 @@ func TestUpdateDNSServer(t *testing.T) {
 				},
 			},
 			expectedUpstreamMap: registeredHandlerMap{
-				generateDummyHandler("netbird.io", nameServers).ID(): handlerWrapper{
-					domain:   "netbird.io",
+				generateDummyHandler("rsoftware.net", nameServers).ID(): handlerWrapper{
+					domain:   "rsoftware.net",
 					handler:  dummyHandler,
 					priority: PriorityUpstream,
 				},
 				dummyHandler.ID(): handlerWrapper{
-					domain:   "netbird.cloud",
+					domain:   "rvpn.cloud",
 					handler:  dummyHandler,
 					priority: PriorityLocal,
 				},
@@ -177,14 +177,14 @@ func TestUpdateDNSServer(t *testing.T) {
 					priority: PriorityDefault,
 				},
 			},
-			expectedLocalQs: []dns.Question{{Name: "peera.netbird.cloud.", Qtype: dns.TypeA, Qclass: dns.ClassINET}},
+			expectedLocalQs: []dns.Question{{Name: "peera.rvpn.cloud.", Qtype: dns.TypeA, Qclass: dns.ClassINET}},
 		},
 		{
 			name:             "New Config Should Succeed",
-			initLocalRecords: []nbdns.SimpleRecord{{Name: "netbird.cloud", Type: 1, Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"}},
+			initLocalRecords: []nbdns.SimpleRecord{{Name: "rvpn.cloud", Type: 1, Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"}},
 			initUpstreamMap: registeredHandlerMap{
 				generateDummyHandler(zoneRecords[0].Name, nameServers).ID(): handlerWrapper{
-					domain:   "netbird.cloud",
+					domain:   "rvpn.cloud",
 					handler:  dummyHandler,
 					priority: PriorityUpstream,
 				},
@@ -195,25 +195,25 @@ func TestUpdateDNSServer(t *testing.T) {
 				ServiceEnable: true,
 				CustomZones: []nbdns.CustomZone{
 					{
-						Domain:  "netbird.cloud",
+						Domain:  "rvpn.cloud",
 						Records: zoneRecords,
 					},
 				},
 				NameServerGroups: []*nbdns.NameServerGroup{
 					{
-						Domains:     []string{"netbird.io"},
+						Domains:     []string{"rsoftware.net"},
 						NameServers: nameServers,
 					},
 				},
 			},
 			expectedUpstreamMap: registeredHandlerMap{
-				generateDummyHandler("netbird.io", nameServers).ID(): handlerWrapper{
-					domain:   "netbird.io",
+				generateDummyHandler("rsoftware.net", nameServers).ID(): handlerWrapper{
+					domain:   "rsoftware.net",
 					handler:  dummyHandler,
 					priority: PriorityUpstream,
 				},
 				"local-resolver": handlerWrapper{
-					domain:   "netbird.cloud",
+					domain:   "rvpn.cloud",
 					handler:  dummyHandler,
 					priority: PriorityLocal,
 				},
@@ -238,7 +238,7 @@ func TestUpdateDNSServer(t *testing.T) {
 				ServiceEnable: true,
 				CustomZones: []nbdns.CustomZone{
 					{
-						Domain:  "netbird.cloud",
+						Domain:  "rvpn.cloud",
 						Records: zoneRecords,
 					},
 				},
@@ -260,7 +260,7 @@ func TestUpdateDNSServer(t *testing.T) {
 				ServiceEnable: true,
 				CustomZones: []nbdns.CustomZone{
 					{
-						Domain:  "netbird.cloud",
+						Domain:  "rvpn.cloud",
 						Records: zoneRecords,
 					},
 				},
@@ -282,7 +282,7 @@ func TestUpdateDNSServer(t *testing.T) {
 				ServiceEnable: true,
 				CustomZones: []nbdns.CustomZone{
 					{
-						Domain: "netbird.cloud",
+						Domain: "rvpn.cloud",
 					},
 				},
 				NameServerGroups: []*nbdns.NameServerGroup{
@@ -300,7 +300,7 @@ func TestUpdateDNSServer(t *testing.T) {
 		},
 		{
 			name:             "Empty Config Should Succeed and Clean Maps",
-			initLocalRecords: []nbdns.SimpleRecord{{Name: "netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"}},
+			initLocalRecords: []nbdns.SimpleRecord{{Name: "rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"}},
 			initUpstreamMap: registeredHandlerMap{
 				generateDummyHandler(zoneRecords[0].Name, nameServers).ID(): handlerWrapper{
 					domain:   zoneRecords[0].Name,
@@ -316,7 +316,7 @@ func TestUpdateDNSServer(t *testing.T) {
 		},
 		{
 			name:             "Disabled Service Should clean map",
-			initLocalRecords: []nbdns.SimpleRecord{{Name: "netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"}},
+			initLocalRecords: []nbdns.SimpleRecord{{Name: "rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"}},
 			initUpstreamMap: registeredHandlerMap{
 				generateDummyHandler(zoneRecords[0].Name, nameServers).ID(): handlerWrapper{
 					domain:   zoneRecords[0].Name,
@@ -510,8 +510,8 @@ func TestDNSFakeResolverHandleUpdates(t *testing.T) {
 			priority: PriorityUpstream,
 		},
 	}
-	//dnsServer.localResolver.RegisteredMap = local.RegistrationMap{local.BuildRecordKey("netbird.cloud", dns.ClassINET, dns.TypeA): struct{}{}}
-	dnsServer.localResolver.Update([]nbdns.SimpleRecord{{Name: "netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"}})
+	//dnsServer.localResolver.RegisteredMap = local.RegistrationMap{local.BuildRecordKey("rvpn.cloud", dns.ClassINET, dns.TypeA): struct{}{}}
+	dnsServer.localResolver.Update([]nbdns.SimpleRecord{{Name: "rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"}})
 	dnsServer.updateSerial = 0
 
 	nameServers := []nbdns.NameServer{
@@ -531,13 +531,13 @@ func TestDNSFakeResolverHandleUpdates(t *testing.T) {
 		ServiceEnable: true,
 		CustomZones: []nbdns.CustomZone{
 			{
-				Domain:  "netbird.cloud",
+				Domain:  "rvpn.cloud",
 				Records: zoneRecords,
 			},
 		},
 		NameServerGroups: []*nbdns.NameServerGroup{
 			{
-				Domains:     []string{"netbird.io"},
+				Domains:     []string{"rsoftware.net"},
 				NameServers: nameServers,
 			},
 			{
@@ -609,7 +609,7 @@ func TestDNSServerStartStop(t *testing.T) {
 				t.Error(err)
 			}
 
-			dnsServer.registerHandler([]string{"netbird.cloud"}, dnsServer.localResolver, 1)
+			dnsServer.registerHandler([]string{"rvpn.cloud"}, dnsServer.localResolver, 1)
 
 			resolver := &net.Resolver{
 				PreferGo: true,
@@ -737,7 +737,7 @@ func TestDNSPermanent_updateHostDNS_emptyUpstream(t *testing.T) {
 	dnsServer.OnUpdatedHostDNSServer([]netip.AddrPort{addrPort})
 
 	resolver := newDnsResolver(dnsServer.service.RuntimeIP(), dnsServer.service.RuntimePort())
-	_, err = resolver.LookupHost(context.Background(), "netbird.io")
+	_, err = resolver.LookupHost(context.Background(), "rsoftware.net")
 	if err != nil {
 		t.Errorf("failed to resolve: %s", err)
 	}
@@ -761,7 +761,7 @@ func TestDNSPermanent_updateUpstream(t *testing.T) {
 
 	// check initial state
 	resolver := newDnsResolver(dnsServer.service.RuntimeIP(), dnsServer.service.RuntimePort())
-	_, err = resolver.LookupHost(context.Background(), "netbird.io")
+	_, err = resolver.LookupHost(context.Background(), "rsoftware.net")
 	if err != nil {
 		t.Errorf("failed to resolve: %s", err)
 	}
@@ -770,7 +770,7 @@ func TestDNSPermanent_updateUpstream(t *testing.T) {
 		ServiceEnable: true,
 		CustomZones: []nbdns.CustomZone{
 			{
-				Domain:  "netbird.cloud",
+				Domain:  "rvpn.cloud",
 				Records: zoneRecords,
 			},
 		},
@@ -794,7 +794,7 @@ func TestDNSPermanent_updateUpstream(t *testing.T) {
 		t.Errorf("failed to update dns server: %s", err)
 	}
 
-	_, err = resolver.LookupHost(context.Background(), "netbird.io")
+	_, err = resolver.LookupHost(context.Background(), "rsoftware.net")
 	if err != nil {
 		t.Errorf("failed to resolve: %s", err)
 	}
@@ -810,7 +810,7 @@ func TestDNSPermanent_updateUpstream(t *testing.T) {
 		ServiceEnable: true,
 		CustomZones: []nbdns.CustomZone{
 			{
-				Domain:  "netbird.cloud",
+				Domain:  "rvpn.cloud",
 				Records: zoneRecords,
 			},
 		},
@@ -822,7 +822,7 @@ func TestDNSPermanent_updateUpstream(t *testing.T) {
 		t.Errorf("failed to update dns server: %s", err)
 	}
 
-	_, err = resolver.LookupHost(context.Background(), "netbird.io")
+	_, err = resolver.LookupHost(context.Background(), "rsoftware.net")
 	if err != nil {
 		t.Errorf("failed to resolve: %s", err)
 	}
@@ -854,7 +854,7 @@ func TestDNSPermanent_matchOnly(t *testing.T) {
 
 	// check initial state
 	resolver := newDnsResolver(dnsServer.service.RuntimeIP(), dnsServer.service.RuntimePort())
-	_, err = resolver.LookupHost(context.Background(), "netbird.io")
+	_, err = resolver.LookupHost(context.Background(), "rsoftware.net")
 	if err != nil {
 		t.Errorf("failed to resolve: %s", err)
 	}
@@ -863,7 +863,7 @@ func TestDNSPermanent_matchOnly(t *testing.T) {
 		ServiceEnable: true,
 		CustomZones: []nbdns.CustomZone{
 			{
-				Domain:  "netbird.cloud",
+				Domain:  "rvpn.cloud",
 				Records: zoneRecords,
 			},
 		},
@@ -892,7 +892,7 @@ func TestDNSPermanent_matchOnly(t *testing.T) {
 		t.Errorf("failed to update dns server: %s", err)
 	}
 
-	_, err = resolver.LookupHost(context.Background(), "netbird.io")
+	_, err = resolver.LookupHost(context.Background(), "rsoftware.net")
 	if err != nil {
 		t.Errorf("failed to resolve: %s", err)
 	}

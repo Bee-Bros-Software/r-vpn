@@ -7,10 +7,10 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	nbAccount "github.com/netbirdio/netbird/management/server/account"
-	"github.com/netbirdio/netbird/management/server/activity"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/store"
+	nbAccount "github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
 )
 
 const (

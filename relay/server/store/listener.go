@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/netbirdio/netbird/shared/relay/messages"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/messages"
 )
 
 type event struct {

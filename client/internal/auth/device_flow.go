@@ -15,8 +15,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/util/embeddedroots"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/util/embeddedroots"
 )
 
 // HostedGrantType grant type for device flow on Hosted

@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/gopacket"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
 )
 
 // PeerRule to handle management of rules

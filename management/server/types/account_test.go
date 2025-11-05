@@ -12,13 +12,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	resourceTypes "github.com/netbirdio/netbird/management/server/networks/resources/types"
-	routerTypes "github.com/netbirdio/netbird/management/server/networks/routers/types"
-	networkTypes "github.com/netbirdio/netbird/management/server/networks/types"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/posture"
-	"github.com/netbirdio/netbird/route"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	resourceTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources/types"
+	routerTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers/types"
+	networkTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/types"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/posture"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 func setupTestAccount() *Account {
@@ -851,28 +851,28 @@ func Test_FilterZoneRecordsForPeers(t *testing.T) {
 		{
 			name: "empty peers to connect",
 			customZone: nbdns.CustomZone{
-				Domain: "netbird.cloud.",
+				Domain: "rvpn.cloud.",
 				Records: []nbdns.SimpleRecord{
-					{Name: "peer1.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
-					{Name: "router.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
+					{Name: "peer1.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
+					{Name: "router.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
 				},
 			},
 			peersToConnect: []*nbpeer.Peer{},
 			expiredPeers:   []*nbpeer.Peer{},
 			peer:           &nbpeer.Peer{ID: "router", IP: net.ParseIP("10.0.0.100")},
 			expectedRecords: []nbdns.SimpleRecord{
-				{Name: "router.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
+				{Name: "router.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
 			},
 		},
 		{
 			name: "multiple peers multiple records match",
 			customZone: nbdns.CustomZone{
-				Domain: "netbird.cloud.",
+				Domain: "rvpn.cloud.",
 				Records: func() []nbdns.SimpleRecord {
 					var records []nbdns.SimpleRecord
 					for i := 1; i <= 100; i++ {
 						records = append(records, nbdns.SimpleRecord{
-							Name:  fmt.Sprintf("peer%d.netbird.cloud", i),
+							Name:  fmt.Sprintf("peer%d.rvpn.cloud", i),
 							Type:  int(dns.TypeA),
 							Class: nbdns.DefaultClass,
 							TTL:   300,
@@ -898,7 +898,7 @@ func Test_FilterZoneRecordsForPeers(t *testing.T) {
 				var records []nbdns.SimpleRecord
 				for _, i := range []int{1, 5, 10, 25, 50, 75, 100} {
 					records = append(records, nbdns.SimpleRecord{
-						Name:  fmt.Sprintf("peer%d.netbird.cloud", i),
+						Name:  fmt.Sprintf("peer%d.rvpn.cloud", i),
 						Type:  int(dns.TypeA),
 						Class: nbdns.DefaultClass,
 						TTL:   300,
@@ -911,16 +911,16 @@ func Test_FilterZoneRecordsForPeers(t *testing.T) {
 		{
 			name: "peers with multiple DNS labels",
 			customZone: nbdns.CustomZone{
-				Domain: "netbird.cloud.",
+				Domain: "rvpn.cloud.",
 				Records: []nbdns.SimpleRecord{
-					{Name: "peer1.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
-					{Name: "peer1-alt.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
-					{Name: "peer1-backup.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
-					{Name: "peer2.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
-					{Name: "peer2-service.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
-					{Name: "peer3.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.3"},
-					{Name: "peer3-alt.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.3"},
-					{Name: "router.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
+					{Name: "peer1.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
+					{Name: "peer1-alt.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
+					{Name: "peer1-backup.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
+					{Name: "peer2.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
+					{Name: "peer2-service.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
+					{Name: "peer3.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.3"},
+					{Name: "peer3-alt.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.3"},
+					{Name: "router.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
 				},
 			},
 			peersToConnect: []*nbpeer.Peer{
@@ -930,23 +930,23 @@ func Test_FilterZoneRecordsForPeers(t *testing.T) {
 			expiredPeers: []*nbpeer.Peer{},
 			peer:         &nbpeer.Peer{ID: "router", IP: net.ParseIP("10.0.0.100")},
 			expectedRecords: []nbdns.SimpleRecord{
-				{Name: "peer1.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
-				{Name: "peer1-alt.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
-				{Name: "peer1-backup.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
-				{Name: "peer2.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
-				{Name: "peer2-service.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
-				{Name: "router.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
+				{Name: "peer1.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
+				{Name: "peer1-alt.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
+				{Name: "peer1-backup.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
+				{Name: "peer2.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
+				{Name: "peer2-service.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
+				{Name: "router.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
 			},
 		},
 		{
 			name: "expired peers are included in DNS entries",
 			customZone: nbdns.CustomZone{
-				Domain: "netbird.cloud.",
+				Domain: "rvpn.cloud.",
 				Records: []nbdns.SimpleRecord{
-					{Name: "peer1.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
-					{Name: "peer2.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
-					{Name: "expired-peer.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.99"},
-					{Name: "router.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
+					{Name: "peer1.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
+					{Name: "peer2.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.2"},
+					{Name: "expired-peer.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.99"},
+					{Name: "router.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
 				},
 			},
 			peersToConnect: []*nbpeer.Peer{
@@ -957,9 +957,9 @@ func Test_FilterZoneRecordsForPeers(t *testing.T) {
 			},
 			peer: &nbpeer.Peer{ID: "router", IP: net.ParseIP("10.0.0.100")},
 			expectedRecords: []nbdns.SimpleRecord{
-				{Name: "peer1.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
-				{Name: "expired-peer.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.99"},
-				{Name: "router.netbird.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
+				{Name: "peer1.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.1"},
+				{Name: "expired-peer.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.99"},
+				{Name: "router.rvpn.cloud", Type: int(dns.TypeA), Class: nbdns.DefaultClass, TTL: 300, RData: "10.0.0.100"},
 			},
 		},
 	}

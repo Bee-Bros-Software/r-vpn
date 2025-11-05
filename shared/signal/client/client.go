@@ -6,8 +6,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/netbirdio/netbird/shared/signal/proto"
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 )
@@ -60,7 +60,7 @@ func MarshalCredential(myKey wgtypes.Key, myPort int, remoteKey string, credenti
 			Type:           t,
 			Payload:        fmt.Sprintf("%s:%s", credential.UFrag, credential.Pwd),
 			WgListenPort:   uint32(myPort),
-			NetBirdVersion: version.NetbirdVersion(),
+			R-VPNVersion: version.NetbirdVersion(),
 			RosenpassConfig: &proto.RosenpassConfig{
 				RosenpassPubKey:     rosenpassPubKey,
 				RosenpassServerAddr: rosenpassAddr,

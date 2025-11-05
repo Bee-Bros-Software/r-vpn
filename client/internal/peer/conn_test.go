@@ -9,13 +9,13 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/internal/peer/dispatcher"
-	"github.com/netbirdio/netbird/client/internal/peer/guard"
-	"github.com/netbirdio/netbird/client/internal/peer/ice"
-	"github.com/netbirdio/netbird/client/internal/stdnet"
-	"github.com/netbirdio/netbird/util"
-	semaphoregroup "github.com/netbirdio/netbird/util/semaphore-group"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer/dispatcher"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer/guard"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer/ice"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/stdnet"
+	"github.com/Bee-Bros-Software/r-vpn/util"
+	semaphoregroup "github.com/Bee-Bros-Software/r-vpn/util/semaphore-group"
 )
 
 var testDispatcher = dispatcher.NewConnectionDispatcher()

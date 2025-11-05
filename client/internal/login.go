@@ -10,11 +10,11 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/ssh"
-	"github.com/netbirdio/netbird/client/system"
-	mgm "github.com/netbirdio/netbird/shared/management/client"
-	mgmProto "github.com/netbirdio/netbird/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/ssh"
+	"github.com/Bee-Bros-Software/r-vpn/client/system"
+	mgm "github.com/Bee-Bros-Software/r-vpn/shared/management/client"
+	mgmProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
 )
 
 // IsLoginRequired check that the server is support SSO or not

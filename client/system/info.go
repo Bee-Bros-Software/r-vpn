@@ -9,7 +9,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc/metadata"
 
-	"github.com/netbirdio/netbird/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
 )
 
 // DeviceNameCtxKey context key for device name
@@ -103,7 +103,7 @@ func extractUserAgent(ctx context.Context) string {
 		agent, ok := md["user-agent"]
 		if ok {
 			nbAgent := strings.Split(agent[0], " ")[0]
-			if strings.HasPrefix(nbAgent, "netbird") {
+			if strings.HasPrefix(nbAgent, "rvpn") {
 				return nbAgent
 			}
 			return ""

@@ -8,8 +8,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/client/internal/routeselector"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routeselector"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 func TestRouteSelector_SelectRoutes(t *testing.T) {

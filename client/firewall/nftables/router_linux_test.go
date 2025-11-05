@@ -15,9 +15,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/firewall/test"
-	"github.com/netbirdio/netbird/client/iface"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/test"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
 )
 
 const (

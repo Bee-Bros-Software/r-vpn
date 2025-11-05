@@ -15,9 +15,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/sys/windows/registry"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
-	"github.com/netbirdio/netbird/client/internal/winregistry"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/winregistry"
 )
 
 var (
@@ -31,9 +31,9 @@ var (
 )
 
 const (
-	dnsPolicyConfigMatchPath    = `SYSTEM\CurrentControlSet\Services\Dnscache\Parameters\DnsPolicyConfig\NetBird-Match`
+	dnsPolicyConfigMatchPath    = `SYSTEM\CurrentControlSet\Services\Dnscache\Parameters\DnsPolicyConfig\R-VPN-Match`
 	gpoDnsPolicyRoot            = `SOFTWARE\Policies\Microsoft\Windows NT\DNSClient\DnsPolicyConfig`
-	gpoDnsPolicyConfigMatchPath = gpoDnsPolicyRoot + `\NetBird-Match`
+	gpoDnsPolicyConfigMatchPath = gpoDnsPolicyRoot + `\R-VPN-Match`
 
 	dnsPolicyConfigVersionKey           = "Version"
 	dnsPolicyConfigVersionValue         = 2

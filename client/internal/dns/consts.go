@@ -3,7 +3,7 @@
 package dns
 
 import (
-	"github.com/netbirdio/netbird/client/configs"
+	"github.com/Bee-Bros-Software/r-vpn/client/configs"
 	"os"
 	"path/filepath"
 )

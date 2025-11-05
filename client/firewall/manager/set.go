@@ -9,7 +9,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 )
 
 type Set struct {

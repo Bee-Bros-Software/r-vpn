@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"net/netip"
 
-	fw "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/firewall/uspfilter"
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/proto"
+	fw "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
 )
 
 type packetTracer interface {

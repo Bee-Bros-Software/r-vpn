@@ -20,10 +20,10 @@ import (
 	"github.com/miekg/dns"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/internal/dns/types"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
 )
 
 var currentMTU uint16 = iface.DefaultMTU
@@ -498,5 +498,5 @@ func (u *upstreamResolverBase) debugUpstreamTimeout(upstream netip.AddrPort) str
 		return ""
 	}
 
-	return fmt.Sprintf("(routes through NetBird peer %s)", FormatPeerStatus(peerInfo))
+	return fmt.Sprintf("(routes through R-VPN peer %s)", FormatPeerStatus(peerInfo))
 }

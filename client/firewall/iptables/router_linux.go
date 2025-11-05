@@ -13,13 +13,13 @@ import (
 	"github.com/nadoo/ipset"
 	log "github.com/sirupsen/logrus"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	nbid "github.com/netbirdio/netbird/client/internal/acl/id"
-	"github.com/netbirdio/netbird/client/internal/routemanager/ipfwdstate"
-	"github.com/netbirdio/netbird/client/internal/routemanager/refcounter"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	nbid "github.com/Bee-Bros-Software/r-vpn/client/internal/acl/id"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/ipfwdstate"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/refcounter"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 // constants needed to manage and create iptable rules
@@ -257,7 +257,7 @@ func (r *router) deleteIpSet(setName string) error {
 // AddNatRule inserts an iptables rule pair into the nat chain
 func (r *router) AddNatRule(pair firewall.RouterPair) error {
 	if r.legacyManagement {
-		log.Warnf("This peer is connected to a NetBird Management service with an older version. Allowing all traffic for %s", pair.Destination)
+		log.Warnf("This peer is connected to a R-VPN Management service with an older version. Allowing all traffic for %s", pair.Destination)
 		if err := r.addLegacyRouteRule(pair); err != nil {
 			return fmt.Errorf("add legacy routing rule: %w", err)
 		}
@@ -926,7 +926,7 @@ func (r *router) UpdateSet(set firewall.Set, prefixes []netip.Prefix) error {
 	return nberrors.FormatErrorOrNil(merr)
 }
 
-// AddInboundDNAT adds an inbound DNAT rule redirecting traffic from NetBird peers to local services.
+// AddInboundDNAT adds an inbound DNAT rule redirecting traffic from R-VPN peers to local services.
 func (r *router) AddInboundDNAT(localAddr netip.Addr, protocol firewall.Protocol, sourcePort, targetPort uint16) error {
 	ruleID := fmt.Sprintf("inbound-dnat-%s-%s-%d-%d", localAddr.String(), protocol, sourcePort, targetPort)
 

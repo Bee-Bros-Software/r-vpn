@@ -15,7 +15,7 @@ import (
 	"github.com/kardianos/service"
 	"github.com/spf13/cobra"
 
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 var ErrGetServiceStatus = fmt.Errorf("failed to get service status")
@@ -113,7 +113,7 @@ func createServiceConfigForInstall() (*service.Config, error) {
 
 var installCmd = &cobra.Command{
 	Use:   "install",
-	Short: "Install NetBird service",
+	Short: "Install R-VPN service",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if err := setupServiceCommand(cmd); err != nil {
 			return err
@@ -136,14 +136,14 @@ var installCmd = &cobra.Command{
 			return fmt.Errorf("install service: %w", err)
 		}
 
-		cmd.Println("NetBird service has been installed")
+		cmd.Println("R-VPN service has been installed")
 		return nil
 	},
 }
 
 var uninstallCmd = &cobra.Command{
 	Use:   "uninstall",
-	Short: "uninstalls NetBird service from system",
+	Short: "uninstalls R-VPN service from system",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if err := setupServiceCommand(cmd); err != nil {
 			return err
@@ -172,15 +172,15 @@ var uninstallCmd = &cobra.Command{
 			}
 		}
 
-		cmd.Println("NetBird service has been uninstalled")
+		cmd.Println("R-VPN service has been uninstalled")
 		return nil
 	},
 }
 
 var reconfigureCmd = &cobra.Command{
 	Use:   "reconfigure",
-	Short: "reconfigures NetBird service with new settings",
-	Long: `Reconfigures the NetBird service with new settings without manual uninstall/install.
+	Short: "reconfigures R-VPN service with new settings",
+	Long: `Reconfigures the R-VPN service with new settings without manual uninstall/install.
 This command will temporarily stop the service, update its configuration, and restart it if it was running.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if err := setupServiceCommand(cmd); err != nil {
@@ -206,7 +206,7 @@ This command will temporarily stop the service, update its configuration, and re
 		}
 
 		if wasRunning {
-			cmd.Println("Stopping NetBird service...")
+			cmd.Println("Stopping R-VPN service...")
 			if err := s.Stop(); err != nil {
 				cmd.Printf("Warning: failed to stop service: %v\n", err)
 			}
@@ -223,13 +223,13 @@ This command will temporarily stop the service, update its configuration, and re
 		}
 
 		if wasRunning {
-			cmd.Println("Starting NetBird service...")
+			cmd.Println("Starting R-VPN service...")
 			if err := s.Start(); err != nil {
 				return fmt.Errorf("start service after reconfigure: %w", err)
 			}
-			cmd.Println("NetBird service has been reconfigured and started")
+			cmd.Println("R-VPN service has been reconfigured and started")
 		} else {
-			cmd.Println("NetBird service has been reconfigured")
+			cmd.Println("R-VPN service has been reconfigured")
 		}
 
 		return nil
@@ -260,9 +260,9 @@ func isServiceRunning() (bool, error) {
 
 const (
 	networkdConfDir     = "/etc/systemd/networkd.conf.d"
-	networkdConfFile    = "/etc/systemd/networkd.conf.d/99-netbird.conf"
-	networkdConfContent = `# Created by NetBird to prevent systemd-networkd from removing
-# routes and policy rules managed by NetBird.
+	networkdConfFile    = "/etc/systemd/networkd.conf.d/99-rvpn.conf"
+	networkdConfContent = `# Created by R-VPN to prevent systemd-networkd from removing
+# routes and policy rules managed by R-VPN.
 
 [Network]
 ManageForeignRoutes=no
@@ -271,7 +271,7 @@ ManageForeignRoutingPolicyRules=no
 )
 
 // configureSystemdNetworkd creates a drop-in configuration file to prevent
-// systemd-networkd from removing NetBird's routes and policy rules.
+// systemd-networkd from removing R-VPN's routes and policy rules.
 func configureSystemdNetworkd() error {
 	parentDir := filepath.Dir(networkdConfDir)
 	if _, err := os.Stat(parentDir); os.IsNotExist(err) {
@@ -287,7 +287,7 @@ func configureSystemdNetworkd() error {
 	return nil
 }
 
-// cleanupSystemdNetworkd removes the NetBird systemd-networkd configuration file.
+// cleanupSystemdNetworkd removes the R-VPN systemd-networkd configuration file.
 func cleanupSystemdNetworkd() error {
 	if _, err := os.Stat(networkdConfFile); os.IsNotExist(err) {
 		return nil

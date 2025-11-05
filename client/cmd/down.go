@@ -4,18 +4,18 @@ import (
 	"context"
 	"time"
 
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	"github.com/netbirdio/netbird/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
 )
 
 var downCmd = &cobra.Command{
 	Use:   "down",
-	Short: "Disconnect from the NetBird network",
-	Long:  "Disconnect the NetBird client from the network and management service. This will terminate all active connections with the remote peers.",
+	Short: "Disconnect from the R-VPN network",
+	Long:  "Disconnect the R-VPN client from the network and management service. This will terminate all active connections with the remote peers.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		SetFlagsFromEnvVars(rootCmd)
 

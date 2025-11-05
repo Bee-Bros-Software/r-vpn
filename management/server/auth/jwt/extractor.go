@@ -8,7 +8,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	log "github.com/sirupsen/logrus"
 
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
 )
 
 const (

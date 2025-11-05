@@ -8,16 +8,16 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/mod/semver"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/management/server/activity"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/permissions/modules"
-	"github.com/netbirdio/netbird/management/server/permissions/operations"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/management/server/util"
-	"github.com/netbirdio/netbird/shared/management/proto"
-	"github.com/netbirdio/netbird/shared/management/status"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/modules"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/operations"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 const (

@@ -6,13 +6,13 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/management/server/groups"
-	"github.com/netbirdio/netbird/management/server/mock_server"
-	"github.com/netbirdio/netbird/management/server/networks/resources"
-	"github.com/netbirdio/netbird/management/server/networks/routers"
-	"github.com/netbirdio/netbird/management/server/networks/types"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/groups"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/mock_server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
 )
 
 func Test_GetAllNetworksReturnsNetworks(t *testing.T) {

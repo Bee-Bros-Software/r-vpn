@@ -15,20 +15,20 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/sys/unix"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 const (
 
 	// rules chains contains the effective ACL rules
-	chainNameInputRules = "netbird-acl-input-rules"
+	chainNameInputRules = "rvpn-acl-input-rules"
 
 	// filter chains contains the rules that jump to the rules chains
-	chainNameInputFilter       = "netbird-acl-input-filter"
-	chainNameForwardFilter     = "netbird-acl-forward-filter"
-	chainNameManglePrerouting  = "netbird-mangle-prerouting"
-	chainNameManglePostrouting = "netbird-mangle-postrouting"
+	chainNameInputFilter       = "rvpn-acl-input-filter"
+	chainNameForwardFilter     = "rvpn-acl-forward-filter"
+	chainNameManglePrerouting  = "rvpn-mangle-prerouting"
+	chainNameManglePostrouting = "rvpn-mangle-postrouting"
 )
 
 const flushError = "flush: %w"
@@ -425,10 +425,10 @@ func (m *AclManager) createDefaultChains() (err error) {
 	}
 	m.chainInputRules = chain
 
-	// netbird-acl-input-filter
+	// rvpn-acl-input-filter
 	// type filter hook input priority filter; policy accept;
 	chain = m.createFilterChainWithHook(chainNameInputFilter, nftables.ChainHookInput)
-	m.addJumpRule(chain, m.chainInputRules.Name, expr.MetaKeyIIFNAME) // to netbird-acl-input-rules
+	m.addJumpRule(chain, m.chainInputRules.Name, expr.MetaKeyIIFNAME) // to rvpn-acl-input-rules
 	m.addDropExpressions(chain, expr.MetaKeyIIFNAME)
 	err = m.rConn.Flush()
 	if err != nil {
@@ -436,9 +436,9 @@ func (m *AclManager) createDefaultChains() (err error) {
 		return err
 	}
 
-	// netbird-acl-forward-filter
+	// rvpn-acl-forward-filter
 	chainFwFilter := m.createFilterChainWithHook(chainNameForwardFilter, nftables.ChainHookForward)
-	m.addJumpRulesToRtForward(chainFwFilter) // to netbird-rt-fwd
+	m.addJumpRulesToRtForward(chainFwFilter) // to rvpn-rt-fwd
 	m.addDropExpressions(chainFwFilter, expr.MetaKeyIIFNAME)
 
 	err = m.rConn.Flush()
@@ -456,7 +456,7 @@ func (m *AclManager) createDefaultChains() (err error) {
 
 // Makes redirected traffic originally destined for the host itself (now subject to the forward filter)
 // go through the input filter as well. This will enable e.g. Docker services to keep working by accessing the
-// netbird peer IP.
+// rvpn peer IP.
 func (m *AclManager) allowRedirectedTraffic(chainFwFilter *nftables.Chain) error {
 	// Chain is created by route manager
 	// TODO: move creation to a common place

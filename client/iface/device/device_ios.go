@@ -12,10 +12,10 @@ import (
 	"golang.zx2c4.com/wireguard/tun"
 	"golang.zx2c4.com/wireguard/tun/netstack"
 
-	"github.com/netbirdio/netbird/client/iface/bind"
-	"github.com/netbirdio/netbird/client/iface/configurer"
-	"github.com/netbirdio/netbird/client/iface/udpmux"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bind"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/udpmux"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
 )
 
 type TunDevice struct {
@@ -69,9 +69,9 @@ func (t *TunDevice) Create() (WGConfigurer, error) {
 
 	t.filteredDevice = newDeviceFilter(tunDevice)
 	log.Debug("Attaching to interface")
-	t.device = device.NewDevice(t.filteredDevice, t.iceBind, device.NewLogger(wgLogLevel(), "[netbird] "))
+	t.device = device.NewDevice(t.filteredDevice, t.iceBind, device.NewLogger(wgLogLevel(), "[rvpn] "))
 	// without this property mobile devices can discover remote endpoints if the configured one was wrong.
-	// this helps with support for the older NetBird clients that had a hardcoded direct mode
+	// this helps with support for the older R-VPN clients that had a hardcoded direct mode
 	// t.device.DisableSomeRoamingForBrokenMobileSemantics()
 
 	t.configurer = configurer.NewUSPConfigurer(t.device, t.name, t.iceBind.ActivityRecorder())

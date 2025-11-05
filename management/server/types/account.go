@@ -15,17 +15,17 @@ import (
 	"github.com/rs/xid"
 	log "github.com/sirupsen/logrus"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	resourceTypes "github.com/netbirdio/netbird/management/server/networks/resources/types"
-	routerTypes "github.com/netbirdio/netbird/management/server/networks/routers/types"
-	networkTypes "github.com/netbirdio/netbird/management/server/networks/types"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/posture"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/util"
-	"github.com/netbirdio/netbird/route"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/shared/management/status"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	resourceTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources/types"
+	routerTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers/types"
+	networkTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/types"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/posture"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/route"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 const (

@@ -15,13 +15,13 @@ import (
 
 	wgdevice "golang.zx2c4.com/wireguard/device"
 
-	"github.com/netbirdio/netbird/client/errors"
-	"github.com/netbirdio/netbird/client/iface/configurer"
-	"github.com/netbirdio/netbird/client/iface/device"
-	"github.com/netbirdio/netbird/client/iface/udpmux"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/iface/wgproxy"
-	"github.com/netbirdio/netbird/monotime"
+	"github.com/Bee-Bros-Software/r-vpn/client/errors"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/udpmux"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy"
+	"github.com/Bee-Bros-Software/r-vpn/monotime"
 )
 
 const (

@@ -8,8 +8,8 @@ import (
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 
-	fw "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/firewall/uspfilter/conntrack"
+	fw "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter/conntrack"
 )
 
 type PacketStage int

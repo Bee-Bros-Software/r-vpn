@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
 )
 
 func TestLocalIPManager(t *testing.T) {

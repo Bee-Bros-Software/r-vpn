@@ -16,7 +16,7 @@ import (
 	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/wait"
 
-	"github.com/netbirdio/netbird/upload-server/types"
+	"github.com/Bee-Bros-Software/r-vpn/upload-server/types"
 )
 
 func Test_S3HandlerGetUploadURL(t *testing.T) {

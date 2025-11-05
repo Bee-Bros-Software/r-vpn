@@ -10,9 +10,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/sys/windows"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
 )
 
 const (

@@ -9,8 +9,8 @@ import (
 	"github.com/hashicorp/go-multierror"
 	"golang.org/x/exp/maps"
 
-	"github.com/netbirdio/netbird/client/errors"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/errors"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 const (

@@ -3,7 +3,7 @@ package ephemeral
 import (
 	"context"
 
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
 )
 
 type Manager interface {

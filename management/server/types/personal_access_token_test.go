@@ -10,7 +10,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/netbirdio/netbird/base62"
+	"github.com/Bee-Bros-Software/r-vpn/base62"
 )
 
 func TestPAT_GenerateToken_Hashing(t *testing.T) {

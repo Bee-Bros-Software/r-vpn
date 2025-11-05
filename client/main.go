@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/netbirdio/netbird/client/cmd"
+	"github.com/Bee-Bros-Software/r-vpn/client/cmd"
 )
 
 func main() {

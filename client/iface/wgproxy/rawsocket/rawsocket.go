@@ -8,7 +8,7 @@ import (
 	"os"
 	"syscall"
 
-	nbnet "github.com/netbirdio/netbird/client/net"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 func PrepareSenderRawSocket() (net.PacketConn, error) {

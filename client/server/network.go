@@ -10,9 +10,9 @@ import (
 
 	"golang.org/x/exp/maps"
 
-	"github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 type selectRoute struct {

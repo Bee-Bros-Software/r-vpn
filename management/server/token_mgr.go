@@ -11,13 +11,13 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	integrationsConfig "github.com/netbirdio/management-integrations/integrations/config"
-	nbconfig "github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/management/server/groups"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/shared/management/proto"
-	auth "github.com/netbirdio/netbird/shared/relay/auth/hmac"
-	authv2 "github.com/netbirdio/netbird/shared/relay/auth/hmac/v2"
+	integrationsConfig "github.com/rvpnio/management-integrations/integrations/config"
+	nbconfig "github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/groups"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	auth "github.com/Bee-Bros-Software/r-vpn/shared/relay/auth/hmac"
+	authv2 "github.com/Bee-Bros-Software/r-vpn/shared/relay/auth/hmac/v2"
 )
 
 const defaultDuration = 12 * time.Hour
@@ -265,6 +265,6 @@ func (m *TimeBasedAuthSecretsManager) extendNetbirdConfig(ctx context.Context, p
 		log.WithContext(ctx).Errorf("failed to get peer groups: %v", err)
 	}
 
-	extendedConfig := integrationsConfig.ExtendNetBirdConfig(peerID, peerGroups, update.NetbirdConfig, extraSettings)
+	extendedConfig := integrationsConfig.ExtendR-VPNConfig(peerID, peerGroups, update.NetbirdConfig, extraSettings)
 	update.NetbirdConfig = extendedConfig
 }

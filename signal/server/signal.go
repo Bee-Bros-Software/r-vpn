@@ -15,11 +15,11 @@ import (
 	"google.golang.org/grpc/status"
 	gproto "google.golang.org/protobuf/proto"
 
-	"github.com/netbirdio/signal-dispatcher/dispatcher"
+	"github.com/rvpnio/signal-dispatcher/dispatcher"
 
-	"github.com/netbirdio/netbird/shared/signal/proto"
-	"github.com/netbirdio/netbird/signal/metrics"
-	"github.com/netbirdio/netbird/signal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	"github.com/Bee-Bros-Software/r-vpn/signal/metrics"
+	"github.com/Bee-Bros-Software/r-vpn/signal/peer"
 )
 
 const (

@@ -11,9 +11,9 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/relay/protocol"
-	"github.com/netbirdio/netbird/relay/server/listener/quic"
-	"github.com/netbirdio/netbird/relay/server/listener/ws"
+	"github.com/Bee-Bros-Software/r-vpn/relay/protocol"
+	"github.com/Bee-Bros-Software/r-vpn/relay/server/listener/quic"
+	"github.com/Bee-Bros-Software/r-vpn/relay/server/listener/ws"
 )
 
 const (

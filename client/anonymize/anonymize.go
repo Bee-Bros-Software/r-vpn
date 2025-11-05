@@ -111,10 +111,10 @@ func (a *Anonymizer) AnonymizeDomain(domain string) string {
 		baseDomain = domain[:len(domain)-1]
 	}
 
-	if strings.HasSuffix(baseDomain, "netbird.io") ||
-		strings.HasSuffix(baseDomain, "netbird.selfhosted") ||
-		strings.HasSuffix(baseDomain, "netbird.cloud") ||
-		strings.HasSuffix(baseDomain, "netbird.stage") ||
+	if strings.HasSuffix(baseDomain, "rsoftware.net") ||
+		strings.HasSuffix(baseDomain, "rvpn.selfhosted") ||
+		strings.HasSuffix(baseDomain, "rvpn.cloud") ||
+		strings.HasSuffix(baseDomain, "rvpn.stage") ||
 		strings.HasSuffix(baseDomain, anonTLD) {
 		return domain
 	}

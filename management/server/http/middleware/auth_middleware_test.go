@@ -11,12 +11,12 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/netbirdio/netbird/management/server/auth"
-	nbjwt "github.com/netbirdio/netbird/management/server/auth/jwt"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/http/middleware/bypass"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/auth"
+	nbjwt "github.com/Bee-Bros-Software/r-vpn/management/server/auth/jwt"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/http/middleware/bypass"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/util"
 )
 
 const (

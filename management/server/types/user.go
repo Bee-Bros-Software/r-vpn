@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/netbirdio/netbird/management/server/idp"
-	"github.com/netbirdio/netbird/management/server/integration_reference"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/idp"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integration_reference"
 )
 
 const (

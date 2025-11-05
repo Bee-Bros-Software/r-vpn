@@ -11,11 +11,11 @@ import (
 	"github.com/rs/xid"
 	log "github.com/sirupsen/logrus"
 
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/types"
-	nbutil "github.com/netbirdio/netbird/management/server/util"
-	"github.com/netbirdio/netbird/util"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	nbutil "github.com/Bee-Bros-Software/r-vpn/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 // storeFileName Store file name. Stored in the datadir

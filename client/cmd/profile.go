@@ -8,22 +8,22 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 var profileCmd = &cobra.Command{
 	Use:   "profile",
-	Short: "Manage NetBird client profiles",
+	Short: "Manage R-VPN client profiles",
 	Long:  `Commands to list, add, remove, and switch profiles. Profiles allow you to maintain different accounts in one client app.`,
 }
 
 var profileListCmd = &cobra.Command{
 	Use:     "list",
 	Short:   "List all profiles",
-	Long:    `List all available profiles in the NetBird client.`,
+	Long:    `List all available profiles in the R-VPN client.`,
 	Aliases: []string{"ls"},
 	RunE:    listProfilesFunc,
 }
@@ -31,7 +31,7 @@ var profileListCmd = &cobra.Command{
 var profileAddCmd = &cobra.Command{
 	Use:   "add <profile_name>",
 	Short: "Add a new profile",
-	Long:  `Add a new profile to the NetBird client. The profile name must be unique.`,
+	Long:  `Add a new profile to the R-VPN client. The profile name must be unique.`,
 	Args:  cobra.ExactArgs(1),
 	RunE:  addProfileFunc,
 }
@@ -39,7 +39,7 @@ var profileAddCmd = &cobra.Command{
 var profileRemoveCmd = &cobra.Command{
 	Use:   "remove <profile_name>",
 	Short: "Remove a profile",
-	Long:  `Remove a profile from the NetBird client. The profile must not be inactive.`,
+	Long:  `Remove a profile from the R-VPN client. The profile must not be inactive.`,
 	Args:  cobra.ExactArgs(1),
 	RunE:  removeProfileFunc,
 }

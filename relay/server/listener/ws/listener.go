@@ -11,8 +11,8 @@ import (
 	"github.com/coder/websocket"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/relay/protocol"
-	"github.com/netbirdio/netbird/shared/relay"
+	"github.com/Bee-Bros-Software/r-vpn/relay/protocol"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay"
 )
 
 const (

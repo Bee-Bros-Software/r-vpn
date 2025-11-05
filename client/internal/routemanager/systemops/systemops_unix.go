@@ -19,8 +19,8 @@ import (
 	"golang.org/x/net/route"
 	"golang.org/x/sys/unix"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 const (
@@ -98,7 +98,7 @@ func (r *SysOps) FlushMarkedRoutes() error {
 	}
 
 	if flushedCount > 0 {
-		log.Infof("Flushed %d residual NetBird routes from previous session", flushedCount)
+		log.Infof("Flushed %d residual R-VPN routes from previous session", flushedCount)
 	}
 
 	return nberrors.FormatErrorOrNil(merr)

@@ -9,11 +9,11 @@ import (
 
 	"github.com/golang-jwt/jwt/v5"
 
-	"github.com/netbirdio/netbird/base62"
-	nbjwt "github.com/netbirdio/netbird/management/server/auth/jwt"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/base62"
+	nbjwt "github.com/Bee-Bros-Software/r-vpn/management/server/auth/jwt"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 var _ Manager = (*manager)(nil)

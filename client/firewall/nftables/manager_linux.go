@@ -13,14 +13,14 @@ import (
 	"github.com/google/nftables/expr"
 	log "github.com/sirupsen/logrus"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 const (
 	// tableNameNetbird is the default name of the table that is used for filtering by the Netbird client
-	tableNameNetbird = "netbird"
+	tableNameNetbird = "rvpn"
 	// envTableName is the environment variable to override the table name
 	envTableName = "NB_NFTABLES_TABLE"
 
@@ -95,7 +95,7 @@ func (m *Manager) Init(stateManager *statemanager.Manager) error {
 
 	// We only need to record minimal interface state for potential recreation.
 	// Unlike iptables, which requires tracking individual rules, nftables maintains
-	// a known state (our netbird table plus a few static rules). This allows for easy
+	// a known state (our rvpn table plus a few static rules). This allows for easy
 	// cleanup using Close() without needing to store specific rules.
 	if err := stateManager.UpdateState(&ShutdownState{
 		InterfaceState: &InterfaceState{
@@ -198,7 +198,7 @@ func (m *Manager) RemoveNatRule(pair firewall.RouterPair) error {
 	return m.router.RemoveNatRule(pair)
 }
 
-// AllowNetbird allows netbird interface traffic
+// AllowNetbird allows rvpn interface traffic
 func (m *Manager) AllowNetbird() error {
 	if !m.wgIface.IsUserspaceBind() {
 		return nil
@@ -211,7 +211,7 @@ func (m *Manager) AllowNetbird() error {
 		return fmt.Errorf("create default allow rules: %w", err)
 	}
 	if err := m.rConn.Flush(); err != nil {
-		return fmt.Errorf("flush allow input netbird rules: %w", err)
+		return fmt.Errorf("flush allow input rvpn rules: %w", err)
 	}
 
 	return nil
@@ -232,7 +232,7 @@ func (m *Manager) Close(stateManager *statemanager.Manager) error {
 	}
 
 	if err := m.cleanupNetbirdTables(); err != nil {
-		return fmt.Errorf("cleanup netbird tables: %v", err)
+		return fmt.Errorf("cleanup rvpn tables: %v", err)
 	}
 
 	if err := m.rConn.Flush(); err != nil {
@@ -315,7 +315,7 @@ func (m *Manager) UpdateSet(set firewall.Set, prefixes []netip.Prefix) error {
 	return m.router.UpdateSet(set, prefixes)
 }
 
-// AddInboundDNAT adds an inbound DNAT rule redirecting traffic from NetBird peers to local services.
+// AddInboundDNAT adds an inbound DNAT rule redirecting traffic from R-VPN peers to local services.
 func (m *Manager) AddInboundDNAT(localAddr netip.Addr, protocol firewall.Protocol, sourcePort, targetPort uint16) error {
 	m.mutex.Lock()
 	defer m.mutex.Unlock()

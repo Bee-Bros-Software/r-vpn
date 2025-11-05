@@ -5,9 +5,9 @@ import (
 
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	"github.com/netbirdio/netbird/client/iface/bind"
-	"github.com/netbirdio/netbird/client/iface/netstack"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bind"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/netstack"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
 )
 
 func TestNewNetstackDevice(t *testing.T) {

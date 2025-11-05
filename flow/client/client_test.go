@@ -12,8 +12,8 @@ import (
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
 
-	flow "github.com/netbirdio/netbird/flow/client"
-	"github.com/netbirdio/netbird/flow/proto"
+	flow "github.com/Bee-Bros-Software/r-vpn/flow/client"
+	"github.com/Bee-Bros-Software/r-vpn/flow/proto"
 )
 
 type testServer struct {

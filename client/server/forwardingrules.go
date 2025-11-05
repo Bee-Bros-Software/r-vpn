@@ -3,8 +3,8 @@ package server
 import (
 	"context"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/proto"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
 )
 
 func (s *Server) ForwardingRules(context.Context, *proto.EmptyRequest) (*proto.ForwardingRulesResponse, error) {

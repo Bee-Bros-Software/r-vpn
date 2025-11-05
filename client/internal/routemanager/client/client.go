@@ -8,15 +8,15 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	nbdns "github.com/netbirdio/netbird/client/internal/dns"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/routemanager/common"
-	"github.com/netbirdio/netbird/client/internal/routemanager/dnsinterceptor"
-	"github.com/netbirdio/netbird/client/internal/routemanager/dynamic"
-	"github.com/netbirdio/netbird/client/internal/routemanager/iface"
-	"github.com/netbirdio/netbird/client/internal/routemanager/static"
-	"github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/route"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/client/internal/dns"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/common"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/dnsinterceptor"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/dynamic"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/static"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 const (

@@ -16,11 +16,11 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/management/server/auth"
-	nbjwt "github.com/netbirdio/netbird/management/server/auth/jwt"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/auth"
+	nbjwt "github.com/Bee-Bros-Software/r-vpn/management/server/auth/jwt"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 func TestAuthManager_GetAccountInfoFromPAT(t *testing.T) {

@@ -10,11 +10,11 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/upload-server/types"
+	"github.com/Bee-Bros-Software/r-vpn/upload-server/types"
 )
 
 const (
-	defaultDir = "/var/lib/netbird"
+	defaultDir = "/var/lib/rvpn"
 	putHandler = "/{dir}/{file}"
 )
 

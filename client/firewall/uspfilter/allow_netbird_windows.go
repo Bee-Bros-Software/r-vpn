@@ -10,7 +10,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 type action string
@@ -69,7 +69,7 @@ func (m *Manager) Close(*statemanager.Manager) error {
 	return nil
 }
 
-// AllowNetbird allows netbird interface traffic
+// AllowNetbird allows rvpn interface traffic
 func (m *Manager) AllowNetbird() error {
 	if !isWindowsFirewallReachable() {
 		return nil

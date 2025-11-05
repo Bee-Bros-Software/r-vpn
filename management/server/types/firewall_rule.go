@@ -9,8 +9,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	nbroute "github.com/netbirdio/netbird/route"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	nbroute "github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 const (

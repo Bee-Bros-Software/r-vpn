@@ -20,9 +20,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/internal/routemanager/vars"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/vars"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 type dialer interface {

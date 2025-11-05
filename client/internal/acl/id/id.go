@@ -7,7 +7,7 @@ import (
 	"net/netip"
 	"strconv"
 
-	"github.com/netbirdio/netbird/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
 )
 
 type RuleID string

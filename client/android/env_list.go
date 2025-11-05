@@ -1,6 +1,6 @@
 package android
 
-import "github.com/netbirdio/netbird/client/internal/peer"
+import "github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
 
 var (
 	// EnvKeyNBForceRelay Exported for Android java client

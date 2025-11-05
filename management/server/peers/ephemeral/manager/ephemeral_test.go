@@ -10,12 +10,12 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	nbAccount "github.com/netbirdio/netbird/management/server/account"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/route"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	nbAccount "github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 type MockStore struct {

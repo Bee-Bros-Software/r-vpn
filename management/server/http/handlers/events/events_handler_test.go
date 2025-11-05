@@ -13,12 +13,12 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
 
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/management/server/mock_server"
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/mock_server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 func initEventsTestData(account string, events ...*activity.Event) *handler {

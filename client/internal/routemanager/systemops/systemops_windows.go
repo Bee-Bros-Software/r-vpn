@@ -19,8 +19,8 @@ import (
 	"github.com/yusufpapurcu/wmi"
 	"golang.org/x/sys/windows"
 
-	"github.com/netbirdio/netbird/client/internal/statemanager"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 func init() {

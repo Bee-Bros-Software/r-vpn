@@ -17,7 +17,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	"github.com/netbirdio/netbird/util/embeddedroots"
+	"github.com/Bee-Bros-Software/r-vpn/util/embeddedroots"
 )
 
 // ErrConnectionShutdown indicates that the connection entered shutdown state before becoming ready

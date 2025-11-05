@@ -8,13 +8,13 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/netbirdio/netbird/management/server/account"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/route"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/shared/management/http/util"
-	"github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/route"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/util"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 const failedToConvertRoute = "failed to convert route to response: %v"

@@ -25,45 +25,45 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 
-	"github.com/netbirdio/management-integrations/integrations"
+	"github.com/rvpnio/management-integrations/integrations"
 
-	"github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/management/server/groups"
-	"github.com/netbirdio/netbird/management/server/peers/ephemeral/manager"
+	"github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/groups"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers/ephemeral/manager"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/iface/configurer"
-	"github.com/netbirdio/netbird/client/iface/device"
-	"github.com/netbirdio/netbird/client/iface/udpmux"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/iface/wgproxy"
-	"github.com/netbirdio/netbird/client/internal/dns"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/peer/guard"
-	icemaker "github.com/netbirdio/netbird/client/internal/peer/ice"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/internal/routemanager"
-	"github.com/netbirdio/netbird/client/ssh"
-	"github.com/netbirdio/netbird/client/system"
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/management/server"
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	"github.com/netbirdio/netbird/management/server/peers"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/monotime"
-	"github.com/netbirdio/netbird/route"
-	mgmt "github.com/netbirdio/netbird/shared/management/client"
-	mgmtProto "github.com/netbirdio/netbird/shared/management/proto"
-	relayClient "github.com/netbirdio/netbird/shared/relay/client"
-	signal "github.com/netbirdio/netbird/shared/signal/client"
-	"github.com/netbirdio/netbird/shared/signal/proto"
-	signalServer "github.com/netbirdio/netbird/signal/server"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/udpmux"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer/guard"
+	icemaker "github.com/Bee-Bros-Software/r-vpn/client/internal/peer/ice"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/ssh"
+	"github.com/Bee-Bros-Software/r-vpn/client/system"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/management/server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/monotime"
+	"github.com/Bee-Bros-Software/r-vpn/route"
+	mgmt "github.com/Bee-Bros-Software/r-vpn/shared/management/client"
+	mgmtProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	relayClient "github.com/Bee-Bros-Software/r-vpn/shared/relay/client"
+	signal "github.com/Bee-Bros-Software/r-vpn/shared/signal/client"
+	"github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	signalServer "github.com/Bee-Bros-Software/r-vpn/signal/server"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 var (
@@ -855,10 +855,10 @@ func TestEngine_UpdateNetworkMapWithDNSUpdate(t *testing.T) {
 					ServiceEnable: true,
 					CustomZones: []*mgmtProto.CustomZone{
 						{
-							Domain: "netbird.cloud.",
+							Domain: "rvpn.cloud.",
 							Records: []*mgmtProto.SimpleRecord{
 								{
-									Name:  "peer-a.netbird.cloud.",
+									Name:  "peer-a.rvpn.cloud.",
 									Type:  1,
 									Class: nbdns.DefaultClass,
 									TTL:   300,
@@ -887,10 +887,10 @@ func TestEngine_UpdateNetworkMapWithDNSUpdate(t *testing.T) {
 			expectedZonesLen: 1,
 			expectedZones: []nbdns.CustomZone{
 				{
-					Domain: "netbird.cloud.",
+					Domain: "rvpn.cloud.",
 					Records: []nbdns.SimpleRecord{
 						{
-							Name:  "peer-a.netbird.cloud.",
+							Name:  "peer-a.rvpn.cloud.",
 							Type:  1,
 							Class: nbdns.DefaultClass,
 							TTL:   300,
@@ -1584,7 +1584,7 @@ func startManagement(t *testing.T, dataDir, testFile string) (*grpc.Server, stri
 
 	groupsManager := groups.NewManagerMock()
 
-	accountManager, err := server.BuildManager(context.Background(), store, peersUpdateManager, nil, "", "netbird.selfhosted", eventStore, nil, false, ia, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
+	accountManager, err := server.BuildManager(context.Background(), store, peersUpdateManager, nil, "", "rvpn.selfhosted", eventStore, nil, false, ia, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
 	if err != nil {
 		return nil, "", err
 	}

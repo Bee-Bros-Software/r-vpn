@@ -16,8 +16,8 @@ import (
 	"gorm.io/gorm/clause"
 	"gorm.io/gorm/logger"
 
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 const (

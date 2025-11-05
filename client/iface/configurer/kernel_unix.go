@@ -12,7 +12,7 @@ import (
 	"golang.zx2c4.com/wireguard/wgctrl"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	"github.com/netbirdio/netbird/monotime"
+	"github.com/Bee-Bros-Software/r-vpn/monotime"
 )
 
 var zeroKey wgtypes.Key

@@ -5,7 +5,7 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/netbirdio/netbird/client/iface/netstack"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/netstack"
 )
 
 var (

@@ -9,7 +9,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/shared/context"
+	"github.com/Bee-Bros-Software/r-vpn/shared/context"
 )
 
 type ExecutionContext string
@@ -78,19 +78,19 @@ func (hook ContextHook) moduleName() string {
 		return info.Main.Path
 	}
 
-	return "netbird"
+	return "rvpn"
 }
 
 func (hook ContextHook) parseSrc(filePath string) string {
-	netbirdPath := strings.SplitAfter(filePath, hook.goModuleName)
-	if len(netbirdPath) > 1 {
-		return netbirdPath[len(netbirdPath)-1]
+	rvpnPath := strings.SplitAfter(filePath, hook.goModuleName)
+	if len(rvpnPath) > 1 {
+		return rvpnPath[len(rvpnPath)-1]
 	}
 
 	// in case of forked repo
-	netbirdPath = strings.SplitAfter(filePath, "netbird/")
-	if len(netbirdPath) > 1 {
-		return netbirdPath[len(netbirdPath)-1]
+	rvpnPath = strings.SplitAfter(filePath, "rvpn/")
+	if len(rvpnPath) > 1 {
+		return rvpnPath[len(rvpnPath)-1]
 	}
 
 	// in case if log entry is come from external pkg

@@ -1,7 +1,7 @@
-package NetBirdSDK
+package R-VPNSDK
 
 import (
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 // InitializeLog initializes the log file.

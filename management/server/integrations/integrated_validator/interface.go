@@ -3,9 +3,9 @@ package integrated_validator
 import (
 	"context"
 
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/shared/management/proto"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
 )
 
 // IntegratedValidator interface exists to avoid the circle dependencies

@@ -5,8 +5,8 @@ package debug
 import (
 	"fmt"
 
-	"github.com/netbirdio/netbird/client/anonymize"
-	"github.com/netbirdio/netbird/client/internal/routemanager/systemops"
+	"github.com/Bee-Bros-Software/r-vpn/client/anonymize"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/systemops"
 )
 
 // buildPlatformSpecificRouteTable builds headers and rows for Windows with interface metrics

@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/netbirdio/netbird/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
 )
 
 type PocketIdManager struct {

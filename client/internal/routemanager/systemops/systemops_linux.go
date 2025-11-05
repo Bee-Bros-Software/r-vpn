@@ -16,11 +16,11 @@ import (
 	"github.com/vishvananda/netlink"
 	"golang.org/x/sys/unix"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	"github.com/netbirdio/netbird/client/internal/routemanager/sysctl"
-	"github.com/netbirdio/netbird/client/internal/routemanager/vars"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/sysctl"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/vars"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 // IPRule contains IP rule information for debugging
@@ -46,7 +46,7 @@ const (
 	// NetbirdVPNTableID is the ID of the custom routing table used by Netbird.
 	NetbirdVPNTableID = 0x1BD0
 	// NetbirdVPNTableName is the name of the custom routing table used by Netbird.
-	NetbirdVPNTableName = "netbird"
+	NetbirdVPNTableName = "rvpn"
 
 	// rtTablesPath is the path to the file containing the routing table names.
 	rtTablesPath = "/etc/iproute2/rt_tables"
@@ -79,8 +79,8 @@ func getSetupRules() []ruleParams {
 	return []ruleParams{
 		{105, 0, syscall.RT_TABLE_MAIN, netlink.FAMILY_V4, false, 0, "rule with suppress prefixlen v4"},
 		{105, 0, syscall.RT_TABLE_MAIN, netlink.FAMILY_V6, false, 0, "rule with suppress prefixlen v6"},
-		{110, nbnet.ControlPlaneMark, NetbirdVPNTableID, netlink.FAMILY_V4, true, -1, "rule v4 netbird"},
-		{110, nbnet.ControlPlaneMark, NetbirdVPNTableID, netlink.FAMILY_V6, true, -1, "rule v6 netbird"},
+		{110, nbnet.ControlPlaneMark, NetbirdVPNTableID, netlink.FAMILY_V4, true, -1, "rule v4 rvpn"},
+		{110, nbnet.ControlPlaneMark, NetbirdVPNTableID, netlink.FAMILY_V6, true, -1, "rule v6 rvpn"},
 	}
 }
 
@@ -496,7 +496,7 @@ func routeTableToString(tableID int) string {
 	case syscall.RT_TABLE_LOCAL:
 		return "local"
 	case NetbirdVPNTableID:
-		return "netbird"
+		return "rvpn"
 	default:
 		return fmt.Sprintf("%d", tableID)
 	}
@@ -612,7 +612,7 @@ func ruleTableToString(table int) string {
 	case syscall.RT_TABLE_DEFAULT:
 		return "default"
 	case NetbirdVPNTableID:
-		return "netbird"
+		return "rvpn"
 	default:
 		return fmt.Sprintf("%d", table)
 	}
@@ -767,7 +767,7 @@ func EnableIPForwarding() error {
 }
 
 // entryExists checks if the specified ID or name already exists in the rt_tables file
-// and verifies if existing names start with "netbird_".
+// and verifies if existing names start with "rvpn_".
 func entryExists(file *os.File, id int) (bool, error) {
 	if _, err := file.Seek(0, 0); err != nil {
 		return false, fmt.Errorf("seek rt_tables: %w", err)

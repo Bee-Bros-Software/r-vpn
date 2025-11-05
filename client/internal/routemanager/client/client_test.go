@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/routemanager/common"
-	"github.com/netbirdio/netbird/client/internal/routemanager/static"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/common"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/static"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 func TestGetBestrouteFromStatuses(t *testing.T) {

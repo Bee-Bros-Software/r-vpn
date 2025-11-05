@@ -7,8 +7,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/netbirdio/netbird/management/server/util"
-	"github.com/netbirdio/netbird/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
 )
 
 // Peer represents a machine connected to the network.
@@ -27,7 +27,7 @@ type Peer struct {
 	// Name is peer's name (machine name)
 	Name string `gorm:"index"`
 	// DNSLabel is the parsed peer name for domain resolution. It is used to form an FQDN by appending the account's
-	// domain to the peer label. e.g. peer-dns-label.netbird.cloud
+	// domain to the peer label. e.g. peer-dns-label.rvpn.cloud
 	DNSLabel string // uniqueness index per accountID (check migrations)
 	// Status peer's management connection status
 	Status *PeerStatus `gorm:"embedded;embeddedPrefix:peer_status_"`

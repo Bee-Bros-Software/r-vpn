@@ -10,9 +10,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/exp/slices"
 
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/posture"
-	"github.com/netbirdio/netbird/management/server/types"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/posture"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 func TestAccount_getPeersByPolicy(t *testing.T) {

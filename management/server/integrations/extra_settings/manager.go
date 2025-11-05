@@ -3,7 +3,7 @@ package extra_settings
 import (
 	"context"
 
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 type Manager interface {

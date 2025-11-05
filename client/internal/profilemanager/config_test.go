@@ -11,9 +11,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/internal/routemanager/dynamic"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/dynamic"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 func TestGetConfig(t *testing.T) {
@@ -258,8 +258,8 @@ func TestUpdateOldManagementURL(t *testing.T) {
 		},
 		{
 			name:                  "No update needed when not using cloud management",
-			previousManagementURL: "https://netbird.example.com:33073",
-			expectedManagementURL: "https://netbird.example.com:33073",
+			previousManagementURL: "https://rvpn.example.com:33073",
+			expectedManagementURL: "https://rvpn.example.com:33073",
 			fileShouldNotChange:   true,
 		},
 	}

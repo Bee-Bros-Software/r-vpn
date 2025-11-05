@@ -10,15 +10,15 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/types"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 const (
@@ -785,7 +785,7 @@ func createNSManager(t *testing.T) (*DefaultAccountManager, error) {
 		AnyTimes()
 
 	permissionsManager := permissions.NewManager(store)
-	return BuildManager(context.Background(), store, NewPeersUpdateManager(nil), nil, "", "netbird.selfhosted", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
+	return BuildManager(context.Background(), store, NewPeersUpdateManager(nil), nil, "", "rvpn.selfhosted", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
 }
 
 func createNSStore(t *testing.T) (store.Store, error) {
@@ -804,9 +804,9 @@ func initTestNSAccount(t *testing.T, am *DefaultAccountManager) (*types.Account,
 	t.Helper()
 	peer1 := &nbpeer.Peer{
 		Key:  nsGroupPeer1Key,
-		Name: "test-host1@netbird.io",
+		Name: "test-host1@rsoftware.net",
 		Meta: nbpeer.PeerSystemMeta{
-			Hostname:  "test-host1@netbird.io",
+			Hostname:  "test-host1@rsoftware.net",
 			GoOS:      "linux",
 			Kernel:    "Linux",
 			Core:      "21.04",
@@ -818,9 +818,9 @@ func initTestNSAccount(t *testing.T, am *DefaultAccountManager) (*types.Account,
 	}
 	peer2 := &nbpeer.Peer{
 		Key:  nsGroupPeer2Key,
-		Name: "test-host2@netbird.io",
+		Name: "test-host2@rsoftware.net",
 		Meta: nbpeer.PeerSystemMeta{
-			Hostname:  "test-host2@netbird.io",
+			Hostname:  "test-host2@rsoftware.net",
 			GoOS:      "linux",
 			Kernel:    "Linux",
 			Core:      "21.04",

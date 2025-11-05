@@ -9,8 +9,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/client/anonymize"
-	mgmProto "github.com/netbirdio/netbird/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/anonymize"
+	mgmProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
 )
 
 func TestAnonymizeStateFile(t *testing.T) {
@@ -27,7 +27,7 @@ func TestAnonymizeStateFile(t *testing.T) {
 			"domain":         "test.example.com",
 			"uri":            "stun:stun.example.com:3478",
 			"uri_with_ip":    "turn:203.0.113.1:3478",
-			"netbird_domain": "device.netbird.cloud",
+			"rvpn_domain": "device.rvpn.cloud",
 
 			// Test CIDR ranges
 			"public_cidr":       "203.0.113.0/24",
@@ -166,7 +166,7 @@ func TestAnonymizeStateFile(t *testing.T) {
 	assert.Equal(t, "fd00::1", state["private_ipv6"]) // Private IPv6 unchanged
 	assert.NotEqual(t, "test.example.com", state["domain"])
 	assert.True(t, strings.HasSuffix(state["domain"].(string), ".domain"))
-	assert.Equal(t, "device.netbird.cloud", state["netbird_domain"]) // Netbird domain unchanged
+	assert.Equal(t, "device.rvpn.cloud", state["rvpn_domain"]) // Netbird domain unchanged
 
 	// CIDR ranges
 	assert.NotEqual(t, "203.0.113.0/24", state["public_cidr"])

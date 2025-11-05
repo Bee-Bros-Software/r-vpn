@@ -8,12 +8,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/client/firewall"
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/internal/acl/mocks"
-	"github.com/netbirdio/netbird/client/internal/netflow"
-	mgmProto "github.com/netbirdio/netbird/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/acl/mocks"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/netflow"
+	mgmProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
 )
 
 var flowLogger = netflow.NewManager(nil, []byte{}, nil).GetLogger()

@@ -6,13 +6,13 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/netbirdio/netbird/management/server/account"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/geolocation"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/shared/management/http/util"
-	"github.com/netbirdio/netbird/management/server/posture"
-	"github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/geolocation"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/util"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/posture"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 // postureChecksHandler is a handler that returns posture checks of the account.
@@ -164,7 +164,7 @@ func (p *postureChecksHandler) savePostureChecks(w http.ResponseWriter, r *http.
 	if geoLocationCheck := req.Checks.GeoLocationCheck; geoLocationCheck != nil {
 		if p.geolocationManager == nil {
 			util.WriteError(r.Context(), status.Errorf(status.PreconditionFailed, "Geo location database is not initialized. "+
-				"Check the self-hosted Geo database documentation at https://docs.netbird.io/selfhosted/geo-support"), w)
+				"Check the self-hosted Geo database documentation at https://docs.rsoftware.net/selfhosted/geo-support"), w)
 			return
 		}
 	}

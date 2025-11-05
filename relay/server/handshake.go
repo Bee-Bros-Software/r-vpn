@@ -6,11 +6,11 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/shared/relay/messages"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/messages"
 	//nolint:staticcheck
-	"github.com/netbirdio/netbird/shared/relay/messages/address"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/messages/address"
 	//nolint:staticcheck
-	authmsg "github.com/netbirdio/netbird/shared/relay/messages/auth"
+	authmsg "github.com/Bee-Bros-Software/r-vpn/shared/relay/messages/auth"
 )
 
 type Validator interface {

@@ -3,8 +3,8 @@
 package ebpf
 
 import (
-	"github.com/netbirdio/netbird/client/internal/ebpf/ebpf"
-	"github.com/netbirdio/netbird/client/internal/ebpf/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/ebpf/ebpf"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/ebpf/manager"
 )
 
 // GetEbpfManagerInstance is a wrapper function. This encapsulation is required because if the code import the internal

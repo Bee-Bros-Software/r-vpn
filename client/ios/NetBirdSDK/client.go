@@ -1,4 +1,4 @@
-package NetBirdSDK
+package R-VPNSDK
 
 import (
 	"context"
@@ -12,16 +12,16 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/exp/maps"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/auth"
-	"github.com/netbirdio/netbird/client/internal/dns"
-	"github.com/netbirdio/netbird/client/internal/listener"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/system"
-	"github.com/netbirdio/netbird/formatter"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/auth"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/listener"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/system"
+	"github.com/Bee-Bros-Software/r-vpn/formatter"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 // ConnectionListener export internal Listener for mobile
@@ -91,7 +91,7 @@ func NewClient(cfgFile, stateFile, deviceName string, osVersion string, osName s
 
 // Run start the internal client. It is a blocker function
 func (c *Client) Run(fd int32, interfaceName string) error {
-	log.Infof("Starting NetBird client")
+	log.Infof("Starting R-VPN client")
 	log.Debugf("Tunnel uses interface: %s", interfaceName)
 	cfg, err := profilemanager.UpdateOrCreateConfig(profilemanager.ConfigInput{
 		ConfigPath:    c.cfgFile,

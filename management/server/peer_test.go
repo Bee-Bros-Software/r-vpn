@@ -25,30 +25,30 @@ import (
 	"golang.org/x/exp/maps"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	"github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/management/server/http/testing/testing_tools"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	"github.com/netbirdio/netbird/management/server/mock_server"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/http/testing/testing_tools"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/mock_server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 
-	"github.com/netbirdio/netbird/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/util"
 
-	resourceTypes "github.com/netbirdio/netbird/management/server/networks/resources/types"
-	routerTypes "github.com/netbirdio/netbird/management/server/networks/routers/types"
-	networkTypes "github.com/netbirdio/netbird/management/server/networks/types"
+	resourceTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources/types"
+	routerTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers/types"
+	networkTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/types"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/management/server/activity"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/posture"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/types"
-	nbroute "github.com/netbirdio/netbird/route"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/shared/management/proto"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/posture"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	nbroute "github.com/Bee-Bros-Software/r-vpn/route"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
 )
 
 func TestPeer_LoginExpired(t *testing.T) {
@@ -1154,7 +1154,7 @@ func TestToSyncResponse(t *testing.T) {
 		{
 			Checks: posture.ChecksDefinition{
 				ProcessCheck: &posture.ProcessCheck{
-					Processes: []posture.Process{{LinuxPath: "/usr/bin/netbird"}},
+					Processes: []posture.Process{{LinuxPath: "/usr/bin/rvpn"}},
 				},
 			},
 		},
@@ -1168,7 +1168,7 @@ func TestToSyncResponse(t *testing.T) {
 	assert.Equal(t, "192.168.1.1/24", response.PeerConfig.Address)
 	assert.Equal(t, "peer1.example.com", response.PeerConfig.Fqdn)
 	assert.Equal(t, true, response.PeerConfig.SshConfig.SshEnabled)
-	// assert netbird config
+	// assert rvpn config
 	assert.Equal(t, "signal.uri", response.NetbirdConfig.Signal.Uri)
 	assert.Equal(t, proto.HostConfig_HTTPS, response.NetbirdConfig.Signal.GetProtocol())
 	assert.Equal(t, "stun.uri", response.NetbirdConfig.Stuns[0].Uri)
@@ -1239,7 +1239,7 @@ func TestToSyncResponse(t *testing.T) {
 	assert.Equal(t, "80", response.NetworkMap.FirewallRules[0].Port)
 	// assert posture checks
 	assert.Equal(t, 1, len(response.Checks))
-	assert.Equal(t, "/usr/bin/netbird", response.Checks[0].Files[0])
+	assert.Equal(t, "/usr/bin/rvpn", response.Checks[0].Files[0])
 	// assert network map ForwardingRules
 	assert.Equal(t, 1, len(response.NetworkMap.ForwardingRules))
 	assert.Equal(t, proto.RuleProtocol_TCP, response.NetworkMap.ForwardingRules[0].Protocol)
@@ -1271,7 +1271,7 @@ func Test_RegisterPeerByUser(t *testing.T) {
 	settingsMockManager := settings.NewMockManager(ctrl)
 	permissionsManager := permissions.NewManager(s)
 
-	am, err := BuildManager(context.Background(), s, NewPeersUpdateManager(nil), nil, "", "netbird.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
+	am, err := BuildManager(context.Background(), s, NewPeersUpdateManager(nil), nil, "", "rvpn.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
 	assert.NoError(t, err)
 
 	existingAccountID := "bf1c8084-ba50-4ce7-9439-34653001fc3b"
@@ -1351,7 +1351,7 @@ func Test_RegisterPeerBySetupKey(t *testing.T) {
 		AnyTimes()
 	permissionsManager := permissions.NewManager(s)
 
-	am, err := BuildManager(context.Background(), s, NewPeersUpdateManager(nil), nil, "", "netbird.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
+	am, err := BuildManager(context.Background(), s, NewPeersUpdateManager(nil), nil, "", "rvpn.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
 	assert.NoError(t, err)
 
 	existingAccountID := "bf1c8084-ba50-4ce7-9439-34653001fc3b"
@@ -1499,7 +1499,7 @@ func Test_RegisterPeerRollbackOnFailure(t *testing.T) {
 
 	permissionsManager := permissions.NewManager(s)
 
-	am, err := BuildManager(context.Background(), s, NewPeersUpdateManager(nil), nil, "", "netbird.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
+	am, err := BuildManager(context.Background(), s, NewPeersUpdateManager(nil), nil, "", "rvpn.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
 	assert.NoError(t, err)
 
 	existingAccountID := "bf1c8084-ba50-4ce7-9439-34653001fc3b"
@@ -1573,7 +1573,7 @@ func Test_LoginPeer(t *testing.T) {
 		AnyTimes()
 	permissionsManager := permissions.NewManager(s)
 
-	am, err := BuildManager(context.Background(), s, NewPeersUpdateManager(nil), nil, "", "netbird.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
+	am, err := BuildManager(context.Background(), s, NewPeersUpdateManager(nil), nil, "", "rvpn.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
 	assert.NoError(t, err)
 
 	existingAccountID := "bf1c8084-ba50-4ce7-9439-34653001fc3b"

@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	netbirdManager osManagerType = iota
+	rvpnManager osManagerType = iota
 	fileManager
 	networkManager
 	systemdManager
@@ -25,8 +25,8 @@ type osManagerType int
 
 func (t osManagerType) String() string {
 	switch t {
-	case netbirdManager:
-		return "netbird"
+	case rvpnManager:
+		return "rvpn"
 	case fileManager:
 		return "file"
 	case networkManager:
@@ -95,7 +95,7 @@ func getOSDNSManagerType() (osManagerType, error) {
 			return fileManager, nil
 		}
 		if strings.Contains(text, fileGeneratedResolvConfContentHeader) {
-			return netbirdManager, nil
+			return rvpnManager, nil
 		}
 		if strings.Contains(text, "NetworkManager") && isDbusListenerRunning(networkManagerDest, networkManagerDbusObjectNode) && isNetworkManagerSupported() {
 			return networkManager, nil

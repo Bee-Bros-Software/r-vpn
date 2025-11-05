@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 func TestLogin(t *testing.T) {

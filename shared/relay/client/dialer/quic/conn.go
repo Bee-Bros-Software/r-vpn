@@ -10,7 +10,7 @@ import (
 	"github.com/quic-go/quic-go"
 	log "github.com/sirupsen/logrus"
 
-	netErr "github.com/netbirdio/netbird/shared/relay/client/dialer/net"
+	netErr "github.com/Bee-Bros-Software/r-vpn/shared/relay/client/dialer/net"
 )
 
 const (

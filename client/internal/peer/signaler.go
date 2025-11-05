@@ -5,8 +5,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	signal "github.com/netbirdio/netbird/shared/signal/client"
-	sProto "github.com/netbirdio/netbird/shared/signal/proto"
+	signal "github.com/Bee-Bros-Software/r-vpn/shared/signal/client"
+	sProto "github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
 )
 
 type Signaler struct {

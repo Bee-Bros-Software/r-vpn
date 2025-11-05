@@ -16,14 +16,14 @@ import (
 	gstatus "google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/iface/configurer"
-	"github.com/netbirdio/netbird/client/internal/ingressgw"
-	"github.com/netbirdio/netbird/client/internal/relay"
-	"github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	relayClient "github.com/netbirdio/netbird/shared/relay/client"
-	"github.com/netbirdio/netbird/route"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/ingressgw"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/relay"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	relayClient "github.com/Bee-Bros-Software/r-vpn/shared/relay/client"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 const eventQueueSize = 10

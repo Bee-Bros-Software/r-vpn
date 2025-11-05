@@ -10,26 +10,26 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"golang.org/x/exp/maps"
 
-	nbcache "github.com/netbirdio/netbird/management/server/cache"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/permissions/modules"
-	"github.com/netbirdio/netbird/management/server/permissions/roles"
-	"github.com/netbirdio/netbird/management/server/users"
-	"github.com/netbirdio/netbird/management/server/util"
-	"github.com/netbirdio/netbird/shared/management/status"
+	nbcache "github.com/Bee-Bros-Software/r-vpn/management/server/cache"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/modules"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/roles"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/users"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/types"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/idp"
-	"github.com/netbirdio/netbird/management/server/integration_reference"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/idp"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integration_reference"
 )
 
 const (
@@ -1303,7 +1303,7 @@ func TestDefaultAccountManager_SaveUser(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 
 			// create an account and an admin user
-			account, err := manager.GetOrCreateAccountByUser(context.Background(), ownerUserID, "netbird.io")
+			account, err := manager.GetOrCreateAccountByUser(context.Background(), ownerUserID, "rsoftware.net")
 			if err != nil {
 				t.Fatal(err)
 			}

@@ -8,7 +8,7 @@ import (
 
 	"github.com/google/uuid"
 
-	nftypes "github.com/netbirdio/netbird/client/internal/netflow/types"
+	nftypes "github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
 )
 
 // BaseConnTrack provides common fields and locking for all connection types

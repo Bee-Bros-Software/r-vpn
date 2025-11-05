@@ -3,7 +3,7 @@
 package ice
 
 import (
-	"github.com/netbirdio/netbird/client/internal/stdnet"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/stdnet"
 )
 
 func newStdNet(_ stdnet.ExternalIFaceDiscover, ifaceBlacklist []string) (*stdnet.Net, error) {

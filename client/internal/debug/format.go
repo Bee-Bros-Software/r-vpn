@@ -7,10 +7,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/netbirdio/netbird/client/anonymize"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/routemanager/systemops"
-	"github.com/netbirdio/netbird/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/client/anonymize"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/systemops"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 )
 
 func formatInterfaces(interfaces []net.Interface, anonymize bool, anonymizer *anonymize.Anonymizer) string {

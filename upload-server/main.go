@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/netbirdio/netbird/upload-server/server"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/upload-server/server"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 func main() {

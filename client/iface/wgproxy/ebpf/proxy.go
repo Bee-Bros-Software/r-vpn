@@ -14,12 +14,12 @@ import (
 	"github.com/pion/transport/v3"
 	log "github.com/sirupsen/logrus"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	"github.com/netbirdio/netbird/client/iface/bufsize"
-	"github.com/netbirdio/netbird/client/iface/wgproxy/rawsocket"
-	"github.com/netbirdio/netbird/client/internal/ebpf"
-	ebpfMgr "github.com/netbirdio/netbird/client/internal/ebpf/manager"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bufsize"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy/rawsocket"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/ebpf"
+	ebpfMgr "github.com/Bee-Bros-Software/r-vpn/client/internal/ebpf/manager"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 const (

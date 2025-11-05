@@ -10,8 +10,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/upload-server/server"
-	"github.com/netbirdio/netbird/upload-server/types"
+	"github.com/Bee-Bros-Software/r-vpn/upload-server/server"
+	"github.com/Bee-Bros-Software/r-vpn/upload-server/types"
 )
 
 func TestUpload(t *testing.T) {

@@ -20,25 +20,25 @@ import (
 	"google.golang.org/grpc/peer"
 	"google.golang.org/grpc/status"
 
-	integrationsConfig "github.com/netbirdio/management-integrations/integrations/config"
-	nbconfig "github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/management/server/peers/ephemeral"
+	integrationsConfig "github.com/rvpnio/management-integrations/integrations/config"
+	nbconfig "github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers/ephemeral"
 
-	"github.com/netbirdio/netbird/management/server/integrations/integrated_validator"
-	"github.com/netbirdio/netbird/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/integrated_validator"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
 
-	"github.com/netbirdio/netbird/encryption"
-	"github.com/netbirdio/netbird/management/server/account"
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/auth"
-	nbContext "github.com/netbirdio/netbird/management/server/context"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/posture"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/shared/management/proto"
-	internalStatus "github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/encryption"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/auth"
+	nbContext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/posture"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	internalStatus "github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 const (
@@ -727,7 +727,7 @@ func toSyncResponse(ctx context.Context, config *nbconfig.Config, peer *nbpeer.P
 	}
 
 	nbConfig := toNetbirdConfig(config, turnCredentials, relayCredentials, extraSettings)
-	extendedConfig := integrationsConfig.ExtendNetBirdConfig(peer.ID, peerGroups, nbConfig, extraSettings)
+	extendedConfig := integrationsConfig.ExtendR-VPNConfig(peer.ID, peerGroups, nbConfig, extraSettings)
 	response.NetbirdConfig = extendedConfig
 
 	response.NetworkMap.PeerConfig = response.PeerConfig

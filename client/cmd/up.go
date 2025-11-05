@@ -17,14 +17,14 @@ import (
 	gstatus "google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/durationpb"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/client/system"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/system"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 const (
@@ -53,8 +53,8 @@ var (
 
 	upCmd = &cobra.Command{
 		Use:   "up",
-		Short: "Connect to the NetBird network",
-		Long:  "Connect to the NetBird network using the provided setup key or SSO auth. This command will bring up the WireGuard interface, connect to the management server, and establish peer-to-peer connections with other peers in the network if required.",
+		Short: "Connect to the R-VPN network",
+		Long:  "Connect to the R-VPN network using the provided setup key or SSO auth. This command will bring up the WireGuard interface, connect to the management server, and establish peer-to-peer connections with other peers in the network if required.",
 		RunE:  upFunc,
 	}
 )
@@ -81,7 +81,7 @@ func init() {
 
 	upCmd.PersistentFlags().BoolVar(&noBrowser, noBrowserFlag, false, noBrowserDesc)
 	upCmd.PersistentFlags().StringVar(&profileName, profileNameFlag, "", profileNameDesc)
-	upCmd.PersistentFlags().StringVarP(&configPath, "config", "c", "", "(DEPRECATED) NetBird config file location. ")
+	upCmd.PersistentFlags().StringVarP(&configPath, "config", "c", "", "(DEPRECATED) R-VPN config file location. ")
 
 }
 
@@ -206,7 +206,7 @@ func runInForegroundMode(ctx context.Context, cmd *cobra.Command, activeProf *pr
 func runInDaemonMode(ctx context.Context, cmd *cobra.Command, pm *profilemanager.ProfileManager, activeProf *profilemanager.Profile, profileSwitched bool) error {
 	// Check if deprecated config flag is set and show warning
 	if cmd.Flag("config").Changed && configPath != "" {
-		cmd.PrintErrf("Warning: Config flag is deprecated on up command, it should be set as a service argument with $NB_CONFIG environment or with \"-config\" flag; netbird service reconfigure --service-env=\"NB_CONFIG=<file_path>\" or netbird service run --config=<file_path>\n")
+		cmd.PrintErrf("Warning: Config flag is deprecated on up command, it should be set as a service argument with $NB_CONFIG environment or with \"-config\" flag; rvpn service reconfigure --service-env=\"NB_CONFIG=<file_path>\" or rvpn service run --config=<file_path>\n")
 	}
 
 	customDNSAddressConverted, err := parseCustomDNSAddress(cmd.Flag(dnsResolverAddress).Changed)
@@ -218,7 +218,7 @@ func runInDaemonMode(ctx context.Context, cmd *cobra.Command, pm *profilemanager
 	if err != nil {
 		return fmt.Errorf("failed to connect to daemon error: %v\n"+
 			"If the daemon is not running please run: "+
-			"\nnetbird service install \nnetbird service start\n", err)
+			"\nrvpn service install \nrvpn service start\n", err)
 	}
 	defer func() {
 		err := conn.Close()

@@ -14,9 +14,9 @@ import (
 	"github.com/coder/websocket"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/shared/relay"
-	"github.com/netbirdio/netbird/util/embeddedroots"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay"
+	"github.com/Bee-Bros-Software/r-vpn/util/embeddedroots"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 type Dialer struct {

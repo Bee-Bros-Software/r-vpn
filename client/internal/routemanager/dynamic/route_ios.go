@@ -9,9 +9,9 @@ import (
 
 	"github.com/miekg/dns"
 
-	nbdns "github.com/netbirdio/netbird/client/internal/dns"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/client/internal/dns"
 
-	"github.com/netbirdio/netbird/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 )
 
 const dialTimeout = 10 * time.Second

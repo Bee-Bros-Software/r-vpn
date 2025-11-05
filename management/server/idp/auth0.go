@@ -15,7 +15,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/netbirdio/netbird/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
 
 	log "github.com/sirupsen/logrus"
 )

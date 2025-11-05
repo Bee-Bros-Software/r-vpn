@@ -11,9 +11,9 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/shared/relay/auth/hmac"
-	"github.com/netbirdio/netbird/shared/relay/client"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/auth/hmac"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/client"
 )
 
 var (

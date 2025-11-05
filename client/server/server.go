@@ -23,16 +23,16 @@ import (
 	gstatus "google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	"github.com/netbirdio/netbird/client/internal/auth"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/system"
-	mgm "github.com/netbirdio/netbird/shared/management/client"
-	"github.com/netbirdio/netbird/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/auth"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/system"
+	mgm "github.com/Bee-Bros-Software/r-vpn/shared/management/client"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 )
 
 const (
@@ -1424,9 +1424,9 @@ func toProtoFullStatus(fullStatus peer.FullStatus) *proto.FullStatus {
 }
 
 // sendTerminalNotification sends a terminal notification message
-// to inform the user that the NetBird connection session has expired.
+// to inform the user that the R-VPN connection session has expired.
 func sendTerminalNotification() error {
-	message := "NetBird connection session expired\n\nPlease re-authenticate to connect to the network."
+	message := "R-VPN connection session expired\n\nPlease re-authenticate to connect to the network."
 	echoCmd := exec.Command("echo", message)
 	wallCmd := exec.Command("sudo", "wall")
 

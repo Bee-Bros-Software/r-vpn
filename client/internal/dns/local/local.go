@@ -10,9 +10,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/exp/maps"
 
-	"github.com/netbirdio/netbird/client/internal/dns/types"
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns/types"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 )
 
 type Resolver struct {

@@ -11,8 +11,8 @@ import (
 	"github.com/google/gopacket/layers"
 	"github.com/google/uuid"
 
-	nblog "github.com/netbirdio/netbird/client/firewall/uspfilter/log"
-	nftypes "github.com/netbirdio/netbird/client/internal/netflow/types"
+	nblog "github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter/log"
+	nftypes "github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
 )
 
 const (

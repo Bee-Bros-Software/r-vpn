@@ -8,13 +8,13 @@ import (
 
 	"github.com/rs/xid"
 
-	nbDomain "github.com/netbirdio/netbird/shared/management/domain"
-	routerTypes "github.com/netbirdio/netbird/management/server/networks/routers/types"
-	networkTypes "github.com/netbirdio/netbird/management/server/networks/types"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/route"
+	nbDomain "github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	routerTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers/types"
+	networkTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/types"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 
-	"github.com/netbirdio/netbird/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
 )
 
 type NetworkResourceType string

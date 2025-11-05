@@ -1,8 +1,8 @@
 package roles
 
 import (
-	"github.com/netbirdio/netbird/management/server/permissions/operations"
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions/operations"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 var Owner = RolePermissions{

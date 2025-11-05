@@ -9,11 +9,11 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/internal/lazyconn"
-	"github.com/netbirdio/netbird/client/internal/lazyconn/manager"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/peerstore"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/lazyconn"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/lazyconn/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peerstore"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 // ConnMgr coordinates both lazy connections (established on-demand) and permanent peer connections.

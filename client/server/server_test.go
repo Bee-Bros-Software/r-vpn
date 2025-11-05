@@ -13,32 +13,32 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/otel"
 
-	"github.com/netbirdio/management-integrations/integrations"
+	"github.com/rvpnio/management-integrations/integrations"
 
-	"github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/management/server/groups"
-	"github.com/netbirdio/netbird/management/server/peers/ephemeral/manager"
+	"github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/groups"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers/ephemeral/manager"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	daemonProto "github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/management/server"
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	"github.com/netbirdio/netbird/management/server/peers"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	mgmtProto "github.com/netbirdio/netbird/shared/management/proto"
-	"github.com/netbirdio/netbird/shared/signal/proto"
-	signalServer "github.com/netbirdio/netbird/signal/server"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	daemonProto "github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/management/server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	mgmtProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	signalServer "github.com/Bee-Bros-Software/r-vpn/signal/server"
 )
 
 var (
@@ -311,7 +311,7 @@ func startManagement(t *testing.T, signalAddr string, counter *int) (*grpc.Serve
 	settingsMockManager := settings.NewMockManager(ctrl)
 	groupsManager := groups.NewManagerMock()
 
-	accountManager, err := server.BuildManager(context.Background(), store, peersUpdateManager, nil, "", "netbird.selfhosted", eventStore, nil, false, ia, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManagerMock, false)
+	accountManager, err := server.BuildManager(context.Background(), store, peersUpdateManager, nil, "", "rvpn.selfhosted", eventStore, nil, false, ia, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManagerMock, false)
 	if err != nil {
 		return nil, "", err
 	}

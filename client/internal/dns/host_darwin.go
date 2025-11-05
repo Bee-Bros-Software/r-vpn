@@ -15,11 +15,11 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/exp/maps"
 
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 const (
-	netbirdDNSStateKeyFormat            = "State:/Network/Service/NetBird-%s/DNS"
+	rvpnDNSStateKeyFormat            = "State:/Network/Service/R-VPN-%s/DNS"
 	globalIPv4State                     = "State:/Network/Global/IPv4"
 	primaryServiceStateKeyFormat        = "State:/Network/Service/%s/DNS"
 	keySupplementalMatchDomains         = "SupplementalMatchDomains"
@@ -79,7 +79,7 @@ func (s *systemConfigurator) applyDNSConfig(config HostDNSConfig, stateManager *
 		searchDomains = append(searchDomains, strings.TrimSuffix(""+dConf.Domain, "."))
 	}
 
-	matchKey := getKeyWithInput(netbirdDNSStateKeyFormat, matchSuffix)
+	matchKey := getKeyWithInput(rvpnDNSStateKeyFormat, matchSuffix)
 	var err error
 	if len(matchDomains) != 0 {
 		err = s.addMatchDomains(matchKey, strings.Join(matchDomains, " "), config.ServerIP, config.ServerPort)
@@ -92,7 +92,7 @@ func (s *systemConfigurator) applyDNSConfig(config HostDNSConfig, stateManager *
 	}
 	s.updateState(stateManager)
 
-	searchKey := getKeyWithInput(netbirdDNSStateKeyFormat, searchSuffix)
+	searchKey := getKeyWithInput(rvpnDNSStateKeyFormat, searchSuffix)
 	if len(searchDomains) != 0 {
 		err = s.addSearchDomains(searchKey, strings.Join(searchDomains, " "), config.ServerIP, config.ServerPort)
 	} else {
@@ -145,7 +145,7 @@ func (s *systemConfigurator) restoreHostDNS() error {
 func (s *systemConfigurator) getRemovableKeysWithDefaults() []string {
 	if len(s.createdKeys) == 0 {
 		// return defaults for startup calls
-		return []string{getKeyWithInput(netbirdDNSStateKeyFormat, searchSuffix), getKeyWithInput(netbirdDNSStateKeyFormat, matchSuffix)}
+		return []string{getKeyWithInput(rvpnDNSStateKeyFormat, searchSuffix), getKeyWithInput(rvpnDNSStateKeyFormat, matchSuffix)}
 	}
 
 	keys := make([]string, 0, len(s.createdKeys))
@@ -173,7 +173,7 @@ func (s *systemConfigurator) addLocalDNS() error {
 			return fmt.Errorf("recordSystemDNSSettings(): %w", err)
 		}
 	}
-	localKey := getKeyWithInput(netbirdDNSStateKeyFormat, localSuffix)
+	localKey := getKeyWithInput(rvpnDNSStateKeyFormat, localSuffix)
 	if !s.systemDNSSettings.ServerIP.IsValid() || len(s.systemDNSSettings.Domains) == 0 {
 		log.Info("Not enabling local DNS server")
 		return nil

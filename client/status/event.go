@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/netbirdio/netbird/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
 )
 
 type SystemEventOutput struct {

@@ -15,7 +15,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/zcalusic/sysinfo"
 
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 )
 
 var (

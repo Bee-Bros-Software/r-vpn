@@ -13,7 +13,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/sys/unix"
 
-	"github.com/netbirdio/netbird/client/internal/routemanager/systemops"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/systemops"
 )
 
 // todo: refactor to not use static functions

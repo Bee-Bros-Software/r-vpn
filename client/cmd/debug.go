@@ -10,15 +10,15 @@ import (
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc/status"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/debug"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/client/server"
-	nbstatus "github.com/netbirdio/netbird/client/status"
-	mgmProto "github.com/netbirdio/netbird/shared/management/proto"
-	"github.com/netbirdio/netbird/upload-server/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/debug"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/server"
+	nbstatus "github.com/Bee-Bros-Software/r-vpn/client/status"
+	mgmProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/upload-server/types"
 )
 
 const errCloseConnection = "Failed to close connection: %v"
@@ -33,12 +33,12 @@ var (
 var debugCmd = &cobra.Command{
 	Use:   "debug",
 	Short: "Debugging commands",
-	Long:  "Commands for debugging and logging within the NetBird daemon.",
+	Long:  "Commands for debugging and logging within the R-VPN daemon.",
 }
 
 var debugBundleCmd = &cobra.Command{
 	Use:     "bundle",
-	Example: "  netbird debug bundle",
+	Example: "  rvpn debug bundle",
 	Short:   "Create a debug bundle",
 	Long:    "Generates a compressed archive of the daemon's logs and status for debugging purposes.",
 	RunE:    debugBundle,
@@ -46,8 +46,8 @@ var debugBundleCmd = &cobra.Command{
 
 var logCmd = &cobra.Command{
 	Use:   "log",
-	Short: "Manage logging for the NetBird daemon",
-	Long:  `Commands to manage logging settings for the NetBird daemon, including ICE, gRPC, and general log levels.`,
+	Short: "Manage logging for the R-VPN daemon",
+	Long:  `Commands to manage logging settings for the R-VPN daemon, including ICE, gRPC, and general log levels.`,
 }
 
 var logLevelCmd = &cobra.Command{
@@ -70,7 +70,7 @@ var forCmd = &cobra.Command{
 	Use:     "for <time>",
 	Short:   "Run debug logs for a specified duration and create a debug bundle",
 	Long:    `Sets the logging level to trace, runs for the specified duration, and then generates a debug bundle.`,
-	Example: "  netbird debug for 5m",
+	Example: "  rvpn debug for 5m",
 	Args:    cobra.ExactArgs(1),
 	RunE:    runForDuration,
 }
@@ -79,7 +79,7 @@ var persistenceCmd = &cobra.Command{
 	Use:     "persistence [on|off]",
 	Short:   "Set sync response memory persistence",
 	Long:    `Configure whether the latest sync response should persist in memory. When enabled, the last known sync response will be kept in memory.`,
-	Example: "  netbird debug persistence on",
+	Example: "  rvpn debug persistence on",
 	Args:    cobra.ExactArgs(1),
 	RunE:    setSyncResponsePersistence,
 }
@@ -184,7 +184,7 @@ func runForDuration(cmd *cobra.Command, args []string) error {
 		if _, err := client.Up(cmd.Context(), &proto.UpRequest{}); err != nil {
 			return fmt.Errorf("failed to up: %v", status.Convert(err).Message())
 		}
-		cmd.Println("netbird up")
+		cmd.Println("rvpn up")
 		time.Sleep(time.Second * 10)
 	}
 
@@ -202,7 +202,7 @@ func runForDuration(cmd *cobra.Command, args []string) error {
 	if _, err := client.Down(cmd.Context(), &proto.DownRequest{}); err != nil {
 		return fmt.Errorf("failed to down: %v", status.Convert(err).Message())
 	}
-	cmd.Println("netbird down")
+	cmd.Println("rvpn down")
 
 	time.Sleep(1 * time.Second)
 
@@ -216,11 +216,11 @@ func runForDuration(cmd *cobra.Command, args []string) error {
 	if _, err := client.Up(cmd.Context(), &proto.UpRequest{}); err != nil {
 		return fmt.Errorf("failed to up: %v", status.Convert(err).Message())
 	}
-	cmd.Println("netbird up")
+	cmd.Println("rvpn up")
 
 	time.Sleep(3 * time.Second)
 
-	headerPostUp := fmt.Sprintf("----- NetBird post-up - Timestamp: %s", time.Now().Format(time.RFC3339))
+	headerPostUp := fmt.Sprintf("----- R-VPN post-up - Timestamp: %s", time.Now().Format(time.RFC3339))
 	statusOutput := fmt.Sprintf("%s\n%s", headerPostUp, getStatusOutput(cmd, anonymizeFlag))
 
 	if waitErr := waitForDurationOrCancel(cmd.Context(), duration, cmd); waitErr != nil {
@@ -230,7 +230,7 @@ func runForDuration(cmd *cobra.Command, args []string) error {
 
 	cmd.Println("Creating debug bundle...")
 
-	headerPreDown := fmt.Sprintf("----- NetBird pre-down - Timestamp: %s - Duration: %s", time.Now().Format(time.RFC3339), duration)
+	headerPreDown := fmt.Sprintf("----- R-VPN pre-down - Timestamp: %s - Duration: %s", time.Now().Format(time.RFC3339), duration)
 	statusOutput = fmt.Sprintf("%s\n%s\n%s", statusOutput, headerPreDown, getStatusOutput(cmd, anonymizeFlag))
 	request := &proto.DebugBundleRequest{
 		Anonymize:    anonymizeFlag,
@@ -250,7 +250,7 @@ func runForDuration(cmd *cobra.Command, args []string) error {
 		if _, err := client.Down(cmd.Context(), &proto.DownRequest{}); err != nil {
 			return fmt.Errorf("failed to down: %v", status.Convert(err).Message())
 		}
-		cmd.Println("netbird down")
+		cmd.Println("rvpn down")
 	}
 
 	if !initialLevelTrace {

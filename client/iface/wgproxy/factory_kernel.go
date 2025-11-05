@@ -5,8 +5,8 @@ package wgproxy
 import (
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/iface/wgproxy/ebpf"
-	udpProxy "github.com/netbirdio/netbird/client/iface/wgproxy/udp"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy/ebpf"
+	udpProxy "github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy/udp"
 )
 
 type KernelFactory struct {

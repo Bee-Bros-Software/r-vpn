@@ -22,7 +22,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
 )
 
 const (
@@ -78,7 +78,7 @@ var (
 	updateSettingsDisabled  bool
 
 	rootCmd = &cobra.Command{
-		Use:          "netbird",
+		Use:          "rvpn",
 		Short:        "",
 		Long:         "",
 		SilenceUsage: true,
@@ -91,8 +91,8 @@ func Execute() error {
 }
 
 func init() {
-	defaultConfigPathDir = "/etc/netbird/"
-	defaultLogFileDir = "/var/log/netbird/"
+	defaultConfigPathDir = "/etc/rvpn/"
+	defaultLogFileDir = "/var/log/rvpn/"
 
 	oldDefaultConfigPathDir = "/etc/wiretrustee/"
 	oldDefaultLogFileDir = "/var/log/wiretrustee/"
@@ -105,7 +105,7 @@ func init() {
 		oldDefaultConfigPathDir = os.Getenv("PROGRAMDATA") + "\\Wiretrustee\\"
 		oldDefaultLogFileDir = os.Getenv("PROGRAMDATA") + "\\Wiretrustee\\"
 	case "freebsd":
-		defaultConfigPathDir = "/var/db/netbird/"
+		defaultConfigPathDir = "/var/db/rvpn/"
 	}
 
 	defaultConfigPath = defaultConfigPathDir + "config.json"
@@ -114,7 +114,7 @@ func init() {
 	oldDefaultConfigPath = oldDefaultConfigPathDir + "config.json"
 	oldDefaultLogFile = oldDefaultLogFileDir + "client.log"
 
-	defaultDaemonAddr := "unix:///var/run/netbird.sock"
+	defaultDaemonAddr := "unix:///var/run/rvpn.sock"
 	if runtime.GOOS == "windows" {
 		defaultDaemonAddr = "tcp://127.0.0.1:41731"
 	}
@@ -122,14 +122,14 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&daemonAddr, "daemon-addr", defaultDaemonAddr, "Daemon service address to serve CLI requests [unix|tcp]://[path|host:port]")
 	rootCmd.PersistentFlags().StringVarP(&managementURL, "management-url", "m", "", fmt.Sprintf("Management Service URL [http|https]://[host]:[port] (default \"%s\")", profilemanager.DefaultManagementURL))
 	rootCmd.PersistentFlags().StringVar(&adminURL, "admin-url", "", fmt.Sprintf("Admin Panel URL [http|https]://[host]:[port] (default \"%s\")", profilemanager.DefaultAdminURL))
-	rootCmd.PersistentFlags().StringVarP(&logLevel, "log-level", "l", "info", "sets NetBird log level")
-	rootCmd.PersistentFlags().StringSliceVar(&logFiles, "log-file", []string{defaultLogFile}, "sets NetBird log paths written to simultaneously. If `console` is specified the log will be output to stdout. If `syslog` is specified the log will be sent to syslog daemon. You can pass the flag multiple times or separate entries by `,` character")
+	rootCmd.PersistentFlags().StringVarP(&logLevel, "log-level", "l", "info", "sets R-VPN log level")
+	rootCmd.PersistentFlags().StringSliceVar(&logFiles, "log-file", []string{defaultLogFile}, "sets R-VPN log paths written to simultaneously. If `console` is specified the log will be output to stdout. If `syslog` is specified the log will be sent to syslog daemon. You can pass the flag multiple times or separate entries by `,` character")
 	rootCmd.PersistentFlags().StringVarP(&setupKey, "setup-key", "k", "", "Setup key obtained from the Management Service Dashboard (used to register peer)")
 	rootCmd.PersistentFlags().StringVar(&setupKeyPath, "setup-key-file", "", "The path to a setup key obtained from the Management Service Dashboard (used to register peer) This is ignored if the setup-key flag is provided.")
 	rootCmd.MarkFlagsMutuallyExclusive("setup-key", "setup-key-file")
 	rootCmd.PersistentFlags().StringVar(&preSharedKey, preSharedKeyFlag, "", "Sets WireGuard PreSharedKey property. If set, then only peers that have the same key can communicate.")
 	rootCmd.PersistentFlags().StringVarP(&hostName, "hostname", "n", "", "Sets a custom hostname for the device")
-	rootCmd.PersistentFlags().BoolVarP(&anonymizeFlag, "anonymize", "A", false, "anonymize IP addresses and non-netbird.io domains in logs and status output")
+	rootCmd.PersistentFlags().BoolVarP(&anonymizeFlag, "anonymize", "A", false, "anonymize IP addresses and non-rsoftware.net domains in logs and status output")
 	rootCmd.PersistentFlags().StringVarP(&configPath, "config", "c", defaultConfigPath, "Overrides the default profile file location")
 
 	rootCmd.AddCommand(upCmd)
@@ -169,7 +169,7 @@ func init() {
 			`or --external-ip-map ""`,
 	)
 	upCmd.PersistentFlags().StringVar(&customDNSAddress, dnsResolverAddress, "",
-		`Sets a custom address for NetBird's local DNS resolver. `+
+		`Sets a custom address for R-VPN's local DNS resolver. `+
 			`If set, the agent won't attempt to discover the best ip and port to listen on. `+
 			`An empty string "" clears the previous configuration. `+
 			`E.g. --dns-resolver-address 127.0.0.1:5053 or --dns-resolver-address ""`,
@@ -392,7 +392,7 @@ func getClient(cmd *cobra.Command) (*grpc.ClientConn, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to daemon error: %v\n"+
 			"If the daemon is not running please run: "+
-			"\nnetbird service install \nnetbird service start\n", err)
+			"\nrvpn service install \nrvpn service start\n", err)
 	}
 
 	return conn, nil

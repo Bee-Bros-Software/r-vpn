@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/netip"
 
-	"github.com/netbirdio/netbird/client/internal/dns"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns"
 )
 
 // DNSList is a wrapper of []netip.AddrPort with default DNS port

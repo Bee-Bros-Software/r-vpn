@@ -18,24 +18,24 @@ import (
 	"google.golang.org/grpc/codes"
 	gstatus "google.golang.org/grpc/status"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/iface/device"
-	"github.com/netbirdio/netbird/client/internal/dns"
-	"github.com/netbirdio/netbird/client/internal/listener"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/internal/stdnet"
-	nbnet "github.com/netbirdio/netbird/client/net"
-	cProto "github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/client/ssh"
-	"github.com/netbirdio/netbird/client/system"
-	mgm "github.com/netbirdio/netbird/shared/management/client"
-	mgmProto "github.com/netbirdio/netbird/shared/management/proto"
-	"github.com/netbirdio/netbird/shared/relay/auth/hmac"
-	relayClient "github.com/netbirdio/netbird/shared/relay/client"
-	signal "github.com/netbirdio/netbird/shared/signal/client"
-	"github.com/netbirdio/netbird/util"
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/listener"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/stdnet"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
+	cProto "github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/ssh"
+	"github.com/Bee-Bros-Software/r-vpn/client/system"
+	mgm "github.com/Bee-Bros-Software/r-vpn/shared/management/client"
+	mgmProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/auth/hmac"
+	relayClient "github.com/Bee-Bros-Software/r-vpn/shared/relay/client"
+	signal "github.com/Bee-Bros-Software/r-vpn/shared/signal/client"
+	"github.com/Bee-Bros-Software/r-vpn/util"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 )
 
 type ConnectClient struct {
@@ -121,7 +121,7 @@ func (c *ConnectClient) run(mobileDependency MobileDependency, runningChan chan 
 		}
 	}()
 
-	log.Infof("starting NetBird client version %s on %s/%s", version.NetbirdVersion(), runtime.GOOS, runtime.GOARCH)
+	log.Infof("starting R-VPN client version %s on %s/%s", version.NetbirdVersion(), runtime.GOOS, runtime.GOARCH)
 
 	nbnet.Init()
 
@@ -305,7 +305,7 @@ func (c *ConnectClient) run(mobileDependency MobileDependency, runningChan chan 
 
 		backOff.Reset()
 
-		log.Info("stopped NetBird client")
+		log.Info("stopped R-VPN client")
 
 		if _, err := state.Status(); errors.Is(err, ErrResetConnection) {
 			return err
@@ -566,7 +566,7 @@ func closeConnWithLog(conn *net.UDPConn) {
 	startClosing := time.Now()
 	err := conn.Close()
 	if err != nil {
-		log.Warnf("closing probe port %d failed: %v. NetBird will still attempt to use this port for connection.", conn.LocalAddr().(*net.UDPAddr).Port, err)
+		log.Warnf("closing probe port %d failed: %v. R-VPN will still attempt to use this port for connection.", conn.LocalAddr().(*net.UDPAddr).Port, err)
 	}
 	if time.Since(startClosing) > time.Second {
 		log.Warnf("closing the testing port %d took %s. Usually it is safe to ignore, but continuous warnings may indicate a problem.", conn.LocalAddr().(*net.UDPAddr).Port, time.Since(startClosing))

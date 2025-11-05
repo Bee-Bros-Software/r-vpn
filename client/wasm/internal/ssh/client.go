@@ -12,7 +12,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/crypto/ssh"
 
-	netbird "github.com/netbirdio/netbird/client/embed"
+	rvpn "github.com/Bee-Bros-Software/r-vpn/client/embed"
 )
 
 const (
@@ -28,7 +28,7 @@ func closeWithLog(c io.Closer, resource string) {
 }
 
 type Client struct {
-	nbClient  *netbird.Client
+	nbClient  *rvpn.Client
 	sshClient *ssh.Client
 	session   *ssh.Session
 	stdin     io.WriteCloser
@@ -38,13 +38,13 @@ type Client struct {
 }
 
 // NewClient creates a new SSH client
-func NewClient(nbClient *netbird.Client) *Client {
+func NewClient(nbClient *rvpn.Client) *Client {
 	return &Client{
 		nbClient: nbClient,
 	}
 }
 
-// Connect establishes an SSH connection through NetBird network
+// Connect establishes an SSH connection through R-VPN network
 func (c *Client) Connect(host string, port int, username string) error {
 	addr := fmt.Sprintf("%s:%d", host, port)
 	logrus.Infof("SSH: Connecting to %s as %s", addr, username)
@@ -53,19 +53,19 @@ func (c *Client) Connect(host string, port int, username string) error {
 
 	nbConfig, err := c.nbClient.GetConfig()
 	if err != nil {
-		return fmt.Errorf("get NetBird config: %w", err)
+		return fmt.Errorf("get R-VPN config: %w", err)
 	}
 	if nbConfig.SSHKey == "" {
-		return fmt.Errorf("no NetBird SSH key available - key should be generated during client initialization")
+		return fmt.Errorf("no R-VPN SSH key available - key should be generated during client initialization")
 	}
 
 	signer, err := parseSSHPrivateKey([]byte(nbConfig.SSHKey))
 	if err != nil {
-		return fmt.Errorf("parse NetBird SSH private key: %w", err)
+		return fmt.Errorf("parse R-VPN SSH private key: %w", err)
 	}
 
 	pubKey := signer.PublicKey()
-	logrus.Infof("SSH: Using NetBird key authentication with public key type: %s", pubKey.Type())
+	logrus.Infof("SSH: Using R-VPN key authentication with public key type: %s", pubKey.Type())
 
 	authMethods = append(authMethods, ssh.PublicKeys(signer))
 

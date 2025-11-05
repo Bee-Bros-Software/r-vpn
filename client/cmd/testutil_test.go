@@ -11,26 +11,26 @@ import (
 	"go.opentelemetry.io/otel"
 	"google.golang.org/grpc"
 
-	"github.com/netbirdio/management-integrations/integrations"
+	"github.com/rvpnio/management-integrations/integrations"
 
-	clientProto "github.com/netbirdio/netbird/client/proto"
-	client "github.com/netbirdio/netbird/client/server"
-	"github.com/netbirdio/netbird/management/internals/server/config"
-	mgmt "github.com/netbirdio/netbird/management/server"
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/groups"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	"github.com/netbirdio/netbird/management/server/peers"
-	"github.com/netbirdio/netbird/management/server/peers/ephemeral/manager"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/types"
-	mgmtProto "github.com/netbirdio/netbird/shared/management/proto"
-	sigProto "github.com/netbirdio/netbird/shared/signal/proto"
-	sig "github.com/netbirdio/netbird/signal/server"
-	"github.com/netbirdio/netbird/util"
+	clientProto "github.com/Bee-Bros-Software/r-vpn/client/proto"
+	client "github.com/Bee-Bros-Software/r-vpn/client/server"
+	"github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	mgmt "github.com/Bee-Bros-Software/r-vpn/management/server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/groups"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers/ephemeral/manager"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	mgmtProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	sigProto "github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	sig "github.com/Bee-Bros-Software/r-vpn/signal/server"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 func startTestingServices(t *testing.T) string {
@@ -110,7 +110,7 @@ func startManagement(t *testing.T, config *config.Config, testFile string) (*grp
 		Return(&types.Settings{}, nil).
 		AnyTimes()
 
-	accountManager, err := mgmt.BuildManager(context.Background(), store, peersUpdateManager, nil, "", "netbird.selfhosted", eventStore, nil, false, iv, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManagerMock, false)
+	accountManager, err := mgmt.BuildManager(context.Background(), store, peersUpdateManager, nil, "", "rvpn.selfhosted", eventStore, nil, false, iv, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManagerMock, false)
 	if err != nil {
 		t.Fatal(err)
 	}

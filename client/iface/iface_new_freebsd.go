@@ -5,11 +5,11 @@ package iface
 import (
 	"fmt"
 
-	"github.com/netbirdio/netbird/client/iface/bind"
-	"github.com/netbirdio/netbird/client/iface/device"
-	"github.com/netbirdio/netbird/client/iface/netstack"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/iface/wgproxy"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bind"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/netstack"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy"
 )
 
 // NewWGIFace Creates a new WireGuard interface instance

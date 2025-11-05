@@ -9,7 +9,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/shared/relay/messages"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/messages"
 )
 
 const (

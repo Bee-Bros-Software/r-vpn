@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
 )
 
 var cliAddr string

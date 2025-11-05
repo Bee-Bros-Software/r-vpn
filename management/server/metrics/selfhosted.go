@@ -1,4 +1,4 @@
-// Package metrics gather anonymous information about the usage of NetBird management
+// Package metrics gather anonymous information about the usage of R-VPN management
 package metrics
 
 import (
@@ -15,15 +15,15 @@ import (
 	"github.com/hashicorp/go-version"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/management/server/types"
-	nbversion "github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	nbversion "github.com/Bee-Bros-Software/r-vpn/version"
 )
 
 const (
 	// PayloadEvent identifies an event type
 	PayloadEvent = "self-hosted stats"
 	// payloadEndpoint metrics defaultEndpoint to send anonymous data
-	payloadEndpoint = "https://metrics.netbird.io"
+	payloadEndpoint = "https://metrics.rsoftware.net"
 	// defaultPushInterval default interval to push metrics
 	defaultPushInterval = 12 * time.Hour
 	// requestTimeout http request timeout
@@ -153,7 +153,7 @@ func (w *Worker) sendMetrics(ctx context.Context) error {
 
 	log.WithContext(ctx).Infof("sent anonymous metrics, next push will happen in %s. "+
 		"You can disable these metrics by running with flag --disable-anonymous-metrics,"+
-		" see more information at https://docs.netbird.io/about-netbird/faq#why-and-what-are-the-anonymous-usage-metrics", getMetricsInterval(ctx))
+		" see more information at https://docs.rsoftware.net/about-rvpn/faq#why-and-what-are-the-anonymous-usage-metrics", getMetricsInterval(ctx))
 
 	return nil
 }

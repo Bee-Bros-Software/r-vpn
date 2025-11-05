@@ -14,12 +14,12 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/geolocation"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/management/server/mock_server"
-	"github.com/netbirdio/netbird/management/server/posture"
-	"github.com/netbirdio/netbird/shared/management/status"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/geolocation"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/mock_server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/posture"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 var berlin = "Berlin"
@@ -436,9 +436,9 @@ func TestPostureCheckUpdate(t *testing.T) {
 						"process_check": {
 							"processes": [
 								{ 
-									"linux_path": "/usr/local/bin/netbird",
-									"mac_path": "/Applications/NetBird.app/Contents/MacOS/netbird",
-									"windows_path": "C:\\ProgramData\\NetBird\\netbird.exe"
+									"linux_path": "/usr/local/bin/rvpn",
+									"mac_path": "/Applications/R-VPN.app/Contents/MacOS/rvpn",
+									"windows_path": "C:\\ProgramData\\R-VPN\\rvpn.exe"
 								}
 							]
 						}
@@ -454,9 +454,9 @@ func TestPostureCheckUpdate(t *testing.T) {
 					ProcessCheck: &api.ProcessCheck{
 						Processes: []api.Process{
 							{
-								LinuxPath:   str("/usr/local/bin/netbird"),
-								MacPath:     str("/Applications/NetBird.app/Contents/MacOS/netbird"),
-								WindowsPath: str("C:\\ProgramData\\NetBird\\netbird.exe"),
+								LinuxPath:   str("/usr/local/bin/rvpn"),
+								MacPath:     str("/Applications/R-VPN.app/Contents/MacOS/rvpn"),
+								WindowsPath: str("C:\\ProgramData\\R-VPN\\rvpn.exe"),
 							},
 						},
 					},
@@ -495,7 +495,7 @@ func TestPostureCheckUpdate(t *testing.T) {
 			expectedBody:   false,
 		},
 		{
-			name:        "Create Posture Checks Invalid NetBird's Min Version",
+			name:        "Create Posture Checks Invalid R-VPN's Min Version",
 			requestType: http.MethodPost,
 			requestPath: "/api/posture-checks",
 			requestBody: bytes.NewBuffer(
@@ -728,7 +728,7 @@ func TestPostureCheckUpdate(t *testing.T) {
 			expectedBody:   false,
 		},
 		{
-			name:        "Update Posture Checks Invalid NetBird's Min Version",
+			name:        "Update Posture Checks Invalid R-VPN's Min Version",
 			requestType: http.MethodPut,
 			requestPath: "/api/posture-checks/postureCheck",
 			requestBody: bytes.NewBuffer(

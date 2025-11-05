@@ -8,12 +8,12 @@ import (
 	"github.com/hashicorp/go-multierror"
 	log "github.com/sirupsen/logrus"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	"github.com/netbirdio/netbird/relay/protocol"
-	"github.com/netbirdio/netbird/relay/server/listener"
-	"github.com/netbirdio/netbird/relay/server/listener/quic"
-	"github.com/netbirdio/netbird/relay/server/listener/ws"
-	quictls "github.com/netbirdio/netbird/shared/relay/tls"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	"github.com/Bee-Bros-Software/r-vpn/relay/protocol"
+	"github.com/Bee-Bros-Software/r-vpn/relay/server/listener"
+	"github.com/Bee-Bros-Software/r-vpn/relay/server/listener/quic"
+	"github.com/Bee-Bros-Software/r-vpn/relay/server/listener/ws"
+	quictls "github.com/Bee-Bros-Software/r-vpn/shared/relay/tls"
 )
 
 // ListenerConfig is the configuration for the listener.

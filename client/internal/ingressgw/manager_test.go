@@ -5,7 +5,7 @@ import (
 	"net/netip"
 	"testing"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
 )
 
 var (

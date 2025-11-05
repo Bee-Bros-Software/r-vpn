@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/client/anonymize"
+	"github.com/Bee-Bros-Software/r-vpn/client/anonymize"
 )
 
 func TestAnonymizeIP(t *testing.T) {
@@ -135,14 +135,14 @@ func TestAnonymizeDomain(t *testing.T) {
 		},
 		{
 			"Protected Domain",
-			"netbird.io",
-			`^netbird\.io$`,
+			"rsoftware.net",
+			`^rvpn\.io$`,
 			false,
 		},
 		{
 			"Protected Domain with Trailing Dot",
-			"netbird.io.",
-			`^netbird\.io.$`,
+			"rsoftware.net.",
+			`^rvpn\.io.$`,
 			false,
 		},
 	}

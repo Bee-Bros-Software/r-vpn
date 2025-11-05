@@ -11,12 +11,12 @@ import (
 	"github.com/google/nftables"
 	log "github.com/sirupsen/logrus"
 
-	nbiptables "github.com/netbirdio/netbird/client/firewall/iptables"
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	nbnftables "github.com/netbirdio/netbird/client/firewall/nftables"
-	"github.com/netbirdio/netbird/client/firewall/uspfilter"
-	nftypes "github.com/netbirdio/netbird/client/internal/netflow/types"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	nbiptables "github.com/Bee-Bros-Software/r-vpn/client/firewall/iptables"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	nbnftables "github.com/Bee-Bros-Software/r-vpn/client/firewall/nftables"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter"
+	nftypes "github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 const (
@@ -36,7 +36,7 @@ type FWType int
 
 func NewFirewall(iface IFaceMapper, stateManager *statemanager.Manager, flowLogger nftypes.FlowLogger, disableServerRoutes bool, mtu uint16) (firewall.Manager, error) {
 	// on the linux system we try to user nftables or iptables
-	// in any case, because we need to allow netbird interface traffic
+	// in any case, because we need to allow rvpn interface traffic
 	// so we use AllowNetbird traffic from these firewall managers
 	// for the userspace packet filtering firewall
 	fm, err := createNativeFirewall(iface, stateManager, disableServerRoutes, mtu)
@@ -91,7 +91,7 @@ func createUserspaceFirewall(iface IFaceMapper, fm firewall.Manager, disableServ
 	}
 
 	if err := fm.AllowNetbird(); err != nil {
-		log.Errorf("failed to allow netbird interface traffic: %v", err)
+		log.Errorf("failed to allow rvpn interface traffic: %v", err)
 	}
 	return fm, nil
 }

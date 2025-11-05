@@ -11,7 +11,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 
-	"github.com/netbirdio/netbird/util/wsproxy"
+	"github.com/Bee-Bros-Software/r-vpn/util/wsproxy"
 )
 
 const dialTimeout = 30 * time.Second

@@ -211,7 +211,7 @@ type AccessiblePeer struct {
 	// CountryCode 2-letter ISO 3166-1 alpha-2 code that represents the country
 	CountryCode CountryCode `json:"country_code"`
 
-	// DnsLabel Peer's DNS label is the parsed peer name for domain resolution. It is used to form an FQDN by appending the account's domain to the peer label. e.g. peer-dns-label.netbird.cloud
+	// DnsLabel Peer's DNS label is the parsed peer name for domain resolution. It is used to form an FQDN by appending the account's domain to the peer label. e.g. peer-dns-label.rvpn.cloud
 	DnsLabel string `json:"dns_label"`
 
 	// GeonameId Unique identifier from the GeoNames database for a specific geographical location.
@@ -1040,7 +1040,7 @@ type Peer struct {
 	// DisapprovalReason (Cloud only) Reason why the peer requires approval
 	DisapprovalReason *string `json:"disapproval_reason,omitempty"`
 
-	// DnsLabel Peer's DNS label is the parsed peer name for domain resolution. It is used to form an FQDN by appending the account's domain to the peer label. e.g. peer-dns-label.netbird.cloud
+	// DnsLabel Peer's DNS label is the parsed peer name for domain resolution. It is used to form an FQDN by appending the account's domain to the peer label. e.g. peer-dns-label.rvpn.cloud
 	DnsLabel string `json:"dns_label"`
 
 	// Ephemeral Indicates whether the peer is ephemeral or not
@@ -1130,7 +1130,7 @@ type PeerBatch struct {
 	// DisapprovalReason (Cloud only) Reason why the peer requires approval
 	DisapprovalReason *string `json:"disapproval_reason,omitempty"`
 
-	// DnsLabel Peer's DNS label is the parsed peer name for domain resolution. It is used to form an FQDN by appending the account's domain to the peer label. e.g. peer-dns-label.netbird.cloud
+	// DnsLabel Peer's DNS label is the parsed peer name for domain resolution. It is used to form an FQDN by appending the account's domain to the peer label. e.g. peer-dns-label.rvpn.cloud
 	DnsLabel string `json:"dns_label"`
 
 	// Ephemeral Indicates whether the peer is ephemeral or not
@@ -1816,7 +1816,7 @@ type User struct {
 	PendingApproval bool             `json:"pending_approval"`
 	Permissions     *UserPermissions `json:"permissions,omitempty"`
 
-	// Role User's NetBird account role
+	// Role User's R-VPN account role
 	Role string `json:"role"`
 
 	// Status User's status
@@ -1840,7 +1840,7 @@ type UserCreateRequest struct {
 	// Name User's full name
 	Name *string `json:"name,omitempty"`
 
-	// Role User's NetBird account role
+	// Role User's R-VPN account role
 	Role string `json:"role"`
 }
 
@@ -1859,7 +1859,7 @@ type UserRequest struct {
 	// IsBlocked If set to true then user is blocked and can't use the system
 	IsBlocked bool `json:"is_blocked"`
 
-	// Role User's NetBird account role
+	// Role User's R-VPN account role
 	Role string `json:"role"`
 }
 

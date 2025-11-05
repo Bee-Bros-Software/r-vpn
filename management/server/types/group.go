@@ -1,8 +1,8 @@
 package types
 
 import (
-	"github.com/netbirdio/netbird/management/server/integration_reference"
-	"github.com/netbirdio/netbird/management/server/networks/resources/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integration_reference"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources/types"
 )
 
 const (

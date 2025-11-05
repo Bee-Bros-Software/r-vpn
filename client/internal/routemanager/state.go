@@ -1,7 +1,7 @@
 package routemanager
 
 import (
-	"github.com/netbirdio/netbird/client/internal/routeselector"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routeselector"
 )
 
 type SelectorState routeselector.RouteSelector

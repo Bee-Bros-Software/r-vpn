@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
 )
 
 func TestNewJumpCloudManager(t *testing.T) {

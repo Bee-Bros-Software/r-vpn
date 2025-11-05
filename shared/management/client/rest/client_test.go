@@ -8,8 +8,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/netbirdio/netbird/management/server/http/testing/testing_tools/channel"
-	"github.com/netbirdio/netbird/shared/management/client/rest"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/http/testing/testing_tools/channel"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/client/rest"
 )
 
 func withMockClient(callback func(*rest.Client, *http.ServeMux)) {

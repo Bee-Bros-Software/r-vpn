@@ -8,10 +8,10 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/firewall/uspfilter"
-	nftypes "github.com/netbirdio/netbird/client/internal/netflow/types"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter"
+	nftypes "github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 // NewFirewall creates a firewall manager instance
@@ -27,7 +27,7 @@ func NewFirewall(iface IFaceMapper, _ *statemanager.Manager, flowLogger nftypes.
 	}
 	err = fm.AllowNetbird()
 	if err != nil {
-		log.Warnf("failed to allow netbird interface traffic: %v", err)
+		log.Warnf("failed to allow rvpn interface traffic: %v", err)
 	}
 	return fm, nil
 }

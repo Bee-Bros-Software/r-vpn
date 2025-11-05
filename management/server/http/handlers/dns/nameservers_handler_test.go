@@ -12,15 +12,15 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/shared/management/status"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 
 	"github.com/gorilla/mux"
 
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
 
-	"github.com/netbirdio/netbird/management/server/mock_server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/mock_server"
 )
 
 const (

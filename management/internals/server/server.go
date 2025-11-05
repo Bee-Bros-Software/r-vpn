@@ -18,14 +18,14 @@ import (
 	"golang.org/x/net/http2/h2c"
 	"google.golang.org/grpc"
 
-	"github.com/netbirdio/netbird/encryption"
-	nbconfig "github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/management/server/metrics"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/util"
-	"github.com/netbirdio/netbird/util/wsproxy"
-	wsproxyserver "github.com/netbirdio/netbird/util/wsproxy/server"
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/encryption"
+	nbconfig "github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/metrics"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/util"
+	"github.com/Bee-Bros-Software/r-vpn/util/wsproxy"
+	wsproxyserver "github.com/Bee-Bros-Software/r-vpn/util/wsproxy/server"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 )
 
 // ManagementLegacyPort is the port that was used before by the Management gRPC server.
@@ -186,7 +186,7 @@ func (s *BaseServer) Start(ctx context.Context) error {
 	s.update = version.NewUpdate("nb/management")
 	s.update.SetDaemonVersion(version.NetbirdVersion())
 	s.update.SetOnUpdateListener(func() {
-		log.WithContext(ctx).Infof("your management version, \"%s\", is outdated, a new management version is available. Learn more here: https://github.com/netbirdio/netbird/releases", version.NetbirdVersion())
+		log.WithContext(ctx).Infof("your management version, \"%s\", is outdated, a new management version is available. Learn more here: https://github.com/Bee-Bros-Software/r-vpn/releases", version.NetbirdVersion())
 	})
 
 	return nil

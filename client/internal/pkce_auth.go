@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	mgm "github.com/netbirdio/netbird/shared/management/client"
-	"github.com/netbirdio/netbird/shared/management/client/common"
+	mgm "github.com/Bee-Bros-Software/r-vpn/shared/management/client"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/client/common"
 )
 
 // PKCEAuthorizationFlow represents PKCE Authorization Flow information
@@ -118,7 +118,7 @@ func GetPKCEAuthorizationFlowInfo(ctx context.Context, privateKey string, mgmURL
 }
 
 func isPKCEProviderConfigValid(config PKCEAuthProviderConfig) error {
-	errorMSGFormat := "invalid provider configuration received from management: %s value is empty. Contact your NetBird administrator"
+	errorMSGFormat := "invalid provider configuration received from management: %s value is empty. Contact your R-VPN administrator"
 	if config.ClientID == "" {
 		return fmt.Errorf(errorMSGFormat, "Client ID")
 	}

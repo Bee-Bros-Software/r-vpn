@@ -7,7 +7,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/netbirdio/netbird/client/internal/netflow/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
 )
 
 func NewMemoryStore() *Memory {

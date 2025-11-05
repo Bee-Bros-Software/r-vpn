@@ -4,14 +4,14 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/internal/dns"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/peerstore"
-	"github.com/netbirdio/netbird/client/internal/routemanager/fakeip"
-	"github.com/netbirdio/netbird/client/internal/routemanager/iface"
-	"github.com/netbirdio/netbird/client/internal/routemanager/refcounter"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peerstore"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/fakeip"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/refcounter"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 type HandlerParams struct {

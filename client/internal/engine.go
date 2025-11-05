@@ -25,46 +25,46 @@ import (
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 	"google.golang.org/protobuf/proto"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	"github.com/netbirdio/netbird/client/firewall"
-	firewallManager "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/iface/device"
-	nbnetstack "github.com/netbirdio/netbird/client/iface/netstack"
-	"github.com/netbirdio/netbird/client/iface/udpmux"
-	"github.com/netbirdio/netbird/client/internal/acl"
-	"github.com/netbirdio/netbird/client/internal/dns"
-	dnsconfig "github.com/netbirdio/netbird/client/internal/dns/config"
-	"github.com/netbirdio/netbird/client/internal/dnsfwd"
-	"github.com/netbirdio/netbird/client/internal/ingressgw"
-	"github.com/netbirdio/netbird/client/internal/netflow"
-	nftypes "github.com/netbirdio/netbird/client/internal/netflow/types"
-	"github.com/netbirdio/netbird/client/internal/networkmonitor"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/client/internal/peer/guard"
-	icemaker "github.com/netbirdio/netbird/client/internal/peer/ice"
-	"github.com/netbirdio/netbird/client/internal/peerstore"
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/internal/relay"
-	"github.com/netbirdio/netbird/client/internal/rosenpass"
-	"github.com/netbirdio/netbird/client/internal/routemanager"
-	"github.com/netbirdio/netbird/client/internal/routemanager/systemops"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
-	cProto "github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/shared/management/domain"
-	semaphoregroup "github.com/netbirdio/netbird/util/semaphore-group"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall"
+	firewallManager "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
+	nbnetstack "github.com/Bee-Bros-Software/r-vpn/client/iface/netstack"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/udpmux"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/acl"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns"
+	dnsconfig "github.com/Bee-Bros-Software/r-vpn/client/internal/dns/config"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dnsfwd"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/ingressgw"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/netflow"
+	nftypes "github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/networkmonitor"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer/guard"
+	icemaker "github.com/Bee-Bros-Software/r-vpn/client/internal/peer/ice"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peerstore"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/relay"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/rosenpass"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/systemops"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
+	cProto "github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	semaphoregroup "github.com/Bee-Bros-Software/r-vpn/util/semaphore-group"
 
-	nbssh "github.com/netbirdio/netbird/client/ssh"
-	"github.com/netbirdio/netbird/client/system"
-	nbdns "github.com/netbirdio/netbird/dns"
-	"github.com/netbirdio/netbird/route"
-	mgm "github.com/netbirdio/netbird/shared/management/client"
-	mgmProto "github.com/netbirdio/netbird/shared/management/proto"
-	auth "github.com/netbirdio/netbird/shared/relay/auth/hmac"
-	relayClient "github.com/netbirdio/netbird/shared/relay/client"
-	signal "github.com/netbirdio/netbird/shared/signal/client"
-	sProto "github.com/netbirdio/netbird/shared/signal/proto"
-	"github.com/netbirdio/netbird/util"
+	nbssh "github.com/Bee-Bros-Software/r-vpn/client/ssh"
+	"github.com/Bee-Bros-Software/r-vpn/client/system"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	"github.com/Bee-Bros-Software/r-vpn/route"
+	mgm "github.com/Bee-Bros-Software/r-vpn/shared/management/client"
+	mgmProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	auth "github.com/Bee-Bros-Software/r-vpn/shared/relay/auth/hmac"
+	relayClient "github.com/Bee-Bros-Software/r-vpn/shared/relay/client"
+	signal "github.com/Bee-Bros-Software/r-vpn/shared/signal/client"
+	sProto "github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 // PeerConnectionTimeoutMax is a timeout of an initial connection attempt to a remote peer.
@@ -275,7 +275,7 @@ func NewEngine(
 
 func (e *Engine) Stop() error {
 	if e == nil {
-		// this seems to be a very odd case but there was the possibility if the netbird down command comes before the engine is fully started
+		// this seems to be a very odd case but there was the possibility if the rvpn down command comes before the engine is fully started
 		log.Debugf("tried stopping engine that is nil")
 		return nil
 	}
@@ -390,7 +390,7 @@ func waitWithContext(ctx context.Context, wg *sync.WaitGroup) error {
 // Start creates a new WireGuard tunnel interface and listens to events from Signal and Management services
 // Connections to remote peers are not established here.
 // However, they will be established once an event with a list of peers to connect to will be received from Management Service
-func (e *Engine) Start(netbirdConfig *mgmProto.NetbirdConfig, mgmtURL *url.URL) error {
+func (e *Engine) Start(rvpnConfig *mgmProto.NetbirdConfig, mgmtURL *url.URL) error {
 	e.syncMsgMux.Lock()
 	defer e.syncMsgMux.Unlock()
 
@@ -447,7 +447,7 @@ func (e *Engine) Start(netbirdConfig *mgmProto.NetbirdConfig, mgmtURL *url.URL) 
 	e.dnsServer = dnsServer
 
 	// Populate DNS cache with NetbirdConfig and management URL for early resolution
-	if err := e.PopulateNetbirdConfig(netbirdConfig, mgmtURL); err != nil {
+	if err := e.PopulateNetbirdConfig(rvpnConfig, mgmtURL); err != nil {
 		log.Warnf("failed to populate DNS cache: %v", err)
 	}
 
@@ -723,7 +723,7 @@ func (e *Engine) removePeer(peerKey string) error {
 }
 
 // PopulateNetbirdConfig populates the DNS cache with infrastructure domains from login response
-func (e *Engine) PopulateNetbirdConfig(netbirdConfig *mgmProto.NetbirdConfig, mgmtURL *url.URL) error {
+func (e *Engine) PopulateNetbirdConfig(rvpnConfig *mgmProto.NetbirdConfig, mgmtURL *url.URL) error {
 	if e.dnsServer == nil {
 		return nil
 	}
@@ -736,8 +736,8 @@ func (e *Engine) PopulateNetbirdConfig(netbirdConfig *mgmProto.NetbirdConfig, mg
 	}
 
 	// Populate NetbirdConfig domains if provided
-	if netbirdConfig != nil {
-		serverDomains := dnsconfig.ExtractFromNetbirdConfig(netbirdConfig)
+	if rvpnConfig != nil {
+		serverDomains := dnsconfig.ExtractFromNetbirdConfig(rvpnConfig)
 		if err := e.dnsServer.UpdateServerConfig(serverDomains); err != nil {
 			return fmt.Errorf("update DNS server config from NetbirdConfig: %w", err)
 		}
@@ -2204,7 +2204,7 @@ func convertToOfferAnswer(msg *sProto.Message) (*peer.OfferAnswer, error) {
 			Pwd:   remoteCred.Pwd,
 		},
 		WgListenPort:    int(msg.GetBody().GetWgListenPort()),
-		Version:         msg.GetBody().GetNetBirdVersion(),
+		Version:         msg.GetBody().GetR-VPNVersion(),
 		RosenpassPubKey: rosenpassPubKey,
 		RosenpassAddr:   rosenpassAddr,
 		RelaySrvAddress: msg.GetBody().GetRelayServerAddress(),

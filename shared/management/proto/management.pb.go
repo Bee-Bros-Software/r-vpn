@@ -392,7 +392,7 @@ type SyncResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Global config
-	NetbirdConfig *NetbirdConfig `protobuf:"bytes,1,opt,name=netbirdConfig,proto3" json:"netbirdConfig,omitempty"`
+	NetbirdConfig *NetbirdConfig `protobuf:"bytes,1,opt,name=rvpnConfig,proto3" json:"rvpnConfig,omitempty"`
 	// Deprecated. Use NetworkMap.PeerConfig
 	PeerConfig *PeerConfig `protobuf:"bytes,2,opt,name=peerConfig,proto3" json:"peerConfig,omitempty"`
 	// Deprecated. Use NetworkMap.RemotePeerConfig
@@ -925,7 +925,7 @@ type PeerSystemMeta struct {
 	Core             string            `protobuf:"bytes,4,opt,name=core,proto3" json:"core,omitempty"`
 	Platform         string            `protobuf:"bytes,5,opt,name=platform,proto3" json:"platform,omitempty"`
 	OS               string            `protobuf:"bytes,6,opt,name=OS,proto3" json:"OS,omitempty"`
-	NetbirdVersion   string            `protobuf:"bytes,7,opt,name=netbirdVersion,proto3" json:"netbirdVersion,omitempty"`
+	NetbirdVersion   string            `protobuf:"bytes,7,opt,name=rvpnVersion,proto3" json:"rvpnVersion,omitempty"`
 	UiVersion        string            `protobuf:"bytes,8,opt,name=uiVersion,proto3" json:"uiVersion,omitempty"`
 	KernelVersion    string            `protobuf:"bytes,9,opt,name=kernelVersion,proto3" json:"kernelVersion,omitempty"`
 	OSVersion        string            `protobuf:"bytes,10,opt,name=OSVersion,proto3" json:"OSVersion,omitempty"`
@@ -1095,7 +1095,7 @@ type LoginResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Global config
-	NetbirdConfig *NetbirdConfig `protobuf:"bytes,1,opt,name=netbirdConfig,proto3" json:"netbirdConfig,omitempty"`
+	NetbirdConfig *NetbirdConfig `protobuf:"bytes,1,opt,name=rvpnConfig,proto3" json:"rvpnConfig,omitempty"`
 	// Peer local config
 	PeerConfig *PeerConfig `protobuf:"bytes,2,opt,name=peerConfig,proto3" json:"peerConfig,omitempty"`
 	// Posture checks to be evaluated by client
@@ -1348,7 +1348,7 @@ type HostConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// URI of the resource e.g. turns://stun.netbird.io:4430 or signal.netbird.io:10000
+	// URI of the resource e.g. turns://stun.rsoftware.net:4430 or signal.rsoftware.net:10000
 	Uri      string              `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
 	Protocol HostConfig_Protocol `protobuf:"varint,2,opt,name=protocol,proto3,enum=management.HostConfig_Protocol" json:"protocol,omitempty"`
 }
@@ -3962,7 +3962,7 @@ var file_management_proto_goTypes = []interface{}{
 }
 var file_management_proto_depIdxs = []int32{
 	14, // 0: management.SyncRequest.meta:type_name -> management.PeerSystemMeta
-	18, // 1: management.SyncResponse.netbirdConfig:type_name -> management.NetbirdConfig
+	18, // 1: management.SyncResponse.rvpnConfig:type_name -> management.NetbirdConfig
 	23, // 2: management.SyncResponse.peerConfig:type_name -> management.PeerConfig
 	25, // 3: management.SyncResponse.remotePeers:type_name -> management.RemotePeerConfig
 	24, // 4: management.SyncResponse.NetworkMap:type_name -> management.NetworkMap
@@ -3974,7 +3974,7 @@ var file_management_proto_depIdxs = []int32{
 	11, // 10: management.PeerSystemMeta.environment:type_name -> management.Environment
 	12, // 11: management.PeerSystemMeta.files:type_name -> management.File
 	13, // 12: management.PeerSystemMeta.flags:type_name -> management.Flags
-	18, // 13: management.LoginResponse.netbirdConfig:type_name -> management.NetbirdConfig
+	18, // 13: management.LoginResponse.rvpnConfig:type_name -> management.NetbirdConfig
 	23, // 14: management.LoginResponse.peerConfig:type_name -> management.PeerConfig
 	40, // 15: management.LoginResponse.Checks:type_name -> management.Checks
 	45, // 16: management.ServerKeyResponse.expiresAt:type_name -> google.protobuf.Timestamp

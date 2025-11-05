@@ -21,36 +21,36 @@ import (
 	"github.com/stretchr/testify/require"
 	"golang.zx2c4.com/wireguard/wgctrl/wgtypes"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	nbAccount "github.com/netbirdio/netbird/management/server/account"
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/cache"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/management/server/http/testing/testing_tools"
-	"github.com/netbirdio/netbird/management/server/idp"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	resourceTypes "github.com/netbirdio/netbird/management/server/networks/resources/types"
-	routerTypes "github.com/netbirdio/netbird/management/server/networks/routers/types"
-	networkTypes "github.com/netbirdio/netbird/management/server/networks/types"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/posture"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/testutil"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/management/server/util"
-	"github.com/netbirdio/netbird/route"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	nbAccount "github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/cache"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/http/testing/testing_tools"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/idp"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	resourceTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources/types"
+	routerTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers/types"
+	networkTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/types"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/posture"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/testutil"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 func verifyCanAddPeerToAccount(t *testing.T, manager nbAccount.Manager, account *types.Account, userID string) {
 	t.Helper()
 	peer := &nbpeer.Peer{
 		Key:  "BhRPtynAAYRDy08+q4HTMsos8fs4plTP4NOSh7C1ry8=",
-		Name: "test-host@netbird.io",
+		Name: "test-host@rsoftware.net",
 		Meta: nbpeer.PeerSystemMeta{
-			Hostname:  "test-host@netbird.io",
+			Hostname:  "test-host@rsoftware.net",
 			GoOS:      "linux",
 			Kernel:    "Linux",
 			Core:      "21.04",
@@ -370,13 +370,13 @@ func TestAccount_GetPeerNetworkMap(t *testing.T) {
 	network := &types.Network{
 		Identifier: "network",
 		Net:        net.IPNet{IP: netIP, Mask: netMask},
-		Dns:        "netbird.selfhosted",
+		Dns:        "rvpn.selfhosted",
 		Serial:     0,
 		Mu:         sync.Mutex{},
 	}
 
 	for _, testCase := range tt {
-		account := newAccountWithId(context.Background(), "account-1", userID, "netbird.io", false)
+		account := newAccountWithId(context.Background(), "account-1", userID, "rsoftware.net", false)
 		account.UpdateSettings(&testCase.accountSettings)
 		account.Network = network
 		account.Peers = testCase.peers
@@ -390,7 +390,7 @@ func TestAccount_GetPeerNetworkMap(t *testing.T) {
 			validatedPeers[p] = struct{}{}
 		}
 
-		customZone := account.GetPeersCustomZone(context.Background(), "netbird.io")
+		customZone := account.GetPeersCustomZone(context.Background(), "rsoftware.net")
 		networkMap := account.GetPeerNetworkMap(context.Background(), testCase.peerID, customZone, validatedPeers, account.GetResourcePoliciesMap(), account.GetResourceRoutersMap(), nil)
 		assert.Len(t, networkMap.Peers, len(testCase.expectedPeers))
 		assert.Len(t, networkMap.OfflinePeers, len(testCase.expectedOfflinePeers))
@@ -398,7 +398,7 @@ func TestAccount_GetPeerNetworkMap(t *testing.T) {
 }
 
 func TestNewAccount(t *testing.T) {
-	domain := "netbird.io"
+	domain := "rsoftware.net"
 	userId := "account_creator"
 	accountID := "account_id"
 	account := newAccountWithId(context.Background(), accountID, userId, domain, false)
@@ -1023,7 +1023,7 @@ func TestAccountManager_AddPeer(t *testing.T) {
 	}
 
 	userID := "testingUser"
-	account, err := createAccount(manager, "test_account", userID, "netbird.cloud")
+	account, err := createAccount(manager, "test_account", userID, "rvpn.cloud")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1092,7 +1092,7 @@ func TestAccountManager_AddPeerWithUserID(t *testing.T) {
 		return
 	}
 
-	account, err := manager.GetOrCreateAccountByUser(context.Background(), userID, "netbird.cloud")
+	account, err := manager.GetOrCreateAccountByUser(context.Background(), userID, "rvpn.cloud")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1410,7 +1410,7 @@ func TestAccountManager_DeletePeer(t *testing.T) {
 		return
 	}
 
-	account, err := createAccount(manager, "test_account", userID, "netbird.cloud")
+	account, err := createAccount(manager, "test_account", userID, "rvpn.cloud")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -2893,7 +2893,7 @@ func createManager(t testing.TB) (*DefaultAccountManager, error) {
 
 	permissionsManager := permissions.NewManager(store)
 
-	manager, err := BuildManager(context.Background(), store, NewPeersUpdateManager(nil), nil, "", "netbird.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
+	manager, err := BuildManager(context.Background(), store, NewPeersUpdateManager(nil), nil, "", "rvpn.cloud", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
 	if err != nil {
 		return nil, err
 	}

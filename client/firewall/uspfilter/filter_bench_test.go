@@ -15,10 +15,10 @@ import (
 	"github.com/google/gopacket/layers"
 	"github.com/stretchr/testify/require"
 
-	fw "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/firewall/uspfilter/conntrack"
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/iface/device"
+	fw "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/firewall/uspfilter/conntrack"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
 )
 
 // generateRandomIPs generates n different random IPs in the 100.64.0.0/10 range

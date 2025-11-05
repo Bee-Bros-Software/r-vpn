@@ -12,7 +12,7 @@ builds:
     goarch:
       - amd64
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
     mod_timestamp: "{{ .CommitTimestamp }}"
 
   - id: netbird-ui-windows-amd64
@@ -26,7 +26,7 @@ builds:
     goarch:
       - amd64
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
       - -H windowsgui
     mod_timestamp: "{{ .CommitTimestamp }}"
 
@@ -42,7 +42,7 @@ builds:
     goarch:
       - arm64
     ldflags:
-      - -s -w -X github.com/netbirdio/netbird/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
+      - -s -w -X github.com/Bee-Bros-Software/r-vpn/version.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.CommitDate}} -X main.builtBy=goreleaser
       - -H windowsgui
     mod_timestamp: "{{ .CommitTimestamp }}"
 
@@ -58,9 +58,9 @@ archives:
       - netbird-ui-windows-arm64
 
 nfpms:
-  - maintainer: Netbird <dev@netbird.io>
+  - maintainer: Netbird <dev@rsoftware.net>
     description: Netbird client UI.
-    homepage: https://netbird.io/
+    homepage: https://rsoftware.net/
     id: netbird-ui-deb
     package_name: netbird-ui
     builds:
@@ -77,9 +77,9 @@ nfpms:
     dependencies:
       - netbird
 
-  - maintainer: Netbird <dev@netbird.io>
+  - maintainer: Netbird <dev@rsoftware.net>
     description: Netbird client UI.
-    homepage: https://netbird.io/
+    homepage: https://rsoftware.net/
     id: netbird-ui-rpm
     package_name: netbird-ui
     builds:

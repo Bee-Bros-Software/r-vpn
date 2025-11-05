@@ -20,10 +20,10 @@ import (
 	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/status"
 
-	nbgrpc "github.com/netbirdio/netbird/client/grpc"
-	"github.com/netbirdio/netbird/flow/proto"
-	"github.com/netbirdio/netbird/util/embeddedroots"
-	"github.com/netbirdio/netbird/util/wsproxy"
+	nbgrpc "github.com/Bee-Bros-Software/r-vpn/client/grpc"
+	"github.com/Bee-Bros-Software/r-vpn/flow/proto"
+	"github.com/Bee-Bros-Software/r-vpn/util/embeddedroots"
+	"github.com/Bee-Bros-Software/r-vpn/util/wsproxy"
 )
 
 type GRPCClient struct {

@@ -11,8 +11,8 @@ import (
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/types/known/durationpb"
 
-	"github.com/netbirdio/netbird/client/internal/profilemanager"
-	"github.com/netbirdio/netbird/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/profilemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
 )
 
 // TestSetConfig_AllFieldsSaved ensures that all fields in SetConfigRequest are properly saved to the config.
@@ -40,7 +40,7 @@ func TestSetConfig_AllFieldsSaved(t *testing.T) {
 
 	ic := profilemanager.ConfigInput{
 		ConfigPath:    filepath.Join(tempDir, profName+".json"),
-		ManagementURL: "https://api.netbird.io:443",
+		ManagementURL: "https://api.rsoftware.net:443",
 	}
 	_, err = profilemanager.UpdateOrCreateConfig(ic)
 	require.NoError(t, err)
@@ -76,8 +76,8 @@ func TestSetConfig_AllFieldsSaved(t *testing.T) {
 	req := &proto.SetConfigRequest{
 		ProfileName:           profName,
 		Username:              currUser.Username,
-		ManagementUrl:         "https://new-api.netbird.io:443",
-		AdminURL:              "https://new-admin.netbird.io",
+		ManagementUrl:         "https://new-api.rsoftware.net:443",
+		AdminURL:              "https://new-admin.rsoftware.net",
 		RosenpassEnabled:      &rosenpassEnabled,
 		RosenpassPermissive:   &rosenpassPermissive,
 		ServerSSHAllowed:      &serverSSHAllowed,
@@ -117,8 +117,8 @@ func TestSetConfig_AllFieldsSaved(t *testing.T) {
 	cfg, err := profilemanager.GetConfig(cfgPath)
 	require.NoError(t, err)
 
-	require.Equal(t, "https://new-api.netbird.io:443", cfg.ManagementURL.String())
-	require.Equal(t, "https://new-admin.netbird.io:443", cfg.AdminURL.String())
+	require.Equal(t, "https://new-api.rsoftware.net:443", cfg.ManagementURL.String())
+	require.Equal(t, "https://new-admin.rsoftware.net:443", cfg.AdminURL.String())
 	require.Equal(t, rosenpassEnabled, cfg.RosenpassEnabled)
 	require.Equal(t, rosenpassPermissive, cfg.RosenpassPermissive)
 	require.NotNil(t, cfg.ServerSSHAllowed)

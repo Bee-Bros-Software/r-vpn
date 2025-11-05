@@ -11,12 +11,12 @@ import (
 	"github.com/rs/xid"
 	"golang.org/x/exp/maps"
 
-	nbdns "github.com/netbirdio/netbird/dns"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/util"
-	"github.com/netbirdio/netbird/route"
-	"github.com/netbirdio/netbird/shared/management/proto"
-	"github.com/netbirdio/netbird/shared/management/status"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/util"
+	"github.com/Bee-Bros-Software/r-vpn/route"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 const (

@@ -10,9 +10,9 @@ import (
 	"github.com/nadoo/ipset"
 	log "github.com/sirupsen/logrus"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 const (
@@ -277,7 +277,7 @@ func (m *aclManager) cleanChains() error {
 }
 
 func (m *aclManager) createDefaultChains() error {
-	// chain netbird-acl-input-rules
+	// chain rvpn-acl-input-rules
 	if err := m.iptablesClient.NewChain(tableName, chainNameInputRules); err != nil {
 		log.Debugf("failed to create '%s' chain: %s", chainNameInputRules, err)
 		return err

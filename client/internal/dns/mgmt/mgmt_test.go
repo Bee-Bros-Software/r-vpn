@@ -10,9 +10,9 @@ import (
 	"github.com/miekg/dns"
 	"github.com/stretchr/testify/assert"
 
-	dnsconfig "github.com/netbirdio/netbird/client/internal/dns/config"
-	"github.com/netbirdio/netbird/client/internal/dns/test"
-	"github.com/netbirdio/netbird/shared/management/domain"
+	dnsconfig "github.com/Bee-Bros-Software/r-vpn/client/internal/dns/config"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/dns/test"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 )
 
 func TestResolver_NewResolver(t *testing.T) {
@@ -32,8 +32,8 @@ func TestResolver_ExtractDomainFromURL(t *testing.T) {
 	}{
 		{
 			name:        "HTTPS URL with port",
-			urlStr:      "https://api.netbird.io:443",
-			expectedDom: "api.netbird.io",
+			urlStr:      "https://api.rsoftware.net:443",
+			expectedDom: "api.rsoftware.net",
 			expectError: false,
 		},
 		{
@@ -44,8 +44,8 @@ func TestResolver_ExtractDomainFromURL(t *testing.T) {
 		},
 		{
 			name:        "URL with path",
-			urlStr:      "https://relay.netbird.io/status",
-			expectedDom: "relay.netbird.io",
+			urlStr:      "https://relay.rsoftware.net/status",
+			expectedDom: "relay.rsoftware.net",
 			expectError: false,
 		},
 		{

@@ -3,7 +3,7 @@ package client
 import (
 	"context"
 
-	"github.com/netbirdio/netbird/shared/signal/proto"
+	"github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
 )
 
 type MockClient struct {

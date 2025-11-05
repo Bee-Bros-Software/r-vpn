@@ -8,7 +8,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/iface/configurer"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
 )
 
 const (

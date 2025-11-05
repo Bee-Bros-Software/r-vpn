@@ -13,12 +13,12 @@ import (
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	"github.com/netbirdio/netbird/client/internal/netflow/conntrack"
-	"github.com/netbirdio/netbird/client/internal/netflow/logger"
-	nftypes "github.com/netbirdio/netbird/client/internal/netflow/types"
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/flow/client"
-	"github.com/netbirdio/netbird/flow/proto"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/conntrack"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/logger"
+	nftypes "github.com/Bee-Bros-Software/r-vpn/client/internal/netflow/types"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/flow/client"
+	"github.com/Bee-Bros-Software/r-vpn/flow/proto"
 )
 
 // Manager handles netflow tracking and logging

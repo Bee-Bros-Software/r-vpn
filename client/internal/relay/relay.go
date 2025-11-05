@@ -13,8 +13,8 @@ import (
 	"github.com/pion/turn/v3"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/internal/stdnet"
-	nbnet "github.com/netbirdio/netbird/client/net"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/stdnet"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 const (

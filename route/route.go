@@ -6,8 +6,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/netbirdio/netbird/shared/management/domain"
-	"github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 // Windows has some limitation regarding metric size that differ from Unix-like systems.

@@ -13,13 +13,13 @@ import (
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 
-	"github.com/netbirdio/netbird/client/internal"
-	"github.com/netbirdio/netbird/client/server"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/server"
 )
 
 var serviceCmd = &cobra.Command{
 	Use:   "service",
-	Short: "Manage the NetBird daemon service",
+	Short: "Manage the R-VPN daemon service",
 }
 
 var (
@@ -36,14 +36,14 @@ type program struct {
 }
 
 func init() {
-	defaultServiceName := "netbird"
+	defaultServiceName := "rvpn"
 	if runtime.GOOS == "windows" {
 		defaultServiceName = "Netbird"
 	}
 
 	serviceCmd.AddCommand(runCmd, startCmd, stopCmd, restartCmd, svcStatusCmd, installCmd, uninstallCmd, reconfigureCmd)
-	serviceCmd.PersistentFlags().BoolVar(&profilesDisabled, "disable-profiles", false, "Disables profiles feature. If enabled, the client will not be able to change or edit any profile. To persist this setting, use: netbird service install --disable-profiles")
-	serviceCmd.PersistentFlags().BoolVar(&updateSettingsDisabled, "disable-update-settings", false, "Disables update settings feature. If enabled, the client will not be able to change or edit any settings. To persist this setting, use: netbird service install --disable-update-settings")
+	serviceCmd.PersistentFlags().BoolVar(&profilesDisabled, "disable-profiles", false, "Disables profiles feature. If enabled, the client will not be able to change or edit any profile. To persist this setting, use: rvpn service install --disable-profiles")
+	serviceCmd.PersistentFlags().BoolVar(&updateSettingsDisabled, "disable-update-settings", false, "Disables update settings feature. If enabled, the client will not be able to change or edit any settings. To persist this setting, use: rvpn service install --disable-update-settings")
 
 	rootCmd.PersistentFlags().StringVarP(&serviceName, "service", "s", defaultServiceName, "Netbird system service name")
 	serviceEnvDesc := `Sets extra environment variables for the service. ` +
@@ -65,7 +65,7 @@ func newSVCConfig() (*service.Config, error) {
 	config := &service.Config{
 		Name:        serviceName,
 		DisplayName: "Netbird",
-		Description: "NetBird mesh network client",
+		Description: "R-VPN mesh network client",
 		Option:      make(service.KeyValue),
 		EnvVars:     make(map[string]string),
 	}

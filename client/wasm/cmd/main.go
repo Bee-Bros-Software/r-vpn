@@ -10,11 +10,11 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	netbird "github.com/netbirdio/netbird/client/embed"
-	"github.com/netbirdio/netbird/client/wasm/internal/http"
-	"github.com/netbirdio/netbird/client/wasm/internal/rdp"
-	"github.com/netbirdio/netbird/client/wasm/internal/ssh"
-	"github.com/netbirdio/netbird/util"
+	rvpn "github.com/Bee-Bros-Software/r-vpn/client/embed"
+	"github.com/Bee-Bros-Software/r-vpn/client/wasm/internal/http"
+	"github.com/Bee-Bros-Software/r-vpn/client/wasm/internal/rdp"
+	"github.com/Bee-Bros-Software/r-vpn/client/wasm/internal/ssh"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 const (
@@ -24,23 +24,23 @@ const (
 )
 
 func main() {
-	js.Global().Set("NetBirdClient", js.FuncOf(netBirdClientConstructor))
+	js.Global().Set("R-VPNClient", js.FuncOf(netBirdClientConstructor))
 
 	select {}
 }
 
-func startClient(ctx context.Context, nbClient *netbird.Client) error {
-	log.Info("Starting NetBird client...")
+func startClient(ctx context.Context, nbClient *rvpn.Client) error {
+	log.Info("Starting R-VPN client...")
 	if err := nbClient.Start(ctx); err != nil {
 		return err
 	}
-	log.Info("NetBird client started successfully")
+	log.Info("R-VPN client started successfully")
 	return nil
 }
 
-// parseClientOptions extracts NetBird options from JavaScript object
-func parseClientOptions(jsOptions js.Value) (netbird.Options, error) {
-	options := netbird.Options{
+// parseClientOptions extracts R-VPN options from JavaScript object
+func parseClientOptions(jsOptions js.Value) (rvpn.Options, error) {
+	options := rvpn.Options{
 		DeviceName: "dashboard-client",
 		LogLevel:   defaultLogLevel,
 	}
@@ -76,7 +76,7 @@ func parseClientOptions(jsOptions js.Value) (netbird.Options, error) {
 }
 
 // createStartMethod creates the start method for the client
-func createStartMethod(client *netbird.Client) js.Func {
+func createStartMethod(client *rvpn.Client) js.Func {
 	return js.FuncOf(func(this js.Value, args []js.Value) any {
 		return createPromise(func(resolve, reject js.Value) {
 			ctx, cancel := context.WithTimeout(context.Background(), clientStartTimeout)
@@ -93,7 +93,7 @@ func createStartMethod(client *netbird.Client) js.Func {
 }
 
 // createStopMethod creates the stop method for the client
-func createStopMethod(client *netbird.Client) js.Func {
+func createStopMethod(client *rvpn.Client) js.Func {
 	return js.FuncOf(func(this js.Value, args []js.Value) any {
 		return createPromise(func(resolve, reject js.Value) {
 			ctx, cancel := context.WithTimeout(context.Background(), clientStopTimeout)
@@ -105,14 +105,14 @@ func createStopMethod(client *netbird.Client) js.Func {
 				return
 			}
 
-			log.Info("NetBird client stopped")
+			log.Info("R-VPN client stopped")
 			resolve.Invoke(js.ValueOf(true))
 		})
 	})
 }
 
 // createSSHMethod creates the SSH connection method
-func createSSHMethod(client *netbird.Client) js.Func {
+func createSSHMethod(client *rvpn.Client) js.Func {
 	return js.FuncOf(func(this js.Value, args []js.Value) any {
 		if len(args) < 2 {
 			return js.ValueOf("error: requires host and port")
@@ -148,7 +148,7 @@ func createSSHMethod(client *netbird.Client) js.Func {
 }
 
 // createProxyRequestMethod creates the proxyRequest method
-func createProxyRequestMethod(client *netbird.Client) js.Func {
+func createProxyRequestMethod(client *rvpn.Client) js.Func {
 	return js.FuncOf(func(this js.Value, args []js.Value) any {
 		if len(args) < 1 {
 			return js.ValueOf("error: request details required")
@@ -168,7 +168,7 @@ func createProxyRequestMethod(client *netbird.Client) js.Func {
 }
 
 // createRDPProxyMethod creates the RDP proxy method
-func createRDPProxyMethod(client *netbird.Client) js.Func {
+func createRDPProxyMethod(client *rvpn.Client) js.Func {
 	return js.FuncOf(func(_ js.Value, args []js.Value) any {
 		if len(args) < 2 {
 			return js.ValueOf("error: hostname and port required")
@@ -191,8 +191,8 @@ func createPromise(handler func(resolve, reject js.Value)) js.Value {
 	}))
 }
 
-// createClientObject wraps the NetBird client in a JavaScript object
-func createClientObject(client *netbird.Client) js.Value {
+// createClientObject wraps the R-VPN client in a JavaScript object
+func createClientObject(client *rvpn.Client) js.Value {
 	obj := make(map[string]interface{})
 
 	obj["start"] = createStartMethod(client)
@@ -226,17 +226,17 @@ func netBirdClientConstructor(this js.Value, args []js.Value) any {
 				log.Warnf("Failed to initialize logging: %v", err)
 			}
 
-			log.Infof("Creating NetBird client with options: deviceName=%s, hasJWT=%v, hasSetupKey=%v, mgmtURL=%s",
+			log.Infof("Creating R-VPN client with options: deviceName=%s, hasJWT=%v, hasSetupKey=%v, mgmtURL=%s",
 				options.DeviceName, options.JWTToken != "", options.SetupKey != "", options.ManagementURL)
 
-			client, err := netbird.New(options)
+			client, err := rvpn.New(options)
 			if err != nil {
 				reject.Invoke(js.ValueOf(fmt.Sprintf("create client: %v", err)))
 				return
 			}
 
 			clientObj := createClientObject(client)
-			log.Info("NetBird client created successfully")
+			log.Info("R-VPN client created successfully")
 			resolve.Invoke(clientObj)
 		}()
 

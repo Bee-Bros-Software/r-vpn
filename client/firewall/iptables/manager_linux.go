@@ -11,10 +11,10 @@ import (
 	"github.com/hashicorp/go-multierror"
 	log "github.com/sirupsen/logrus"
 
-	nberrors "github.com/netbirdio/netbird/client/errors"
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	nberrors "github.com/Bee-Bros-Software/r-vpn/client/errors"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 // Manager of iptables firewall
@@ -194,7 +194,7 @@ func (m *Manager) Close(stateManager *statemanager.Manager) error {
 	return nberrors.FormatErrorOrNil(merr)
 }
 
-// AllowNetbird allows netbird interface traffic
+// AllowNetbird allows rvpn interface traffic
 func (m *Manager) AllowNetbird() error {
 	if !m.wgIface.IsUserspaceBind() {
 		return nil
@@ -210,7 +210,7 @@ func (m *Manager) AllowNetbird() error {
 		"",
 	)
 	if err != nil {
-		return fmt.Errorf("allow netbird interface traffic: %w", err)
+		return fmt.Errorf("allow rvpn interface traffic: %w", err)
 	}
 	return nil
 }
@@ -261,7 +261,7 @@ func (m *Manager) UpdateSet(set firewall.Set, prefixes []netip.Prefix) error {
 	return m.router.UpdateSet(set, prefixes)
 }
 
-// AddInboundDNAT adds an inbound DNAT rule redirecting traffic from NetBird peers to local services.
+// AddInboundDNAT adds an inbound DNAT rule redirecting traffic from R-VPN peers to local services.
 func (m *Manager) AddInboundDNAT(localAddr netip.Addr, protocol firewall.Protocol, sourcePort, targetPort uint16) error {
 	m.mutex.Lock()
 	defer m.mutex.Unlock()

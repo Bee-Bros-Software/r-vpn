@@ -9,7 +9,7 @@ import (
 
 	"github.com/miekg/dns"
 
-	"github.com/netbirdio/netbird/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
 )
 
 type upstreamResolver struct {

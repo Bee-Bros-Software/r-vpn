@@ -5,8 +5,8 @@ package dns
 import (
 	"net"
 
-	"github.com/netbirdio/netbird/client/iface/device"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
 )
 
 // WGIface defines subset methods of interface required for manager

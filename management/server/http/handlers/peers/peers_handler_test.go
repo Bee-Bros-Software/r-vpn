@@ -16,15 +16,15 @@ import (
 	"github.com/gorilla/mux"
 	"golang.org/x/exp/maps"
 
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/types"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/management/server/mock_server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/mock_server"
 )
 
 const (
@@ -164,7 +164,7 @@ func initTestMetaData(peers ...*nbpeer.Peer) *Handler {
 				}, nil
 			},
 			GetDNSDomainFunc: func(settings *types.Settings) string {
-				return "netbird.selfhosted"
+				return "rvpn.selfhosted"
 			},
 			GetAccountFunc: func(ctx context.Context, accountID string) (*types.Account, error) {
 				return account, nil
@@ -468,11 +468,11 @@ func TestPeersHandlerUpdatePeerIP(t *testing.T) {
 		Key:                    "key",
 		IP:                     net.ParseIP("100.64.0.1"),
 		Status:                 &nbpeer.PeerStatus{Connected: false, LastSeen: time.Now()},
-		Name:                   "test-host@netbird.io",
+		Name:                   "test-host@rsoftware.net",
 		LoginExpirationEnabled: false,
 		UserID:                 regularUser,
 		Meta: nbpeer.PeerSystemMeta{
-			Hostname: "test-host@netbird.io",
+			Hostname: "test-host@rsoftware.net",
 			Core:     "22.04",
 		},
 	}

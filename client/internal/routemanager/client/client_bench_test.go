@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/netbirdio/netbird/client/internal/peer"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/peer"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 type benchmarkTier struct {

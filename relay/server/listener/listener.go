@@ -4,7 +4,7 @@ import (
 	"context"
 	"net"
 
-	"github.com/netbirdio/netbird/relay/protocol"
+	"github.com/Bee-Bros-Software/r-vpn/relay/protocol"
 )
 
 type Listener interface {

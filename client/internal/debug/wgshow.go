@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/netbirdio/netbird/client/iface/configurer"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
 )
 
 type WGIface interface {

@@ -12,8 +12,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/iface/bufsize"
-	"github.com/netbirdio/netbird/client/iface/wgproxy/listener"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bufsize"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgproxy/listener"
 )
 
 // ProxyWrapper help to keep the remoteConn instance for net.Conn.Close function call

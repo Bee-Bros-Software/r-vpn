@@ -5,19 +5,19 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/management-integrations/integrations"
-	"github.com/netbirdio/netbird/management/server"
-	"github.com/netbirdio/netbird/management/server/account"
-	"github.com/netbirdio/netbird/management/server/geolocation"
-	"github.com/netbirdio/netbird/management/server/groups"
-	"github.com/netbirdio/netbird/management/server/idp"
-	"github.com/netbirdio/netbird/management/server/networks"
-	"github.com/netbirdio/netbird/management/server/networks/resources"
-	"github.com/netbirdio/netbird/management/server/networks/routers"
-	"github.com/netbirdio/netbird/management/server/peers"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/users"
+	"github.com/rvpnio/management-integrations/integrations"
+	"github.com/Bee-Bros-Software/r-vpn/management/server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/geolocation"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/groups"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/idp"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/users"
 )
 
 func (s *BaseServer) GeoLocationManager() geolocation.Geolocation {

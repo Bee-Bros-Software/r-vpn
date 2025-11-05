@@ -5,7 +5,7 @@ import (
 	"net"
 	"net/netip"
 
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 var ErrRouteNotSupported = errors.New("route operations not supported on js")

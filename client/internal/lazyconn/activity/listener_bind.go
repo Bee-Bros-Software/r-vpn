@@ -6,8 +6,8 @@ import (
 	"net/netip"
 	"sync"
 
-	"github.com/netbirdio/netbird/client/iface/device"
-	"github.com/netbirdio/netbird/client/internal/lazyconn"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/lazyconn"
 )
 
 type bindProvider interface {
@@ -32,7 +32,7 @@ type BindListener struct {
 }
 
 // NewBindListener creates a listener that passes data directly through bind using LazyConn.
-// It automatically derives a unique fake IP from the peer's NetBird IP in the 127.2.x.x range.
+// It automatically derives a unique fake IP from the peer's R-VPN IP in the 127.2.x.x range.
 func NewBindListener(wgIface WgInterface, bind device.EndpointManager, cfg lazyconn.PeerConfig) (*BindListener, error) {
 	fakeIP, err := deriveFakeIP(wgIface, cfg.AllowedIPs)
 	if err != nil {
@@ -54,9 +54,9 @@ func NewBindListener(wgIface WgInterface, bind device.EndpointManager, cfg lazyc
 	return d, nil
 }
 
-// deriveFakeIP creates a deterministic fake IP for bind mode based on peer's NetBird IP.
+// deriveFakeIP creates a deterministic fake IP for bind mode based on peer's R-VPN IP.
 // Maps peer IP 100.64.x.y to fake IP 127.2.x.y (similar to relay proxy using 127.1.x.y).
-// It finds the peer's actual NetBird IP by checking which allowedIP is in the same subnet as our WG interface.
+// It finds the peer's actual R-VPN IP by checking which allowedIP is in the same subnet as our WG interface.
 func deriveFakeIP(wgIface WgInterface, allowedIPs []netip.Prefix) (netip.Addr, error) {
 	if len(allowedIPs) == 0 {
 		return netip.Addr{}, fmt.Errorf("no allowed IPs for peer")
@@ -77,7 +77,7 @@ func deriveFakeIP(wgIface WgInterface, allowedIPs []netip.Prefix) (netip.Addr, e
 	}
 
 	if !peerIP.IsValid() {
-		return netip.Addr{}, fmt.Errorf("no peer NetBird IP found in allowed IPs")
+		return netip.Addr{}, fmt.Errorf("no peer R-VPN IP found in allowed IPs")
 	}
 
 	octets := peerIP.As4()

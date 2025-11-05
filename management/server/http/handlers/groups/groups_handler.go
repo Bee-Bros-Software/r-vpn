@@ -7,14 +7,14 @@ import (
 	"github.com/gorilla/mux"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/management/server/account"
-	nbcontext "github.com/netbirdio/netbird/management/server/context"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/account"
+	nbcontext "github.com/Bee-Bros-Software/r-vpn/management/server/context"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
 
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/shared/management/http/util"
-	"github.com/netbirdio/netbird/shared/management/status"
-	"github.com/netbirdio/netbird/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/util"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
 )
 
 // handler is a handler that returns groups of the account

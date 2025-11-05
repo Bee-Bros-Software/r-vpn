@@ -8,7 +8,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 )
 
 const (
@@ -22,7 +22,7 @@ var (
 	logFile        string
 
 	rootCmd = &cobra.Command{
-		Use:     "netbird-signal",
+		Use:     "rvpn-signal",
 		Short:   "",
 		Long:    "",
 		Version: version.NetbirdVersion(),
@@ -39,8 +39,8 @@ func Execute() error {
 
 func init() {
 	stopCh = make(chan int)
-	defaultLogFile = "/var/log/netbird/signal.log"
-	defaultSignalSSLDir = "/var/lib/netbird/"
+	defaultLogFile = "/var/log/rvpn/signal.log"
+	defaultSignalSSLDir = "/var/lib/rvpn/"
 
 	if runtime.GOOS == "windows" {
 		defaultLogFile = os.Getenv("PROGRAMDATA") + "\\Netbird\\" + "signal.log"

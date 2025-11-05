@@ -13,7 +13,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/client/internal"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal"
 )
 
 type mockHTTPClient struct {

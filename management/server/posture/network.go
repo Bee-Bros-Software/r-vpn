@@ -6,8 +6,8 @@ import (
 	"net/netip"
 	"slices"
 
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/shared/management/status"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 type PeerNetworkRangeCheck struct {

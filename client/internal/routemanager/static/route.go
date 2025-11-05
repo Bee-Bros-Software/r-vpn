@@ -6,9 +6,9 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/internal/routemanager/common"
-	"github.com/netbirdio/netbird/client/internal/routemanager/refcounter"
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/common"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/refcounter"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 type Route struct {

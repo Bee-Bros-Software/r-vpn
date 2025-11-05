@@ -7,8 +7,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/internal/lazyconn"
-	"github.com/netbirdio/netbird/monotime"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/lazyconn"
+	"github.com/Bee-Bros-Software/r-vpn/monotime"
 )
 
 const (

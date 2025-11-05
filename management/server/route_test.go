@@ -14,19 +14,19 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	resourceTypes "github.com/netbirdio/netbird/management/server/networks/resources/types"
-	routerTypes "github.com/netbirdio/netbird/management/server/networks/routers/types"
-	networkTypes "github.com/netbirdio/netbird/management/server/networks/types"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/types"
-	"github.com/netbirdio/netbird/route"
-	"github.com/netbirdio/netbird/shared/management/domain"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	resourceTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/resources/types"
+	routerTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/routers/types"
+	networkTypes "github.com/Bee-Bros-Software/r-vpn/management/server/networks/types"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	"github.com/Bee-Bros-Software/r-vpn/route"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/domain"
 )
 
 const (
@@ -1285,7 +1285,7 @@ func createRouterManager(t *testing.T) (*DefaultAccountManager, error) {
 
 	permissionsManager := permissions.NewManager(store)
 
-	return BuildManager(context.Background(), store, NewPeersUpdateManager(nil), nil, "", "netbird.selfhosted", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
+	return BuildManager(context.Background(), store, NewPeersUpdateManager(nil), nil, "", "rvpn.selfhosted", eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
 }
 
 func createRouterStore(t *testing.T) (store.Store, error) {
@@ -1322,11 +1322,11 @@ func initTestRouteAccount(t *testing.T, am *DefaultAccountManager) (*types.Accou
 		IP:       peer1IP,
 		ID:       peer1ID,
 		Key:      peer1Key,
-		Name:     "test-host1@netbird.io",
+		Name:     "test-host1@rsoftware.net",
 		DNSLabel: "test-host1",
 		UserID:   userID,
 		Meta: nbpeer.PeerSystemMeta{
-			Hostname:  "test-host1@netbird.io",
+			Hostname:  "test-host1@rsoftware.net",
 			GoOS:      "linux",
 			Kernel:    "Linux",
 			Core:      "21.04",
@@ -1349,11 +1349,11 @@ func initTestRouteAccount(t *testing.T, am *DefaultAccountManager) (*types.Accou
 		IP:       peer2IP,
 		ID:       peer2ID,
 		Key:      peer2Key,
-		Name:     "test-host2@netbird.io",
+		Name:     "test-host2@rsoftware.net",
 		DNSLabel: "test-host2",
 		UserID:   userID,
 		Meta: nbpeer.PeerSystemMeta{
-			Hostname:  "test-host2@netbird.io",
+			Hostname:  "test-host2@rsoftware.net",
 			GoOS:      "linux",
 			Kernel:    "Linux",
 			Core:      "21.04",
@@ -1376,11 +1376,11 @@ func initTestRouteAccount(t *testing.T, am *DefaultAccountManager) (*types.Accou
 		IP:       peer3IP,
 		ID:       peer3ID,
 		Key:      peer3Key,
-		Name:     "test-host3@netbird.io",
+		Name:     "test-host3@rsoftware.net",
 		DNSLabel: "test-host3",
 		UserID:   userID,
 		Meta: nbpeer.PeerSystemMeta{
-			Hostname:  "test-host3@netbird.io",
+			Hostname:  "test-host3@rsoftware.net",
 			GoOS:      "darwin",
 			Kernel:    "Darwin",
 			Core:      "13.4.1",
@@ -1403,11 +1403,11 @@ func initTestRouteAccount(t *testing.T, am *DefaultAccountManager) (*types.Accou
 		IP:       peer4IP,
 		ID:       peer4ID,
 		Key:      peer4Key,
-		Name:     "test-host4@netbird.io",
+		Name:     "test-host4@rsoftware.net",
 		DNSLabel: "test-host4",
 		UserID:   userID,
 		Meta: nbpeer.PeerSystemMeta{
-			Hostname:  "test-host4@netbird.io",
+			Hostname:  "test-host4@rsoftware.net",
 			GoOS:      "linux",
 			Kernel:    "Linux",
 			Core:      "21.04",
@@ -1430,11 +1430,11 @@ func initTestRouteAccount(t *testing.T, am *DefaultAccountManager) (*types.Accou
 		IP:       peer5IP,
 		ID:       peer5ID,
 		Key:      peer5Key,
-		Name:     "test-host5@netbird.io",
+		Name:     "test-host5@rsoftware.net",
 		DNSLabel: "test-host5",
 		UserID:   userID,
 		Meta: nbpeer.PeerSystemMeta{
-			Hostname:  "test-host5@netbird.io",
+			Hostname:  "test-host5@rsoftware.net",
 			GoOS:      "linux",
 			Kernel:    "Linux",
 			Core:      "21.04",

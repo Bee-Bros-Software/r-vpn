@@ -19,20 +19,20 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	"github.com/netbirdio/netbird/encryption"
-	"github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/management/server"
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/groups"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	"github.com/netbirdio/netbird/management/server/peers/ephemeral/manager"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/types"
-	mgmtProto "github.com/netbirdio/netbird/shared/management/proto"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/encryption"
+	"github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/management/server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/groups"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers/ephemeral/manager"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	mgmtProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 const (
@@ -57,7 +57,7 @@ func setupTest(t *testing.T) *testSuite {
 	ts := &testSuite{t: t}
 
 	var err error
-	ts.dataDir, err = os.MkdirTemp("", "netbird_mgmt_test_tmp_*")
+	ts.dataDir, err = os.MkdirTemp("", "rvpn_mgmt_test_tmp_*")
 	if err != nil {
 		t.Fatalf("failed to create temp directory: %v", err)
 	}
@@ -205,7 +205,7 @@ func startServer(
 		peersUpdateManager,
 		nil,
 		"",
-		"netbird.selfhosted",
+		"rvpn.selfhosted",
 		eventStore,
 		nil,
 		false,
@@ -296,15 +296,15 @@ func TestSyncNewPeerConfiguration(t *testing.T) {
 	}
 
 	expectedSignalConfig := &mgmtProto.HostConfig{
-		Uri:      "signal.netbird.io:10000",
+		Uri:      "signal.rsoftware.net:10000",
 		Protocol: mgmtProto.HostConfig_HTTP,
 	}
 	expectedStunsConfig := &mgmtProto.HostConfig{
-		Uri:      "stun:stun.netbird.io:3468",
+		Uri:      "stun:stun.rsoftware.net:3468",
 		Protocol: mgmtProto.HostConfig_UDP,
 	}
 	expectedTRUNHost := &mgmtProto.HostConfig{
-		Uri:      "turn:stun.netbird.io:3468",
+		Uri:      "turn:stun.rsoftware.net:3468",
 		Protocol: mgmtProto.HostConfig_UDP,
 	}
 
@@ -566,16 +566,16 @@ func TestLoginRegisteredPeer(t *testing.T) {
 	}
 
 	expectedSignalConfig := &mgmtProto.HostConfig{
-		Uri:      "signal.netbird.io:10000",
+		Uri:      "signal.rsoftware.net:10000",
 		Protocol: mgmtProto.HostConfig_HTTP,
 	}
 	expectedStunsConfig := &mgmtProto.HostConfig{
-		Uri:      "stun:stun.netbird.io:3468",
+		Uri:      "stun:stun.rsoftware.net:3468",
 		Protocol: mgmtProto.HostConfig_UDP,
 	}
 	expectedTurnsConfig := &mgmtProto.ProtectedHostConfig{
 		HostConfig: &mgmtProto.HostConfig{
-			Uri:      "turn:stun.netbird.io:3468",
+			Uri:      "turn:stun.rsoftware.net:3468",
 			Protocol: mgmtProto.HostConfig_UDP,
 		},
 		User:     "some_user",

@@ -3,10 +3,10 @@
 package client
 
 import (
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/shared/relay/client/dialer"
-	"github.com/netbirdio/netbird/shared/relay/client/dialer/quic"
-	"github.com/netbirdio/netbird/shared/relay/client/dialer/ws"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/client/dialer"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/client/dialer/quic"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/client/dialer/ws"
 )
 
 // getDialers returns the list of dialers to use for connecting to the relay server.

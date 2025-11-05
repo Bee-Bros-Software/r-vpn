@@ -12,8 +12,8 @@ import (
 	"go.opentelemetry.io/otel/metric"
 
 	//nolint:staticcheck
-	"github.com/netbirdio/netbird/relay/metrics"
-	"github.com/netbirdio/netbird/relay/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/relay/metrics"
+	"github.com/Bee-Bros-Software/r-vpn/relay/server/store"
 )
 
 type Config struct {

@@ -8,9 +8,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"go.opentelemetry.io/otel"
 
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/relay/server"
-	"github.com/netbirdio/netbird/shared/relay/auth/allow"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/relay/server"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/auth/allow"
 )
 
 func TestEmptyURL(t *testing.T) {

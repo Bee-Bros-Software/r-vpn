@@ -9,7 +9,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/client/internal/statemanager"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
 )
 
 // Close cleans up the firewall manager by removing all rules and closing trackers
@@ -51,7 +51,7 @@ func (m *Manager) Close(stateManager *statemanager.Manager) error {
 	return nil
 }
 
-// AllowNetbird allows netbird interface traffic
+// AllowNetbird allows rvpn interface traffic
 func (m *Manager) AllowNetbird() error {
 	if m.nativeFirewall != nil {
 		return m.nativeFirewall.AllowNetbird()

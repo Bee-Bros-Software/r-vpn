@@ -11,10 +11,10 @@ import (
 	"golang.zx2c4.com/wireguard/tun"
 	"golang.zx2c4.com/wireguard/tun/netstack"
 
-	"github.com/netbirdio/netbird/client/iface/bind"
-	"github.com/netbirdio/netbird/client/iface/configurer"
-	"github.com/netbirdio/netbird/client/iface/udpmux"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bind"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/configurer"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/udpmux"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
 )
 
 type TunDevice struct {
@@ -53,7 +53,7 @@ func (t *TunDevice) Create() (WGConfigurer, error) {
 	t.device = device.NewDevice(
 		t.filteredDevice,
 		t.iceBind,
-		device.NewLogger(wgLogLevel(), "[netbird] "),
+		device.NewLogger(wgLogLevel(), "[rvpn] "),
 	)
 
 	err = t.assignAddr()

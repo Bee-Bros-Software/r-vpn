@@ -10,7 +10,7 @@ import (
 	"os/exec"
 	"runtime"
 
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 func isRoot() bool {

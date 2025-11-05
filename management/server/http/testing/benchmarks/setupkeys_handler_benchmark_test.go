@@ -16,10 +16,10 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/netbirdio/netbird/management/server"
-	"github.com/netbirdio/netbird/management/server/http/testing/testing_tools"
-	"github.com/netbirdio/netbird/management/server/http/testing/testing_tools/channel"
-	"github.com/netbirdio/netbird/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/management/server"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/http/testing/testing_tools"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/http/testing/testing_tools/channel"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
 )
 
 // Map to store peers, groups, users, and setupKeys by name

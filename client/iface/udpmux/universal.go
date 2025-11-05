@@ -1,7 +1,7 @@
 package udpmux
 
 /*
- Most of this code was copied from https://github.com/pion/ice and modified to fulfill NetBird's requirements.
+ Most of this code was copied from https://github.com/pion/ice and modified to fulfill R-VPN's requirements.
 */
 
 import (
@@ -18,8 +18,8 @@ import (
 	"github.com/pion/stun/v3"
 	"github.com/pion/transport/v3"
 
-	"github.com/netbirdio/netbird/client/iface/bufsize"
-	"github.com/netbirdio/netbird/client/iface/wgaddr"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/bufsize"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/wgaddr"
 )
 
 // FilterFn is a function that filters out candidates based on the address.
@@ -171,8 +171,8 @@ func (u *UDPConn) performFilterCheck(addr net.Addr) error {
 	}
 
 	if u.address.Network.Contains(a) {
-		log.Warnf("Address %s is part of the NetBird network %s, refusing to write", addr, u.address)
-		return fmt.Errorf("address %s is part of the NetBird network %s, refusing to write", addr, u.address)
+		log.Warnf("Address %s is part of the R-VPN network %s, refusing to write", addr, u.address)
+		return fmt.Errorf("address %s is part of the R-VPN network %s, refusing to write", addr, u.address)
 	}
 
 	if isRouted, prefix, err := u.filterFn(a); err != nil {

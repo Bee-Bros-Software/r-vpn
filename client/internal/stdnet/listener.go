@@ -6,7 +6,7 @@ import (
 
 	"github.com/pion/transport/v3"
 
-	nbnet "github.com/netbirdio/netbird/client/net"
+	nbnet "github.com/Bee-Bros-Software/r-vpn/client/net"
 )
 
 // ListenPacket listens for incoming packets on the given network and address.

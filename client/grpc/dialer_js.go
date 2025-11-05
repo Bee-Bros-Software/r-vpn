@@ -3,7 +3,7 @@ package grpc
 import (
 	"google.golang.org/grpc"
 
-	"github.com/netbirdio/netbird/util/wsproxy/client"
+	"github.com/Bee-Bros-Software/r-vpn/util/wsproxy/client"
 )
 
 // WithCustomDialer returns a gRPC dial option that uses WebSocket transport for WASM/JS environments.

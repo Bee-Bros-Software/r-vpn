@@ -15,8 +15,8 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/netbirdio/netbird/client/proto"
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/client/proto"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 )
 
 type eventHandler struct {
@@ -202,7 +202,7 @@ func (h *eventHandler) handleQuitClick() {
 }
 
 func (h *eventHandler) handleGitHubClick() {
-	if err := openURL("https://github.com/netbirdio/netbird"); err != nil {
+	if err := openURL("https://github.com/Bee-Bros-Software/r-vpn"); err != nil {
 		log.Errorf("failed to open GitHub URL: %v", err)
 	}
 }

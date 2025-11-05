@@ -7,8 +7,8 @@ import (
 
 	"github.com/miekg/dns"
 
-	"github.com/netbirdio/netbird/client/internal/statemanager"
-	nbdns "github.com/netbirdio/netbird/dns"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/statemanager"
+	nbdns "github.com/Bee-Bros-Software/r-vpn/dns"
 )
 
 const (

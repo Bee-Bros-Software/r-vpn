@@ -1,7 +1,7 @@
 package manager
 
 import (
-	"github.com/netbirdio/netbird/route"
+	"github.com/Bee-Bros-Software/r-vpn/route"
 )
 
 type RouterPair struct {

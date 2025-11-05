@@ -16,11 +16,11 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 
-	nbgrpc "github.com/netbirdio/netbird/client/grpc"
-	"github.com/netbirdio/netbird/encryption"
-	"github.com/netbirdio/netbird/shared/management/client"
-	"github.com/netbirdio/netbird/shared/signal/proto"
-	"github.com/netbirdio/netbird/util/wsproxy"
+	nbgrpc "github.com/Bee-Bros-Software/r-vpn/client/grpc"
+	"github.com/Bee-Bros-Software/r-vpn/encryption"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/client"
+	"github.com/Bee-Bros-Software/r-vpn/shared/signal/proto"
+	"github.com/Bee-Bros-Software/r-vpn/util/wsproxy"
 )
 
 // ConnStateNotifier is a wrapper interface of the status recorder

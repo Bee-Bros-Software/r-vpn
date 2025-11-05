@@ -17,12 +17,12 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	"github.com/netbirdio/netbird/encryption"
-	"github.com/netbirdio/netbird/relay/healthcheck"
-	"github.com/netbirdio/netbird/relay/server"
-	"github.com/netbirdio/netbird/shared/relay/auth"
-	"github.com/netbirdio/netbird/signal/metrics"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/encryption"
+	"github.com/Bee-Bros-Software/r-vpn/relay/healthcheck"
+	"github.com/Bee-Bros-Software/r-vpn/relay/server"
+	"github.com/Bee-Bros-Software/r-vpn/shared/relay/auth"
+	"github.com/Bee-Bros-Software/r-vpn/signal/metrics"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 type Config struct {

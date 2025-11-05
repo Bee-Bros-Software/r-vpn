@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/netbirdio/netbird/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peer"
 )
 
 func TestProcessCheck_Check(t *testing.T) {
@@ -256,9 +256,9 @@ func TestProcessCheck_Validate(t *testing.T) {
 			check: ProcessCheck{
 				Processes: []Process{
 					{
-						LinuxPath:   "/usr/local/bin/netbird",
-						MacPath:     "/usr/local/bin/netbird",
-						WindowsPath: "C:\\ProgramData\\NetBird\\netbird.exe",
+						LinuxPath:   "/usr/local/bin/rvpn",
+						MacPath:     "/usr/local/bin/rvpn",
+						WindowsPath: "C:\\ProgramData\\R-VPN\\rvpn.exe",
 					},
 				},
 			},
@@ -269,7 +269,7 @@ func TestProcessCheck_Validate(t *testing.T) {
 			check: ProcessCheck{
 				Processes: []Process{
 					{
-						LinuxPath: "/usr/local/bin/netbird",
+						LinuxPath: "/usr/local/bin/rvpn",
 					},
 				},
 			},
@@ -280,7 +280,7 @@ func TestProcessCheck_Validate(t *testing.T) {
 			check: ProcessCheck{
 				Processes: []Process{
 					{
-						MacPath: "/Applications/NetBird.app/Contents/MacOS/netbird",
+						MacPath: "/Applications/R-VPN.app/Contents/MacOS/rvpn",
 					},
 				},
 			},
@@ -291,7 +291,7 @@ func TestProcessCheck_Validate(t *testing.T) {
 			check: ProcessCheck{
 				Processes: []Process{
 					{
-						WindowsPath: "C:\\ProgramData\\NetBird\\netbird.exe",
+						WindowsPath: "C:\\ProgramData\\R-VPN\\rvpn.exe",
 					},
 				},
 			},

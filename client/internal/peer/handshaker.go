@@ -7,7 +7,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/netbirdio/netbird/version"
+	"github.com/Bee-Bros-Software/r-vpn/version"
 )
 
 var (
@@ -28,7 +28,7 @@ type OfferAnswer struct {
 	// We can set the remote peer's endpoint with this port.
 	WgListenPort int
 
-	// Version of NetBird Agent
+	// Version of R-VPN Agent
 	Version string
 	// RosenpassPubKey is the Rosenpass public key of the remote peer when receiving this message
 	// This value is the local Rosenpass server public key when sending the message

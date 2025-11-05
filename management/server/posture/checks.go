@@ -7,9 +7,9 @@ import (
 	"regexp"
 
 	"github.com/hashicorp/go-version"
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
-	"github.com/netbirdio/netbird/shared/management/status"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/status"
 )
 
 const (

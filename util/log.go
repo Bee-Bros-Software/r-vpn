@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc/grpclog"
 	"gopkg.in/natefinch/lumberjack.v2"
 
-	"github.com/netbirdio/netbird/formatter"
+	"github.com/Bee-Bros-Software/r-vpn/formatter"
 )
 
 const defaultLogSize = 15

@@ -8,9 +8,9 @@ import (
 	"github.com/google/gopacket/layers"
 	"github.com/stretchr/testify/require"
 
-	firewall "github.com/netbirdio/netbird/client/firewall/manager"
-	"github.com/netbirdio/netbird/client/iface"
-	"github.com/netbirdio/netbird/client/iface/device"
+	firewall "github.com/Bee-Bros-Software/r-vpn/client/firewall/manager"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
 )
 
 // TestDNATTranslationCorrectness verifies DNAT translation works correctly

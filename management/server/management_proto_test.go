@@ -20,20 +20,20 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	"github.com/netbirdio/netbird/encryption"
-	"github.com/netbirdio/netbird/formatter/hook"
-	"github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/management/server/activity"
-	"github.com/netbirdio/netbird/management/server/groups"
-	"github.com/netbirdio/netbird/management/server/integrations/port_forwarding"
-	"github.com/netbirdio/netbird/management/server/peers/ephemeral/manager"
-	"github.com/netbirdio/netbird/management/server/permissions"
-	"github.com/netbirdio/netbird/management/server/settings"
-	"github.com/netbirdio/netbird/management/server/store"
-	"github.com/netbirdio/netbird/management/server/telemetry"
-	"github.com/netbirdio/netbird/management/server/types"
-	mgmtProto "github.com/netbirdio/netbird/shared/management/proto"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/encryption"
+	"github.com/Bee-Bros-Software/r-vpn/formatter/hook"
+	"github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/activity"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/groups"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/integrations/port_forwarding"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/peers/ephemeral/manager"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/permissions"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/settings"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/store"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/telemetry"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/types"
+	mgmtProto "github.com/Bee-Bros-Software/r-vpn/shared/management/proto"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 type TestingT interface {
@@ -100,7 +100,7 @@ func Test_SyncProtocol(t *testing.T) {
 	mgmtServer, _, mgmtAddr, cleanup, err := startManagementForTest(t, "testdata/store_with_expired_peers.sql", &config.Config{
 		Stuns: []*config.Host{{
 			Proto: "udp",
-			URI:   "stun:stun.netbird.io:3468",
+			URI:   "stun:stun.rsoftware.net:3468",
 		}},
 		TURNConfig: &config.TURNConfig{
 			TimeBasedCredentials: false,
@@ -108,12 +108,12 @@ func Test_SyncProtocol(t *testing.T) {
 			Secret:               "whatever",
 			Turns: []*config.Host{{
 				Proto: "udp",
-				URI:   "turn:stun.netbird.io:3468",
+				URI:   "turn:stun.rsoftware.net:3468",
 			}},
 		},
 		Signal: &config.Host{
 			Proto: "http",
-			URI:   "signal.netbird.io:10000",
+			URI:   "signal.rsoftware.net:10000",
 		},
 		Datadir:    dir,
 		HttpConfig: nil,
@@ -179,64 +179,64 @@ func Test_SyncProtocol(t *testing.T) {
 		return
 	}
 
-	netbirdConfig := syncResp.GetNetbirdConfig()
-	if netbirdConfig == nil {
+	rvpnConfig := syncResp.GetNetbirdConfig()
+	if rvpnConfig == nil {
 		t.Fatal("expecting SyncResponse to have non-nil NetbirdConfig")
 	}
 
-	if netbirdConfig.GetSignal() == nil {
+	if rvpnConfig.GetSignal() == nil {
 		t.Fatal("expecting SyncResponse to have NetbirdConfig with non-nil Signal config")
 	}
 
 	expectedSignalConfig := &mgmtProto.HostConfig{
-		Uri:      "signal.netbird.io:10000",
+		Uri:      "signal.rsoftware.net:10000",
 		Protocol: mgmtProto.HostConfig_HTTP,
 	}
 
-	if netbirdConfig.GetSignal().GetUri() != expectedSignalConfig.GetUri() {
+	if rvpnConfig.GetSignal().GetUri() != expectedSignalConfig.GetUri() {
 		t.Fatalf("expecting SyncResponse to have NetbirdConfig with expected Signal URI: %v, actual: %v",
 			expectedSignalConfig.GetUri(),
-			netbirdConfig.GetSignal().GetUri())
+			rvpnConfig.GetSignal().GetUri())
 	}
 
-	if netbirdConfig.GetSignal().GetProtocol() != expectedSignalConfig.GetProtocol() {
+	if rvpnConfig.GetSignal().GetProtocol() != expectedSignalConfig.GetProtocol() {
 		t.Fatalf("expecting SyncResponse to have NetbirdConfig with expected Signal Protocol: %v, actual: %v",
 			expectedSignalConfig.GetProtocol().String(),
-			netbirdConfig.GetSignal().GetProtocol())
+			rvpnConfig.GetSignal().GetProtocol())
 	}
 
 	expectedStunsConfig := &mgmtProto.HostConfig{
-		Uri:      "stun:stun.netbird.io:3468",
+		Uri:      "stun:stun.rsoftware.net:3468",
 		Protocol: mgmtProto.HostConfig_UDP,
 	}
 
-	if netbirdConfig.GetStuns()[0].GetUri() != expectedStunsConfig.GetUri() {
+	if rvpnConfig.GetStuns()[0].GetUri() != expectedStunsConfig.GetUri() {
 		t.Fatalf("expecting SyncResponse to have NetbirdConfig with expected STUN URI: %v, actual: %v",
 			expectedStunsConfig.GetUri(),
-			netbirdConfig.GetStuns()[0].GetUri())
+			rvpnConfig.GetStuns()[0].GetUri())
 	}
 
-	if netbirdConfig.GetStuns()[0].GetProtocol() != expectedStunsConfig.GetProtocol() {
+	if rvpnConfig.GetStuns()[0].GetProtocol() != expectedStunsConfig.GetProtocol() {
 		t.Fatalf("expecting SyncResponse to have NetbirdConfig with expected STUN Protocol: %v, actual: %v",
 			expectedStunsConfig.GetProtocol(),
-			netbirdConfig.GetStuns()[0].GetProtocol())
+			rvpnConfig.GetStuns()[0].GetProtocol())
 	}
 
 	expectedTRUNHost := &mgmtProto.HostConfig{
-		Uri:      "turn:stun.netbird.io:3468",
+		Uri:      "turn:stun.rsoftware.net:3468",
 		Protocol: mgmtProto.HostConfig_UDP,
 	}
 
-	if netbirdConfig.GetTurns()[0].GetHostConfig().GetUri() != expectedTRUNHost.GetUri() {
+	if rvpnConfig.GetTurns()[0].GetHostConfig().GetUri() != expectedTRUNHost.GetUri() {
 		t.Fatalf("expecting SyncResponse to have NetbirdConfig with expected TURN URI: %v, actual: %v",
 			expectedTRUNHost.GetUri(),
-			netbirdConfig.GetTurns()[0].GetHostConfig().GetUri())
+			rvpnConfig.GetTurns()[0].GetHostConfig().GetUri())
 	}
 
-	if netbirdConfig.GetTurns()[0].GetHostConfig().GetProtocol() != expectedTRUNHost.GetProtocol() {
+	if rvpnConfig.GetTurns()[0].GetHostConfig().GetProtocol() != expectedTRUNHost.GetProtocol() {
 		t.Fatalf("expecting SyncResponse to have NetbirdConfig with expected TURN Protocol: %v, actual: %v",
 			expectedTRUNHost.GetProtocol().String(),
-			netbirdConfig.GetTurns()[0].GetHostConfig().GetProtocol())
+			rvpnConfig.GetTurns()[0].GetHostConfig().GetProtocol())
 	}
 
 	// ensure backward compatibility
@@ -451,7 +451,7 @@ func startManagementForTest(t *testing.T, testFile string, config *config.Config
 	permissionsManager := permissions.NewManager(store)
 	groupsManager := groups.NewManagerMock()
 
-	accountManager, err := BuildManager(ctx, store, peersUpdateManager, nil, "", "netbird.selfhosted",
+	accountManager, err := BuildManager(ctx, store, peersUpdateManager, nil, "", "rvpn.selfhosted",
 		eventStore, nil, false, MockIntegratedValidator{}, metrics, port_forwarding.NewControllerMock(), settingsMockManager, permissionsManager, false)
 
 	if err != nil {
@@ -520,7 +520,7 @@ func testSyncStatusRace(t *testing.T) {
 	mgmtServer, am, mgmtAddr, cleanup, err := startManagementForTest(t, "testdata/store_with_expired_peers.sql", &config.Config{
 		Stuns: []*config.Host{{
 			Proto: "udp",
-			URI:   "stun:stun.netbird.io:3468",
+			URI:   "stun:stun.rsoftware.net:3468",
 		}},
 		TURNConfig: &config.TURNConfig{
 			TimeBasedCredentials: false,
@@ -528,12 +528,12 @@ func testSyncStatusRace(t *testing.T) {
 			Secret:               "whatever",
 			Turns: []*config.Host{{
 				Proto: "udp",
-				URI:   "turn:stun.netbird.io:3468",
+				URI:   "turn:stun.rsoftware.net:3468",
 			}},
 		},
 		Signal: &config.Host{
 			Proto: "http",
-			URI:   "signal.netbird.io:10000",
+			URI:   "signal.rsoftware.net:10000",
 		},
 		Datadir:    dir,
 		HttpConfig: nil,
@@ -692,7 +692,7 @@ func Test_LoginPerformance(t *testing.T) {
 			mgmtServer, am, _, cleanup, err := startManagementForTest(t, "testdata/store_with_expired_peers.sql", &config.Config{
 				Stuns: []*config.Host{{
 					Proto: "udp",
-					URI:   "stun:stun.netbird.io:3468",
+					URI:   "stun:stun.rsoftware.net:3468",
 				}},
 				TURNConfig: &config.TURNConfig{
 					TimeBasedCredentials: false,
@@ -700,12 +700,12 @@ func Test_LoginPerformance(t *testing.T) {
 					Secret:               "whatever",
 					Turns: []*config.Host{{
 						Proto: "udp",
-						URI:   "turn:stun.netbird.io:3468",
+						URI:   "turn:stun.rsoftware.net:3468",
 					}},
 				},
 				Signal: &config.Host{
 					Proto: "http",
-					URI:   "signal.netbird.io:10000",
+					URI:   "signal.rsoftware.net:10000",
 				},
 				Datadir:    dir,
 				HttpConfig: nil,

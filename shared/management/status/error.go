@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/netbirdio/netbird/shared/management/operations"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/operations"
 )
 
 const (

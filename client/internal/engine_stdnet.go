@@ -3,7 +3,7 @@
 package internal
 
 import (
-	"github.com/netbirdio/netbird/client/internal/stdnet"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/stdnet"
 )
 
 func (e *Engine) newStdNet() (*stdnet.Net, error) {

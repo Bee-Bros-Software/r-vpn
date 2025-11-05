@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	nbpeer "github.com/netbirdio/netbird/management/server/peer"
+	nbpeer "github.com/Bee-Bros-Software/r-vpn/management/server/peer"
 )
 
 func TestPeerNetworkRangeCheck_Check(t *testing.T) {

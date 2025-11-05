@@ -1,7 +1,7 @@
 package iface
 
 import (
-	"github.com/netbirdio/netbird/client/iface/device"
+	"github.com/Bee-Bros-Software/r-vpn/client/iface/device"
 )
 
 // GetInterfaceGUIDString returns an interface GUID. This is useful on Windows only

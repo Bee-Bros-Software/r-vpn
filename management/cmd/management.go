@@ -20,10 +20,10 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	"github.com/netbirdio/netbird/formatter/hook"
-	"github.com/netbirdio/netbird/management/internals/server"
-	nbconfig "github.com/netbirdio/netbird/management/internals/server/config"
-	"github.com/netbirdio/netbird/util"
+	"github.com/Bee-Bros-Software/r-vpn/formatter/hook"
+	"github.com/Bee-Bros-Software/r-vpn/management/internals/server"
+	nbconfig "github.com/Bee-Bros-Software/r-vpn/management/internals/server/config"
+	"github.com/Bee-Bros-Software/r-vpn/util"
 )
 
 var newServer = func(config *nbconfig.Config, dnsDomain, mgmtSingleAccModeDomain string, mgmtPort int, mgmtMetricsPort int, disableMetrics, disableGeoliteUpdate, userDeleteFromIDPEnabled bool) server.Server {
@@ -39,7 +39,7 @@ var (
 
 	mgmtCmd = &cobra.Command{
 		Use:   "management",
-		Short: "start NetBird Management Server",
+		Short: "start R-VPN Management Server",
 		PreRunE: func(cmd *cobra.Command, args []string) error {
 			flag.Parse()
 

@@ -5,8 +5,8 @@ import (
 
 	"github.com/rs/xid"
 
-	"github.com/netbirdio/netbird/shared/management/http/api"
-	"github.com/netbirdio/netbird/management/server/networks/types"
+	"github.com/Bee-Bros-Software/r-vpn/shared/management/http/api"
+	"github.com/Bee-Bros-Software/r-vpn/management/server/networks/types"
 )
 
 type NetworkRouter struct {

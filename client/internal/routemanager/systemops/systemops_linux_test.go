@@ -15,7 +15,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/vishvananda/netlink"
 
-	"github.com/netbirdio/netbird/client/internal/routemanager/vars"
+	"github.com/Bee-Bros-Software/r-vpn/client/internal/routemanager/vars"
 )
 
 var expectedVPNint = "wgtest0"
