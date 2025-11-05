@@ -222,7 +222,7 @@ type Body struct {
 	Payload string    `protobuf:"bytes,2,opt,name=payload,proto3" json:"payload,omitempty"`
 	// wgListenPort is an actual WireGuard listen port
 	WgListenPort   uint32 `protobuf:"varint,3,opt,name=wgListenPort,proto3" json:"wgListenPort,omitempty"`
-	R-VPNVersion string `protobuf:"bytes,4,opt,name=netBirdVersion,proto3" json:"netBirdVersion,omitempty"`
+	NetBirdVersion string `protobuf:"bytes,4,opt,name=netBirdVersion,proto3" json:"netBirdVersion,omitempty"`
 	Mode           *Mode  `protobuf:"bytes,5,opt,name=mode,proto3" json:"mode,omitempty"`
 	// featuresSupported list of supported features by the client of this protocol
 	FeaturesSupported []uint32 `protobuf:"varint,6,rep,packed,name=featuresSupported,proto3" json:"featuresSupported,omitempty"`
@@ -286,9 +286,9 @@ func (x *Body) GetWgListenPort() uint32 {
 	return 0
 }
 
-func (x *Body) GetR-VPNVersion() string {
+func (x *Body) GetNetBirdVersion() string {
 	if x != nil {
-		return x.R-VPNVersion
+		return x.NetBirdVersion
 	}
 	return ""
 }

@@ -265,6 +265,6 @@ func (m *TimeBasedAuthSecretsManager) extendNetbirdConfig(ctx context.Context, p
 		log.WithContext(ctx).Errorf("failed to get peer groups: %v", err)
 	}
 
-	extendedConfig := integrationsConfig.ExtendR-VPNConfig(peerID, peerGroups, update.NetbirdConfig, extraSettings)
+	extendedConfig := integrationsConfig.ExtendNetBirdConfig(peerID, peerGroups, update.NetbirdConfig, extraSettings)
 	update.NetbirdConfig = extendedConfig
 }

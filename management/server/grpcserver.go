@@ -727,7 +727,7 @@ func toSyncResponse(ctx context.Context, config *nbconfig.Config, peer *nbpeer.P
 	}
 
 	nbConfig := toNetbirdConfig(config, turnCredentials, relayCredentials, extraSettings)
-	extendedConfig := integrationsConfig.ExtendR-VPNConfig(peer.ID, peerGroups, nbConfig, extraSettings)
+	extendedConfig := integrationsConfig.ExtendNetBirdConfig(peer.ID, peerGroups, nbConfig, extraSettings)
 	response.NetbirdConfig = extendedConfig
 
 	response.NetworkMap.PeerConfig = response.PeerConfig

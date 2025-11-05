@@ -60,7 +60,7 @@ func MarshalCredential(myKey wgtypes.Key, myPort int, remoteKey string, credenti
 			Type:           t,
 			Payload:        fmt.Sprintf("%s:%s", credential.UFrag, credential.Pwd),
 			WgListenPort:   uint32(myPort),
-			R-VPNVersion: version.NetbirdVersion(),
+			NetBirdVersion: version.NetbirdVersion(),
 			RosenpassConfig: &proto.RosenpassConfig{
 				RosenpassPubKey:     rosenpassPubKey,
 				RosenpassServerAddr: rosenpassAddr,

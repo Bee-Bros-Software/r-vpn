@@ -2204,7 +2204,7 @@ func convertToOfferAnswer(msg *sProto.Message) (*peer.OfferAnswer, error) {
 			Pwd:   remoteCred.Pwd,
 		},
 		WgListenPort:    int(msg.GetBody().GetWgListenPort()),
-		Version:         msg.GetBody().GetR-VPNVersion(),
+		Version:         msg.GetBody().GetNetBirdVersion(),
 		RosenpassPubKey: rosenpassPubKey,
 		RosenpassAddr:   rosenpassAddr,
 		RelaySrvAddress: msg.GetBody().GetRelayServerAddress(),

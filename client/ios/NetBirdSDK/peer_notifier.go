@@ -1,4 +1,4 @@
-package R-VPNSDK
+package NetBirdSDK
 
 // PeerInfo describe information about the peers. It designed for the UI usage
 type PeerInfo struct {

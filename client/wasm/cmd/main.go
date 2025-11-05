@@ -24,7 +24,7 @@ const (
 )
 
 func main() {
-	js.Global().Set("R-VPNClient", js.FuncOf(netBirdClientConstructor))
+	js.Global().Set("NetBirdClient", js.FuncOf(netBirdClientConstructor))
 
 	select {}
 }

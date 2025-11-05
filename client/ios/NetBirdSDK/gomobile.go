@@ -1,4 +1,4 @@
-package R-VPNSDK
+package NetBirdSDK
 
 import _ "golang.org/x/mobile/bind"
 

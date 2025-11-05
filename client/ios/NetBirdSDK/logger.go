@@ -1,4 +1,4 @@
-package R-VPNSDK
+package NetBirdSDK
 
 import (
 	"github.com/Bee-Bros-Software/r-vpn/util"

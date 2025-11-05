@@ -1,4 +1,4 @@
-package R-VPNSDK
+package NetBirdSDK
 
 // RoutesSelectionInfoCollection made for Java layer to get non default types as collection
 type RoutesSelectionInfoCollection interface {

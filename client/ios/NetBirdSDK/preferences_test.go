@@ -1,4 +1,4 @@
-package R-VPNSDK
+package NetBirdSDK
 
 import (
 	"path/filepath"
