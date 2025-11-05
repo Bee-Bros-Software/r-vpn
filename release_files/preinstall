@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# R-VPN Pre-Installation Script
+# This script runs before the app is installed to clean up any existing installation
+
+set -e
+
+INSTALL_LOG="/var/log/rvpn/install.log"
+
+# Create log directory
+mkdir -p /var/log/rvpn
+
+echo "$(date): Starting R-VPN pre-installation" >> "$INSTALL_LOG"
+
+# Check if installed via Homebrew
+if brew list --cask 2>/dev/null | grep -q "rvpn\|netbird"; then
+    echo "R-VPN/NetBird is installed via Homebrew. Please uninstall with brew first." >> "$INSTALL_LOG"
+    echo "Run: brew uninstall --cask netbird" >> "$INSTALL_LOG"
+    osascript -e 'display dialog "R-VPN/NetBird is installed via Homebrew. Please uninstall with:\n\nbrew uninstall --cask netbird\n\nThen try installing again." buttons {"OK"} default button 1 with icon stop'
+    exit 1
+fi
+
+# Kill any running R-VPN processes
+echo "Stopping any running R-VPN processes" >> "$INSTALL_LOG"
+
+# Kill GUI app
+osascript -e 'quit app "R-VPN"' 2>> "$INSTALL_LOG" || true
+killall -9 "R-VPN" 2>> "$INSTALL_LOG" || true
+
+# Stop daemon service if it exists
+if [ -f "/usr/local/bin/rvpn" ]; then
+    echo "Stopping existing daemon" >> "$INSTALL_LOG"
+    /usr/local/bin/rvpn service stop 2>> "$INSTALL_LOG" || true
+    sleep 1
+fi
+
+# Kill any remaining rvpn processes
+killall -9 rvpn 2>> "$INSTALL_LOG" || true
+
+echo "$(date): Pre-installation cleanup completed" >> "$INSTALL_LOG"
+
+exit 0

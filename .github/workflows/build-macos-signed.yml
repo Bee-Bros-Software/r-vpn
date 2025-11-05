@@ -144,6 +144,88 @@ jobs:
 
         codesign --verify --verbose=2 build/rvpn
 
+    - name: Create PKG Installer
+      env:
+        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME }}
+      run: |
+        # Make install scripts executable
+        chmod +x release_files/preinstall
+        chmod +x release_files/postinstall
+
+        # Create package structure
+        mkdir -p build/pkg_root/Applications
+        cp -R build/R-VPN.app build/pkg_root/Applications/
+
+        # Create scripts directory
+        mkdir -p build/scripts
+        cp release_files/preinstall build/scripts/
+        cp release_files/postinstall build/scripts/
+
+        # Build the component package
+        pkgbuild \
+          --root build/pkg_root \
+          --scripts build/scripts \
+          --identifier net.rsoftware.rvpn \
+          --version "${{ github.ref_name }}" \
+          --install-location / \
+          --sign "$CERTIFICATE_NAME" \
+          build/R-VPN-component.pkg
+
+        # Create distribution XML
+        cat > build/distribution.xml << 'EOF'
+        <?xml version="1.0" encoding="utf-8"?>
+        <installer-gui-script minSpecVersion="1">
+          <title>R-VPN</title>
+          <organization>net.rsoftware</organization>
+          <domains enable_localSystem="true"/>
+          <options customize="never" require-scripts="true" rootVolumeOnly="true"/>
+          <welcome file="welcome.html"/>
+          <license file="license.txt"/>
+          <pkg-ref id="net.rsoftware.rvpn"/>
+          <choices-outline>
+            <line choice="default">
+              <line choice="net.rsoftware.rvpn"/>
+            </line>
+          </choices-outline>
+          <choice id="default"/>
+          <choice id="net.rsoftware.rvpn" visible="false">
+            <pkg-ref id="net.rsoftware.rvpn"/>
+          </choice>
+          <pkg-ref id="net.rsoftware.rvpn" version="${{ github.ref_name }}">R-VPN-component.pkg</pkg-ref>
+        </installer-gui-script>
+        EOF
+
+        # Create welcome message
+        cat > build/welcome.html << 'EOF'
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <h1>Welcome to R-VPN</h1>
+        <p>This installer will install R-VPN on your Mac.</p>
+        <p>R-VPN will be installed in your Applications folder and the daemon service will be configured automatically.</p>
+        </body>
+        </html>
+        EOF
+
+        # Create simple license
+        cat > build/license.txt << 'EOF'
+        R-VPN License
+        Copyright (c) 2025 R-Software
+
+        This software is provided for use by R-Software employees and authorized users only.
+        EOF
+
+        # Build the product archive (final PKG)
+        productbuild \
+          --distribution build/distribution.xml \
+          --resources build \
+          --package-path build \
+          --sign "$CERTIFICATE_NAME" \
+          "build/R-VPN-${{ github.ref_name }}.pkg"
+
+        # Verify signature
+        pkgutil --check-signature "build/R-VPN-${{ github.ref_name }}.pkg"
+
     - name: Create DMG
       run: |
         create-dmg \
@@ -173,6 +255,20 @@ jobs:
 
         codesign --verify --verbose=2 "build/R-VPN-${{ github.ref_name }}.dmg"
 
+    - name: Notarize PKG
+      env:
+        APPLE_ID: ${{ secrets.APPLE_ID }}
+        APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      run: |
+        xcrun notarytool submit "build/R-VPN-${{ github.ref_name }}.pkg" \
+          --apple-id "$APPLE_ID" \
+          --password "$APPLE_APP_PASSWORD" \
+          --team-id "$APPLE_TEAM_ID" \
+          --wait
+
+        xcrun stapler staple "build/R-VPN-${{ github.ref_name }}.pkg"
+
     - name: Notarize DMG
       env:
         APPLE_ID: ${{ secrets.APPLE_ID }}
@@ -193,6 +289,7 @@ jobs:
         name: macos-signed-builds
         path: |
           build/rvpn
+          build/*.pkg
           build/*.dmg
 
     - name: Create Release
@@ -201,21 +298,31 @@ jobs:
       with:
         files: |
           build/rvpn
+          build/*.pkg
           build/*.dmg
         body: |
           ## R-VPN ${{ github.ref_name }} - Signed & Notarized
 
-          ### macOS Installation
+          ### ✨ Recommended: PKG Installer (One-Click Setup)
+          1. Download `R-VPN-${{ github.ref_name }}.pkg`
+          2. Double-click to install
+          3. The daemon service will be configured automatically
+          4. Launch R-VPN from Applications
+          5. Click "Connect" and authenticate via Authentik
+
+          ### Alternative: Manual DMG Installation
           1. Download `R-VPN-${{ github.ref_name }}.dmg`
           2. Open the DMG and drag R-VPN to Applications
-          3. Launch R-VPN from Applications (no security warnings!)
-          4. Authenticate via Authentik when prompted
+          3. Run daemon setup: `sudo /Applications/R-VPN.app/Contents/MacOS/R-VPN service install && sudo /Applications/R-VPN.app/Contents/MacOS/R-VPN service start`
+          4. Launch R-VPN from Applications
 
           ### CLI Installation
           ```bash
           curl -L -o rvpn https://github.com/Bee-Bros-Software/r-vpn/releases/download/${{ github.ref_name }}/rvpn
           chmod +x rvpn
           sudo mv rvpn /usr/local/bin/
+          sudo rvpn service install
+          sudo rvpn service start
           ```
 
           ✅ **This release is code-signed and notarized by Apple**

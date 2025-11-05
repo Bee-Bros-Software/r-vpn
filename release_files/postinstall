@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# R-VPN Post-Installation Script
+# This script runs after the app is installed to set up the daemon service
+
+set -e
+
+INSTALL_LOG="/var/log/rvpn/install.log"
+APP_PATH="/Applications/R-VPN.app"
+BINARY_PATH="$APP_PATH/Contents/MacOS/R-VPN"
+SYMLINK_PATH="/usr/local/bin/rvpn"
+
+# Create log directory
+mkdir -p /var/log/rvpn
+echo "$(date): Starting R-VPN installation" >> "$INSTALL_LOG"
+
+# Create symlink to binary
+echo "Creating symlink to $SYMLINK_PATH" >> "$INSTALL_LOG"
+ln -sf "$BINARY_PATH" "$SYMLINK_PATH"
+
+# Verify symlink was created
+if [ ! -L "$SYMLINK_PATH" ]; then
+    echo "ERROR: Failed to create symlink" >> "$INSTALL_LOG"
+    exit 1
+fi
+
+# Stop and uninstall any existing daemon
+echo "Stopping existing daemon service (if any)" >> "$INSTALL_LOG"
+"$SYMLINK_PATH" service stop 2>> "$INSTALL_LOG" || true
+"$SYMLINK_PATH" service uninstall 2>> "$INSTALL_LOG" || true
+
+# Install the daemon service
+echo "Installing daemon service" >> "$INSTALL_LOG"
+if "$SYMLINK_PATH" service install 2>> "$INSTALL_LOG"; then
+    echo "Daemon service installed successfully" >> "$INSTALL_LOG"
+else
+    echo "ERROR: Failed to install daemon service" >> "$INSTALL_LOG"
+    exit 1
+fi
+
+# Start the daemon service
+echo "Starting daemon service" >> "$INSTALL_LOG"
+if "$SYMLINK_PATH" service start 2>> "$INSTALL_LOG"; then
+    echo "Daemon service started successfully" >> "$INSTALL_LOG"
+else
+    echo "ERROR: Failed to start daemon service" >> "$INSTALL_LOG"
+    exit 1
+fi
+
+# Wait a moment for the daemon to start
+sleep 2
+
+# Verify daemon is running
+if "$SYMLINK_PATH" service status 2>> "$INSTALL_LOG" | grep -q "running\|active"; then
+    echo "Daemon is running" >> "$INSTALL_LOG"
+else
+    echo "WARNING: Daemon may not be running properly" >> "$INSTALL_LOG"
+fi
+
+echo "$(date): R-VPN installation completed successfully" >> "$INSTALL_LOG"
+echo "" >> "$INSTALL_LOG"
+echo "You can now launch R-VPN from Applications" >> "$INSTALL_LOG"
+
+# Open the app
+open "$APP_PATH"
+
+exit 0
