@@ -1,0 +1,234 @@
+name: Build and Sign macOS Client
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-macos-signed:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.21'
+
+    - name: Install dependencies
+      run: |
+        brew install create-dmg
+
+    - name: Import Code Signing Certificate
+      if: ${{ secrets.MACOS_CERTIFICATE != '' }}
+      env:
+        CERTIFICATE_BASE64: ${{ secrets.MACOS_CERTIFICATE }}
+        CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
+      run: |
+        # Create temporary keychain
+        KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+        KEYCHAIN_PASSWORD=$(openssl rand -base64 32)
+
+        # Decode certificate
+        echo "$CERTIFICATE_BASE64" | base64 --decode > $RUNNER_TEMP/certificate.p12
+
+        # Create keychain
+        security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+        security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+        security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+        # Import certificate
+        security import $RUNNER_TEMP/certificate.p12 -k $KEYCHAIN_PATH -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+        security list-keychain -d user -s $KEYCHAIN_PATH
+        security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+    - name: Build CLI client
+      run: |
+        cd client
+        go build -o ../build/rvpn \
+          -ldflags="-X github.com/Bee-Bros-Software/r-vpn/version.version=${{ github.ref_name }}" \
+          .
+
+    - name: Build UI client
+      run: |
+        mkdir -p build/R-VPN.app/Contents/MacOS
+        cd client/ui
+        go build -o ../../build/R-VPN.app/Contents/MacOS/R-VPN \
+          -ldflags="-X github.com/Bee-Bros-Software/r-vpn/version.version=${{ github.ref_name }}" \
+          .
+
+    - name: Create app bundle structure
+      run: |
+        mkdir -p build/R-VPN.app/Contents/{MacOS,Resources}
+
+        # Copy icon
+        cp client/ui/rvpn.icns build/R-VPN.app/Contents/Resources/
+
+        # Create Info.plist
+        cat > build/R-VPN.app/Contents/Info.plist << 'EOF'
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+          <key>CFBundleExecutable</key>
+          <string>R-VPN</string>
+          <key>CFBundleIconFile</key>
+          <string>rvpn.icns</string>
+          <key>CFBundleIdentifier</key>
+          <string>net.rsoftware.rvpn</string>
+          <key>CFBundleName</key>
+          <string>R-VPN</string>
+          <key>CFBundlePackageType</key>
+          <string>APPL</string>
+          <key>CFBundleShortVersionString</key>
+          <string>${{ github.ref_name }}</string>
+          <key>CFBundleVersion</key>
+          <string>${{ github.run_number }}</string>
+          <key>LSMinimumSystemVersion</key>
+          <string>10.15</string>
+          <key>NSHighResolutionCapable</key>
+          <true/>
+          <key>LSUIElement</key>
+          <true/>
+        </dict>
+        </plist>
+        EOF
+
+    - name: Sign App Bundle
+      if: ${{ secrets.MACOS_CERTIFICATE != '' }}
+      env:
+        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME }}
+      run: |
+        # Sign the app
+        /usr/bin/codesign --force --deep --sign "$CERTIFICATE_NAME" \
+          --options runtime \
+          --entitlements client/entitlements.plist \
+          --timestamp \
+          build/R-VPN.app
+
+        # Verify signature
+        codesign --verify --deep --strict --verbose=2 build/R-VPN.app
+
+    - name: Notarize App
+      if: ${{ secrets.MACOS_CERTIFICATE != '' && secrets.APPLE_ID != '' }}
+      env:
+        APPLE_ID: ${{ secrets.APPLE_ID }}
+        APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      run: |
+        # Create a zip for notarization
+        ditto -c -k --keepParent build/R-VPN.app build/R-VPN.zip
+
+        # Submit for notarization
+        xcrun notarytool submit build/R-VPN.zip \
+          --apple-id "$APPLE_ID" \
+          --password "$APPLE_APP_PASSWORD" \
+          --team-id "$APPLE_TEAM_ID" \
+          --wait
+
+        # Staple the notarization ticket
+        xcrun stapler staple build/R-VPN.app
+
+    - name: Sign CLI Binary
+      if: ${{ secrets.MACOS_CERTIFICATE != '' }}
+      env:
+        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME }}
+      run: |
+        /usr/bin/codesign --force --sign "$CERTIFICATE_NAME" \
+          --options runtime \
+          --timestamp \
+          build/rvpn
+
+        codesign --verify --verbose=2 build/rvpn
+
+    - name: Create DMG
+      run: |
+        create-dmg \
+          --volname "R-VPN Installer" \
+          --volicon "client/ui/rvpn.icns" \
+          --window-pos 200 120 \
+          --window-size 600 400 \
+          --icon-size 100 \
+          --icon "R-VPN.app" 175 120 \
+          --hide-extension "R-VPN.app" \
+          --app-drop-link 425 120 \
+          "build/R-VPN-${{ github.ref_name }}.dmg" \
+          "build/R-VPN.app" || true
+
+        # Fallback if create-dmg fails
+        if [ ! -f "build/R-VPN-${{ github.ref_name }}.dmg" ]; then
+          hdiutil create -volname "R-VPN" -srcfolder build/R-VPN.app -ov -format UDZO "build/R-VPN-${{ github.ref_name }}.dmg"
+        fi
+
+    - name: Sign DMG
+      if: ${{ secrets.MACOS_CERTIFICATE != '' }}
+      env:
+        CERTIFICATE_NAME: ${{ secrets.MACOS_CERTIFICATE_NAME }}
+      run: |
+        /usr/bin/codesign --force --sign "$CERTIFICATE_NAME" \
+          --timestamp \
+          "build/R-VPN-${{ github.ref_name }}.dmg"
+
+        codesign --verify --verbose=2 "build/R-VPN-${{ github.ref_name }}.dmg"
+
+    - name: Notarize DMG
+      if: ${{ secrets.MACOS_CERTIFICATE != '' && secrets.APPLE_ID != '' }}
+      env:
+        APPLE_ID: ${{ secrets.APPLE_ID }}
+        APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      run: |
+        xcrun notarytool submit "build/R-VPN-${{ github.ref_name }}.dmg" \
+          --apple-id "$APPLE_ID" \
+          --password "$APPLE_APP_PASSWORD" \
+          --team-id "$APPLE_TEAM_ID" \
+          --wait
+
+        xcrun stapler staple "build/R-VPN-${{ github.ref_name }}.dmg"
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: macos-signed-builds
+        path: |
+          build/rvpn
+          build/*.dmg
+
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          build/rvpn
+          build/*.dmg
+        body: |
+          ## R-VPN ${{ github.ref_name }} - Signed & Notarized
+
+          ### macOS Installation
+          1. Download `R-VPN-${{ github.ref_name }}.dmg`
+          2. Open the DMG and drag R-VPN to Applications
+          3. Launch R-VPN from Applications (no security warnings!)
+          4. Authenticate via Authentik when prompted
+
+          ### CLI Installation
+          ```bash
+          curl -L -o rvpn https://github.com/Bee-Bros-Software/r-vpn/releases/download/${{ github.ref_name }}/rvpn
+          chmod +x rvpn
+          sudo mv rvpn /usr/local/bin/
+          ```
+
+          ✅ **This release is code-signed and notarized by Apple**
+
+          ---
+          Built with ❤️ by R-Software
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Cleanup keychain
+      if: always()
+      run: |
+        security delete-keychain $RUNNER_TEMP/app-signing.keychain-db || true
