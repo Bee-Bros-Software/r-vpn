@@ -19,11 +19,11 @@ mkdir -p /usr/local/bin/
         exit 1
     fi
 
-    ln -fs $APP/Contents/MacOS/R-VPN $AGENT
+    # CLI binary is already installed to /usr/local/bin by the package
     if test -f $AGENT; then
-        echo "R-VPN binary linked successfully."
+        echo "R-VPN CLI binary installed successfully."
     else
-        echo "R-VPN could not create symlink to /usr/local/bin"
+        echo "R-VPN CLI binary not found"
         exit 1
     fi
 

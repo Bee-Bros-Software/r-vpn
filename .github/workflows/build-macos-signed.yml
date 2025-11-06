@@ -158,7 +158,9 @@ jobs:
 
         # Create package structure
         mkdir -p build/pkg_root/Applications
+        mkdir -p build/pkg_root/usr/local/bin
         cp -R build/R-VPN.app build/pkg_root/Applications/
+        cp build/rvpn build/pkg_root/usr/local/bin/rvpn
 
         # Create scripts directory
         mkdir -p build/scripts
