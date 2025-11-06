@@ -1,42 +1,27 @@
-#!/bin/bash
+#!/bin/sh
 
-# R-VPN Pre-Installation Script
-# This script runs before the app is installed to clean up any existing installation
+set -x
 
-set -e
+LOG_FILE=/var/log/rvpn/preinstall.log
 
-INSTALL_LOG="/var/log/rvpn/install.log"
+mkdir -p /var/log/rvpn/
 
-# Create log directory
-mkdir -p /var/log/rvpn
+{
+    echo "Starting R-VPN pre-installation cleanup..."
 
-echo "$(date): Starting R-VPN pre-installation" >> "$INSTALL_LOG"
+    # Kill GUI app
+    osascript -e 'quit app "R-VPN"' 2>&1 || true
+    killall -9 "R-VPN" 2>&1 || true
 
-# Check if installed via Homebrew
-if brew list --cask 2>/dev/null | grep -q "rvpn\|netbird"; then
-    echo "R-VPN/NetBird is installed via Homebrew. Please uninstall with brew first." >> "$INSTALL_LOG"
-    echo "Run: brew uninstall --cask netbird" >> "$INSTALL_LOG"
-    osascript -e 'display dialog "R-VPN/NetBird is installed via Homebrew. Please uninstall with:\n\nbrew uninstall --cask netbird\n\nThen try installing again." buttons {"OK"} default button 1 with icon stop'
-    exit 1
-fi
+    # Unload launchd service if it exists
+    launchctl unload /Library/LaunchDaemons/net.rsoftware.rvpn.plist 2>&1 || true
 
-# Kill any running R-VPN processes
-echo "Stopping any running R-VPN processes" >> "$INSTALL_LOG"
+    # Kill any remaining rvpn processes directly
+    killall -9 rvpn 2>&1 || true
 
-# Kill GUI app
-osascript -e 'quit app "R-VPN"' 2>> "$INSTALL_LOG" || true
-killall -9 "R-VPN" 2>> "$INSTALL_LOG" || true
+    # Remove launchd plist if it exists
+    rm -f /Library/LaunchDaemons/net.rsoftware.rvpn.plist 2>&1 || true
 
-# Stop daemon service if it exists
-if [ -f "/usr/local/bin/rvpn" ]; then
-    echo "Stopping existing daemon" >> "$INSTALL_LOG"
-    /usr/local/bin/rvpn service stop 2>> "$INSTALL_LOG" || true
-    sleep 1
-fi
-
-# Kill any remaining rvpn processes
-killall -9 rvpn 2>> "$INSTALL_LOG" || true
-
-echo "$(date): Pre-installation cleanup completed" >> "$INSTALL_LOG"
-
-exit 0
+    echo "Pre-installation cleanup completed"
+    exit 0
+} &> $LOG_FILE
